@@ -28,6 +28,7 @@ Partial Class frmRegister
         Me.txtRegPwd = New Guna.UI2.WinForms.Guna2TextBox()
         Me.btnRegister = New Guna.UI2.WinForms.Guna2GradientButton()
         Me.txtConfirmPwd = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.lblLogLink = New System.Windows.Forms.LinkLabel()
         Me.SuspendLayout()
         '
         'txtRegUsername
@@ -132,7 +133,7 @@ Partial Class frmRegister
         Me.btnRegister.Font = New System.Drawing.Font("Inter", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRegister.ForeColor = System.Drawing.Color.White
         Me.btnRegister.HoverState.Parent = Me.btnRegister
-        Me.btnRegister.Location = New System.Drawing.Point(335, 315)
+        Me.btnRegister.Location = New System.Drawing.Point(284, 312)
         Me.btnRegister.Name = "btnRegister"
         Me.btnRegister.ShadowDecoration.Parent = Me.btnRegister
         Me.btnRegister.Size = New System.Drawing.Size(130, 35)
@@ -170,12 +171,26 @@ Partial Class frmRegister
         Me.txtConfirmPwd.TabIndex = 5
         Me.txtConfirmPwd.UseSystemPasswordChar = True
         '
+        'lblLogLink
+        '
+        Me.lblLogLink.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(4, Byte), Integer), CType(CType(131, Byte), Integer), CType(CType(153, Byte), Integer))
+        Me.lblLogLink.AutoSize = True
+        Me.lblLogLink.Font = New System.Drawing.Font("Inter", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLogLink.LinkColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
+        Me.lblLogLink.Location = New System.Drawing.Point(415, 321)
+        Me.lblLogLink.Name = "lblLogLink"
+        Me.lblLogLink.Size = New System.Drawing.Size(101, 16)
+        Me.lblLogLink.TabIndex = 6
+        Me.lblLogLink.TabStop = True
+        Me.lblLogLink.Text = "Back To Login?"
+        '
         'frmRegister
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.lblLogLink)
         Me.Controls.Add(Me.txtConfirmPwd)
         Me.Controls.Add(Me.btnRegister)
         Me.Controls.Add(Me.txtRegPwd)
@@ -185,6 +200,7 @@ Partial Class frmRegister
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmRegister"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -193,4 +209,5 @@ Partial Class frmRegister
     Friend WithEvents txtRegPwd As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnRegister As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents txtConfirmPwd As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents lblLogLink As LinkLabel
 End Class

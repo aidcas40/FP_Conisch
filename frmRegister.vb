@@ -71,4 +71,9 @@ Public Class frmRegister
             End If
         End If
     End Sub
+
+    Private Sub lblLogLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblLogLink.LinkClicked
+        frmLogin.Show()
+        Me.Hide()
+    End Sub
 End Class
