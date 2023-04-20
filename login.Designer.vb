@@ -31,7 +31,7 @@ Partial Class frmLogin
         '
         'txtUsername
         '
-        Me.txtUsername.BackColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer))
+        Me.txtUsername.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.txtUsername.BorderColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.txtUsername.BorderRadius = 15
         Me.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam
@@ -61,7 +61,7 @@ Partial Class frmLogin
         '
         'txtUserPwd
         '
-        Me.txtUserPwd.BackColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer))
+        Me.txtUserPwd.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.txtUserPwd.BorderColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.txtUserPwd.BorderRadius = 15
         Me.txtUserPwd.Cursor = System.Windows.Forms.Cursors.IBeam
@@ -126,7 +126,7 @@ Partial Class frmLogin
         Me.AcceptButton = Me.btnLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.lblRegLink)
         Me.Controls.Add(Me.btnLogin)

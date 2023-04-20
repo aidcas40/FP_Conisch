@@ -33,7 +33,7 @@ Partial Class frmRegister
         '
         'txtRegUsername
         '
-        Me.txtRegUsername.BackColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer))
+        Me.txtRegUsername.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.txtRegUsername.BorderColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.txtRegUsername.BorderRadius = 15
         Me.txtRegUsername.Cursor = System.Windows.Forms.Cursors.IBeam
@@ -63,7 +63,7 @@ Partial Class frmRegister
         '
         'txtRegEmail
         '
-        Me.txtRegEmail.BackColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer))
+        Me.txtRegEmail.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.txtRegEmail.BorderColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.txtRegEmail.BorderRadius = 15
         Me.txtRegEmail.Cursor = System.Windows.Forms.Cursors.IBeam
@@ -93,7 +93,7 @@ Partial Class frmRegister
         '
         'txtRegPwd
         '
-        Me.txtRegPwd.BackColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer))
+        Me.txtRegPwd.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.txtRegPwd.BorderColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.txtRegPwd.BorderRadius = 15
         Me.txtRegPwd.Cursor = System.Windows.Forms.Cursors.IBeam
@@ -142,7 +142,7 @@ Partial Class frmRegister
         '
         'txtConfirmPwd
         '
-        Me.txtConfirmPwd.BackColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer))
+        Me.txtConfirmPwd.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.txtConfirmPwd.BorderColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.txtConfirmPwd.BorderRadius = 15
         Me.txtConfirmPwd.Cursor = System.Windows.Forms.Cursors.IBeam
@@ -188,7 +188,7 @@ Partial Class frmRegister
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(29, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.lblLogLink)
         Me.Controls.Add(Me.txtConfirmPwd)
