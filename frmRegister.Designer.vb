@@ -128,7 +128,7 @@ Partial Class frmRegister
         Me.btnRegister.BorderRadius = 16
         Me.btnRegister.CheckedState.Parent = Me.btnRegister
         Me.btnRegister.CustomImages.Parent = Me.btnRegister
-        Me.btnRegister.FillColor = System.Drawing.Color.FromArgb(CType(CType(4, Byte), Integer), CType(CType(131, Byte), Integer), CType(CType(153, Byte), Integer))
+        Me.btnRegister.FillColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
         Me.btnRegister.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(185, Byte), Integer), CType(CType(107, Byte), Integer), CType(CType(133, Byte), Integer))
         Me.btnRegister.Font = New System.Drawing.Font("Inter", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRegister.ForeColor = System.Drawing.Color.White
