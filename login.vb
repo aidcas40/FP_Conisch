@@ -11,24 +11,25 @@
 '                       for UI purposes.
 '----------------------------------------------------------------------------------
 Imports MySql.Data.MySqlClient
-
 Public Class frmLogin
-    Dim Mysqlcon As MySqlConnection
+    Dim conn = New MySqlConnection(My.Settings.connString)
+    'Dim Mysqlcon As MySqlConnection
     Dim command As MySqlCommand
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connection()
     End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        Mysqlcon = New MySqlConnection
-        Mysqlcon.ConnectionString = ("server=localhost; port=3307; database=cs206finalproject; user=root; password='';")
+        'Mysqlcon = New MySqlConnection
+        'Mysqlcon.ConnectionString = ("server=localhost; port=3307; database=cs206finalproject; user=root; password='';")
         Dim reader As MySqlDataReader
 
         Try
-            Mysqlcon.Open()
+            'Mysqlcon.Open()
+            conn.Open()
             Dim query As String
             query = "SELECT * FROM  users WHERE user_username ='" & txtUsername.Text & "' AND BINARY user_password='" & txtUserPwd.Text & "' "
-            command = New MySqlCommand(query, Mysqlcon)
+            command = New MySqlCommand(query, conn)
             reader = command.ExecuteReader
 
             Dim count As Integer
@@ -53,12 +54,14 @@ Public Class frmLogin
                 End If
             End If
 
-            Mysqlcon.Close()
+            'Mysqlcon.Close()
+            conn.Close()
 
         Catch ex As MySqlException
             MessageBox.Show(ex.Message)
         Finally
-            Mysqlcon.Dispose()
+            'Mysqlcon.Dispose()
+            conn.Dispose()
         End Try
     End Sub
 

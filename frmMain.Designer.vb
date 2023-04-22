@@ -45,12 +45,13 @@ Partial Class frmMain
         Me.pnlPlayer = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2DragControl1 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
         Me.pnlUpload = New Guna.UI2.WinForms.Guna2Panel()
+        Me.lblGenre = New System.Windows.Forms.Label()
+        Me.cbxGenre = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.lblAddImage = New System.Windows.Forms.Label()
         Me.btnTrkInsert = New Guna.UI2.WinForms.Guna2Button()
-        Me.txtGenre = New Guna.UI2.WinForms.Guna2TextBox()
         Me.dtpDate = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Me.btnChooseUpload = New Guna.UI2.WinForms.Guna2Button()
         Me.txtFtArtist = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.txtDescr = New Guna.UI2.WinForms.Guna2TextBox()
         Me.picTrkPic = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.txtArtist = New Guna.UI2.WinForms.Guna2TextBox()
         Me.lblUploadHead = New System.Windows.Forms.Label()
@@ -60,7 +61,6 @@ Partial Class frmMain
         Me.trk_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_artist = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_description = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_picture = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_genre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_featartist = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -69,7 +69,6 @@ Partial Class frmMain
         Me.trk_edit = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.trk_delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.lblAddImage = New System.Windows.Forms.Label()
         Me.pnlBar.SuspendLayout()
         Me.pnlMenu.SuspendLayout()
         Me.pnlUpload.SuspendLayout()
@@ -348,13 +347,13 @@ Partial Class frmMain
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlUpload.BackColor = System.Drawing.Color.White
+        Me.pnlUpload.Controls.Add(Me.lblGenre)
+        Me.pnlUpload.Controls.Add(Me.cbxGenre)
         Me.pnlUpload.Controls.Add(Me.lblAddImage)
         Me.pnlUpload.Controls.Add(Me.btnTrkInsert)
-        Me.pnlUpload.Controls.Add(Me.txtGenre)
         Me.pnlUpload.Controls.Add(Me.dtpDate)
         Me.pnlUpload.Controls.Add(Me.btnChooseUpload)
         Me.pnlUpload.Controls.Add(Me.txtFtArtist)
-        Me.pnlUpload.Controls.Add(Me.txtDescr)
         Me.pnlUpload.Controls.Add(Me.picTrkPic)
         Me.pnlUpload.Controls.Add(Me.txtArtist)
         Me.pnlUpload.Controls.Add(Me.lblUploadHead)
@@ -364,6 +363,47 @@ Partial Class frmMain
         Me.pnlUpload.ShadowDecoration.Parent = Me.pnlUpload
         Me.pnlUpload.Size = New System.Drawing.Size(1020, 471)
         Me.pnlUpload.TabIndex = 3
+        '
+        'lblGenre
+        '
+        Me.lblGenre.AutoSize = True
+        Me.lblGenre.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGenre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(193, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(207, Byte), Integer))
+        Me.lblGenre.Location = New System.Drawing.Point(254, 165)
+        Me.lblGenre.Name = "lblGenre"
+        Me.lblGenre.Size = New System.Drawing.Size(81, 15)
+        Me.lblGenre.TabIndex = 12
+        Me.lblGenre.Text = "Choose Genre"
+        '
+        'cbxGenre
+        '
+        Me.cbxGenre.BackColor = System.Drawing.Color.Transparent
+        Me.cbxGenre.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.cbxGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbxGenre.FocusedColor = System.Drawing.Color.Empty
+        Me.cbxGenre.FocusedState.Parent = Me.cbxGenre
+        Me.cbxGenre.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.cbxGenre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.cbxGenre.FormattingEnabled = True
+        Me.cbxGenre.HoverState.Parent = Me.cbxGenre
+        Me.cbxGenre.ItemHeight = 30
+        Me.cbxGenre.ItemsAppearance.Parent = Me.cbxGenre
+        Me.cbxGenre.Location = New System.Drawing.Point(246, 183)
+        Me.cbxGenre.Name = "cbxGenre"
+        Me.cbxGenre.ShadowDecoration.Parent = Me.cbxGenre
+        Me.cbxGenre.Size = New System.Drawing.Size(200, 36)
+        Me.cbxGenre.TabIndex = 11
+        '
+        'lblAddImage
+        '
+        Me.lblAddImage.AutoSize = True
+        Me.lblAddImage.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAddImage.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblAddImage.Location = New System.Drawing.Point(73, 245)
+        Me.lblAddImage.Name = "lblAddImage"
+        Me.lblAddImage.Size = New System.Drawing.Size(81, 15)
+        Me.lblAddImage.TabIndex = 10
+        Me.lblAddImage.Text = "Upload Image"
         '
         'btnTrkInsert
         '
@@ -382,37 +422,16 @@ Partial Class frmMain
         Me.btnTrkInsert.TabIndex = 9
         Me.btnTrkInsert.Text = "Upload"
         '
-        'txtGenre
-        '
-        Me.txtGenre.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtGenre.DefaultText = ""
-        Me.txtGenre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txtGenre.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txtGenre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtGenre.DisabledState.Parent = Me.txtGenre
-        Me.txtGenre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtGenre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtGenre.FocusedState.Parent = Me.txtGenre
-        Me.txtGenre.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtGenre.HoverState.Parent = Me.txtGenre
-        Me.txtGenre.Location = New System.Drawing.Point(548, 114)
-        Me.txtGenre.Margin = New System.Windows.Forms.Padding(13)
-        Me.txtGenre.Name = "txtGenre"
-        Me.txtGenre.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.txtGenre.PlaceholderText = "Genre"
-        Me.txtGenre.SelectedText = ""
-        Me.txtGenre.ShadowDecoration.Parent = Me.txtGenre
-        Me.txtGenre.Size = New System.Drawing.Size(200, 36)
-        Me.txtGenre.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
-        Me.txtGenre.TabIndex = 8
-        '
         'dtpDate
         '
+        Me.dtpDate.BorderColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.dtpDate.BorderThickness = 1
         Me.dtpDate.CheckedState.Parent = Me.dtpDate
         Me.dtpDate.FillColor = System.Drawing.Color.White
+        Me.dtpDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         Me.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpDate.HoverState.Parent = Me.dtpDate
-        Me.dtpDate.Location = New System.Drawing.Point(548, 183)
+        Me.dtpDate.Location = New System.Drawing.Point(548, 114)
         Me.dtpDate.MaxDate = New Date(2050, 1, 1, 0, 0, 0, 0)
         Me.dtpDate.MinDate = New Date(1920, 1, 1, 0, 0, 0, 0)
         Me.dtpDate.Name = "dtpDate"
@@ -462,40 +481,16 @@ Partial Class frmMain
         Me.txtFtArtist.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
         Me.txtFtArtist.TabIndex = 5
         '
-        'txtDescr
-        '
-        Me.txtDescr.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtDescr.DefaultText = ""
-        Me.txtDescr.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txtDescr.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txtDescr.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtDescr.DisabledState.Parent = Me.txtDescr
-        Me.txtDescr.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtDescr.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtDescr.FocusedState.Parent = Me.txtDescr
-        Me.txtDescr.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtDescr.HoverState.Parent = Me.txtDescr
-        Me.txtDescr.Location = New System.Drawing.Point(246, 183)
-        Me.txtDescr.Margin = New System.Windows.Forms.Padding(13)
-        Me.txtDescr.Name = "txtDescr"
-        Me.txtDescr.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.txtDescr.PlaceholderText = "Description"
-        Me.txtDescr.SelectedText = ""
-        Me.txtDescr.ShadowDecoration.Parent = Me.txtDescr
-        Me.txtDescr.Size = New System.Drawing.Size(200, 36)
-        Me.txtDescr.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
-        Me.txtDescr.TabIndex = 4
-        '
         'picTrkPic
         '
         Me.picTrkPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.picTrkPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.picTrkPic.Image = CType(resources.GetObject("picTrkPic.Image"), System.Drawing.Image)
-        Me.picTrkPic.Location = New System.Drawing.Point(12, 45)
+        Me.picTrkPic.Location = New System.Drawing.Point(8, 45)
         Me.picTrkPic.Name = "picTrkPic"
         Me.picTrkPic.ShadowDecoration.Parent = Me.picTrkPic
-        Me.picTrkPic.Size = New System.Drawing.Size(203, 183)
-        Me.picTrkPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picTrkPic.Size = New System.Drawing.Size(211, 195)
+        Me.picTrkPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.picTrkPic.TabIndex = 3
         Me.picTrkPic.TabStop = False
         '
@@ -589,7 +584,7 @@ Partial Class frmMain
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvSongs.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvSongs.ColumnHeadersHeight = 44
-        Me.dgvSongs.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trk_id, Me.trk_name, Me.trk_artist, Me.trk_description, Me.trk_picture, Me.trk_genre, Me.trk_featartist, Me.trk_date, Me.trk_created, Me.trk_edit, Me.trk_delete})
+        Me.dgvSongs.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trk_id, Me.trk_name, Me.trk_artist, Me.trk_picture, Me.trk_genre, Me.trk_featartist, Me.trk_date, Me.trk_created, Me.trk_edit, Me.trk_delete})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -650,13 +645,6 @@ Partial Class frmMain
         Me.trk_artist.Name = "trk_artist"
         Me.trk_artist.Width = 74
         '
-        'trk_description
-        '
-        Me.trk_description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.trk_description.HeaderText = "Description"
-        Me.trk_description.Name = "trk_description"
-        Me.trk_description.Width = 120
-        '
         'trk_picture
         '
         Me.trk_picture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
@@ -705,17 +693,6 @@ Partial Class frmMain
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'lblAddImage
-        '
-        Me.lblAddImage.AutoSize = True
-        Me.lblAddImage.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAddImage.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblAddImage.Location = New System.Drawing.Point(73, 245)
-        Me.lblAddImage.Name = "lblAddImage"
-        Me.lblAddImage.Size = New System.Drawing.Size(81, 15)
-        Me.lblAddImage.TabIndex = 10
-        Me.lblAddImage.Text = "Upload Image"
         '
         'frmMain
         '
@@ -767,19 +744,18 @@ Partial Class frmMain
     Friend WithEvents txtTrkName As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnChooseUpload As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents txtFtArtist As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents txtDescr As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents picTrkPic As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents txtArtist As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblUploadHead As Label
     Friend WithEvents dtpDate As Guna.UI2.WinForms.Guna2DateTimePicker
-    Friend WithEvents txtGenre As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnTrkInsert As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents pnlSongs As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents dgvSongs As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents lblAddImage As Label
     Friend WithEvents trk_id As DataGridViewTextBoxColumn
     Friend WithEvents trk_name As DataGridViewTextBoxColumn
     Friend WithEvents trk_artist As DataGridViewTextBoxColumn
-    Friend WithEvents trk_description As DataGridViewTextBoxColumn
     Friend WithEvents trk_picture As DataGridViewTextBoxColumn
     Friend WithEvents trk_genre As DataGridViewTextBoxColumn
     Friend WithEvents trk_featartist As DataGridViewTextBoxColumn
@@ -787,6 +763,6 @@ Partial Class frmMain
     Friend WithEvents trk_created As DataGridViewTextBoxColumn
     Friend WithEvents trk_edit As DataGridViewButtonColumn
     Friend WithEvents trk_delete As DataGridViewButtonColumn
-    Friend WithEvents OpenFileDialog1 As OpenFileDialog
-    Friend WithEvents lblAddImage As Label
+    Friend WithEvents cbxGenre As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents lblGenre As Label
 End Class
