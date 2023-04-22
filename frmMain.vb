@@ -17,6 +17,18 @@ Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadGenres()
     End Sub
+
+    Private Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
+        pnlUpload.Visible = True
+        pnlSongs.Visible = False
+    End Sub
+
+    Private Sub btnSongs_Click(sender As Object, e As EventArgs) Handles btnSongs.Click
+        pnlUpload.Visible = False
+        pnlSongs.Visible = True
+
+        LoadTrackData()
+    End Sub
     Private Sub LoadGenres()
         conn.Open()
         Dim gcmd As New MySqlCommand("SELECT gnr_name FROM genre", conn)
@@ -30,6 +42,49 @@ Public Class frmMain
         conn.Close()
     End Sub
 
+    Private Sub LoadTrackData()
+        Dim conn = New MySqlConnection(My.Settings.connString)
+        Dim query As String = "SELECT trk_name, trk_artist, trk_picture, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%Y-%m-%d') AS trk_date, DATE_FORMAT(trk_created, '%Y-%m-%d %H:%i') AS trk_created FROM track"
+
+        Dim cmd As New MySqlCommand(query, conn)
+        Dim da As New MySqlDataAdapter(cmd)
+        Dim dt As New DataTable()
+
+        'dt.Columns.Add("trk_picture", GetType(System.Drawing.Image))
+        'dt.Columns.Add("trk_name", GetType(String))
+        'dt.Columns.Add("trk_artist", GetType(String))
+        'dt.Columns.Add("trk_genre", GetType(String))
+        'dt.Columns.Add("trk_featartist", GetType(String))
+        'dt.Columns.Add("trk_date", GetType(DateTime)) 'set datatype to System.DateTime
+        'dt.Columns.Add("trk_created", GetType(DateTime)) 'set datatype to System.DateTime
+
+        conn.Open()
+        'Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+        'While reader.Read()
+        '    Dim imageData As Byte() = DirectCast(reader("trk_picture"), Byte())
+        '    Using stream As New MemoryStream(imageData)
+        '        dt.Rows.Add(Image.FromStream(stream), reader("trk_name"), reader("trk_artist"), reader("trk_genre"), reader("trk_featartist"), reader("trk_date"), reader("trk_created"))
+        '    End Using
+        'End While
+
+        'reader.Close()
+        da.Fill(dt)
+        conn.Close()
+
+        dgvSongs.Columns.Clear()
+        dgvSongs.DataSource = dt
+
+        ' Associate columns with DataPropertyName
+        dgvSongs.Columns("trk_picture").DataPropertyName = "trk_picture"
+        dgvSongs.Columns("trk_name").DataPropertyName = "trk_name"
+        dgvSongs.Columns("trk_artist").DataPropertyName = "trk_artist"
+        dgvSongs.Columns("trk_genre").DataPropertyName = "trk_genre"
+        dgvSongs.Columns("trk_featartist").DataPropertyName = "trk_featartist"
+        dgvSongs.Columns("trk_date").DataPropertyName = "trk_date"
+        dgvSongs.Columns("trk_created").DataPropertyName = "trk_created"
+
+    End Sub
 
     'Sub PlayBackgroundSoundFile()
     '    My.Computer.Audio.Play("C:\Waterfall.wav",
@@ -126,4 +181,5 @@ Public Class frmMain
     Private Sub ctrlbxClose_Click(sender As Object, e As EventArgs) Handles ctrlbxClose.Click
         Application.Exit()
     End Sub
+
 End Class
