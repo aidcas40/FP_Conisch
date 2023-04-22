@@ -14,21 +14,25 @@ Public Class frmMain
     Dim audiopath As String
     Dim sql As String
 
+    Private originalDataTable As DataTable
+
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadGenres()
+    End Sub
+    Private Sub pnlDiscover_Paint(sender As Object, e As PaintEventArgs) Handles pnlDiscover.Paint
+        LoadTrackData()
     End Sub
 
     Private Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
         pnlUpload.Visible = True
-        pnlSongs.Visible = False
+        pnlDiscover.Visible = False
     End Sub
 
-    Private Sub btnSongs_Click(sender As Object, e As EventArgs) Handles btnSongs.Click
+    Private Sub btnDiscover_Click(sender As Object, e As EventArgs) Handles btnDiscover.Click
         pnlUpload.Visible = False
-        pnlSongs.Visible = True
-
-        LoadTrackData()
+        pnlDiscover.Visible = True
     End Sub
+
     Private Sub LoadGenres()
         conn.Open()
         Dim gcmd As New MySqlCommand("SELECT gnr_name FROM genre", conn)
@@ -43,37 +47,16 @@ Public Class frmMain
     End Sub
 
     Private Sub LoadTrackData()
-        Dim conn = New MySqlConnection(My.Settings.connString)
-        Dim query As String = "SELECT trk_name, trk_artist, trk_picture, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%Y-%m-%d') AS trk_date, DATE_FORMAT(trk_created, '%Y-%m-%d %H:%i') AS trk_created FROM track"
+        'Dim conn = New MySqlConnection(My.Settings.connString)
+        Dim query As String = "SELECT trk_picture, trk_name, trk_artist, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%M %e, %Y') AS trk_date, DATE_FORMAT(trk_created, '%M %e, %Y %h:%i%p') AS trk_created FROM track"
 
         Dim cmd As New MySqlCommand(query, conn)
         Dim da As New MySqlDataAdapter(cmd)
         Dim dt As New DataTable()
 
-        'dt.Columns.Add("trk_picture", GetType(System.Drawing.Image))
-        'dt.Columns.Add("trk_name", GetType(String))
-        'dt.Columns.Add("trk_artist", GetType(String))
-        'dt.Columns.Add("trk_genre", GetType(String))
-        'dt.Columns.Add("trk_featartist", GetType(String))
-        'dt.Columns.Add("trk_date", GetType(DateTime)) 'set datatype to System.DateTime
-        'dt.Columns.Add("trk_created", GetType(DateTime)) 'set datatype to System.DateTime
-
         conn.Open()
-        'Dim reader As MySqlDataReader = cmd.ExecuteReader()
-
-        'While reader.Read()
-        '    Dim imageData As Byte() = DirectCast(reader("trk_picture"), Byte())
-        '    Using stream As New MemoryStream(imageData)
-        '        dt.Rows.Add(Image.FromStream(stream), reader("trk_name"), reader("trk_artist"), reader("trk_genre"), reader("trk_featartist"), reader("trk_date"), reader("trk_created"))
-        '    End Using
-        'End While
-
-        'reader.Close()
         da.Fill(dt)
         conn.Close()
-
-        dgvSongs.Columns.Clear()
-        dgvSongs.DataSource = dt
 
         ' Associate columns with DataPropertyName
         dgvSongs.Columns("trk_picture").DataPropertyName = "trk_picture"
@@ -84,18 +67,90 @@ Public Class frmMain
         dgvSongs.Columns("trk_date").DataPropertyName = "trk_date"
         dgvSongs.Columns("trk_created").DataPropertyName = "trk_created"
 
+        dgvSongs.Columns("trk_picture").Width = 50
+        dgvSongs.Columns("trk_name").Width = 50
+        dgvSongs.Columns("trk_artist").Width = 50
+        dgvSongs.Columns("trk_genre").Width = 50
+        dgvSongs.Columns("trk_featartist").Width = 50
+        dgvSongs.Columns("trk_date").Width = 50
+        dgvSongs.Columns("trk_created").Width = 50
+        dgvSongs.Columns("trk_edit").Width = 50
+        dgvSongs.Columns("trk_delete").Width = 50
+
+        dgvSongs.Columns("trk_picture").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvSongs.Columns("trk_name").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvSongs.Columns("trk_artist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvSongs.Columns("trk_genre").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvSongs.Columns("trk_featartist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvSongs.Columns("trk_date").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvSongs.Columns("trk_created").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvSongs.Columns("trk_edit").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        dgvSongs.Columns("trk_delete").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+
+        dgvSongs.AllowUserToAddRows = False
+
+        'dgvSongs.Columns.Clear()
+        dgvSongs.DataSource = dt
+
+        ' Save the original DataTable
+        originalDataTable = dt.Clone()
+        For Each row As DataRow In dt.Rows
+            originalDataTable.ImportRow(row)
+        Next
+
     End Sub
 
-    'Sub PlayBackgroundSoundFile()
-    '    My.Computer.Audio.Play("C:\Waterfall.wav",
-    '    AudioPlayMode.WaitToComplete)
-    'End Sub
+    'Creating search function for Product datagridview table. Connects to the database to accomplish this
+    Private Function SearchTrack() As DataTable
+        Dim cmd As MySqlCommand
+        Dim da As MySqlDataAdapter
+        Dim dt As DataTable
+        Dim sql As String
+
+        Try
+            conn.Open()
+            sql = "SELECT trk_picture, trk_name, trk_artist, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%M %e, %Y') AS trk_date, DATE_FORMAT(trk_created, '%M %e, %Y %h:%i%p') AS trk_created 
+                    FROM track WHERE CONCAT_WS(trk_name, trk_artist, trk_genre, trk_featartist) LIKE '%" & txtDiscSearch.Text & "%'"
+            cmd = New MySqlCommand(sql, conn)
+            da = New MySqlDataAdapter
+            dt = New DataTable
+            da.SelectCommand = cmd
+            da.Fill(dt)
+            dgvSongs.DataSource = dt
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+            da.Dispose()
+        End Try
+
+        ' Save the filtered DataTable
+        Dim filteredDataTable As New DataTable()
+        filteredDataTable = dt.Clone()
+        For Each row As DataRow In dt.Rows
+            filteredDataTable.ImportRow(row)
+        Next
+
+        ' Restore the original DataTable
+        dt = originalDataTable.Clone()
+        For Each row As DataRow In originalDataTable.Rows
+            dt.ImportRow(row)
+        Next
+
+        ' Return the filtered DataTable
+        Return filteredDataTable
+    End Function
+
+    Sub PlayBackgroundSoundFile()
+        My.Computer.Audio.Play("C:\Waterfall.wav",
+        AudioPlayMode.WaitToComplete)
+    End Sub
 
     Private Sub picTrkPic_Click(sender As Object, e As EventArgs) Handles picTrkPic.Click
         Try
             Dim ofd As FileDialog = New OpenFileDialog()
 
-            ofd.Filter = "Image File (*.jpg;*.png;*.gif;*.jpeg)|*.jpg;*.bmp;*.gif;*.jpeg;"
+            ofd.Filter = "Image File (*.jpg;*.png;*.gif;*.jpeg)|*.jpg;*.bmp;*.png;*.gif;*.jpeg;"
 
             If ofd.ShowDialog() = DialogResult.OK Then
                 imgpath = ofd.FileName
@@ -117,6 +172,7 @@ Public Class frmMain
             ofd.Filter = "Audio File (*.wav;*.mp3)|*.wav;*.mp3;"
 
             If ofd.ShowDialog() = DialogResult.OK Then
+                txtFilePath.Text = Path.GetFileName(ofd.FileName)
                 audiopath = ofd.FileName
             End If
 
@@ -163,9 +219,9 @@ Public Class frmMain
                         x = cmd.ExecuteNonQuery()
 
                         If x > 0 Then
-                            MessageBox.Show("Successfully added Song.")
+                            MessageBox.Show("Songg uploaded successfully.")
                         Else
-                            MessageBox.Show("Record not saved.")
+                            MessageBox.Show("Upload was unsuccessful.")
                         End If
                         cmd.Parameters.Clear()
                     End Using
@@ -177,9 +233,42 @@ Public Class frmMain
             End If
         End If
     End Sub
+    Private Sub btnTrkClear_Click(sender As Object, e As EventArgs) Handles btnTrkClear.Click
+        For Each control As Control In pnlUpload.Controls
+            If TypeOf control Is Guna2DateTimePicker Then
+                control.Text = Date.Now
+            End If
+            If TypeOf control Is PictureBox Then
+                CType(control, PictureBox).Image = Nothing
+                If control.Name = "picTrkPic" Then
+                    CType(control, PictureBox).Image = Image.FromFile(Application.StartupPath & "\icons\icons8-plus-math-100.png")
+                End If
+            End If
+            If TypeOf control Is Guna2Button Then
+                Dim button As Guna2Button = CType(control, Guna2Button)
+                If button.Name = "btnChooseUpload" Then
+                    Dim openFileDialog As New OpenFileDialog()
+                    openFileDialog.FileName = ""
+                End If
+            End If
+
+            lblAddImage.Visible = True
+
+            txtFilePath.Text = ""
+            txtTrkName.Text = ""
+            txtArtist.Text = ""
+            cbxGenre.SelectedIndex = -1
+            txtFtArtist.Text = ""
+        Next
+    End Sub
+
+    Private Sub txtDiscSearch_TextChanged(sender As Object, e As EventArgs) Handles txtDiscSearch.TextChanged
+        If txtDiscSearch.Focused Then
+            SearchTrack()
+        End If
+    End Sub
 
     Private Sub ctrlbxClose_Click(sender As Object, e As EventArgs) Handles ctrlbxClose.Click
         Application.Exit()
     End Sub
-
 End Class

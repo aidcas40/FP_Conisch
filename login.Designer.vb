@@ -50,6 +50,7 @@ Partial Class frmLogin
         Me.txtUsername.IconLeft = CType(resources.GetObject("txtUsername.IconLeft"), System.Drawing.Image)
         Me.txtUsername.Location = New System.Drawing.Point(298, 206)
         Me.txtUsername.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtUsername.MaxLength = 25
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtUsername.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
@@ -80,6 +81,7 @@ Partial Class frmLogin
         Me.txtUserPwd.IconLeft = CType(resources.GetObject("txtUserPwd.IconLeft"), System.Drawing.Image)
         Me.txtUserPwd.Location = New System.Drawing.Point(298, 266)
         Me.txtUserPwd.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtUserPwd.MaxLength = 25
         Me.txtUserPwd.Name = "txtUserPwd"
         Me.txtUserPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtUserPwd.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
