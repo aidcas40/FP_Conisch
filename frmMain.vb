@@ -285,7 +285,7 @@ Public Class frmMain
                 'tmrProgress.Start()
                 'btnPlayPause.Checked = True
 
-                trkId = CInt(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
+                trkID = CInt(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
                 Dim query As String = "SELECT trk_audio FROM track WHERE trk_id = " & trkId
                 Dim filePath As String = ""
 
@@ -306,8 +306,13 @@ Public Class frmMain
                 End Using
 
                 If filePath <> "" Then
-                    mediaPlayer.URL = filePath
-                    mediaPlayer.controls.play()
+                    'mediaPlayer.URL = filePath
+                    'mediaPlayer.controls.play()
+
+                    ' Set the URL property of the media player control to the file path
+                    AxWindowsMediaPlayer1.URL = filePath
+                    ' Start playing the audio and show the play/pause button as "pause"
+                    AxWindowsMediaPlayer1.Ctlcontrols.play()
                 End If
 
             ElseIf dgvSongs.Columns(e.ColumnIndex).Name = "trk_edit" Then
@@ -510,6 +515,4 @@ Public Class frmMain
             Exit Sub
         End If
     End Sub
-
-    Private mediaPlayer As New WindowsMediaPlayer()
 End Class

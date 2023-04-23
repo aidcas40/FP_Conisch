@@ -57,6 +57,7 @@ Partial Class frmMain
         Me.btnHome = New Guna.UI2.WinForms.Guna2Button()
         Me.lblMenu = New System.Windows.Forms.Label()
         Me.pnlPlayer = New Guna.UI2.WinForms.Guna2Panel()
+        Me.AxWindowsMediaPlayer1 = New AxWMPLib.AxWindowsMediaPlayer()
         Me.lblSong = New System.Windows.Forms.Label()
         Me.lblArtist = New System.Windows.Forms.Label()
         Me.picPlayMusic = New Guna.UI2.WinForms.Guna2CirclePictureBox()
@@ -111,6 +112,7 @@ Partial Class frmMain
         Me.pnlBar.SuspendLayout()
         Me.pnlMenu.SuspendLayout()
         Me.pnlPlayer.SuspendLayout()
+        CType(Me.AxWindowsMediaPlayer1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPlayMusic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlUpload.SuspendLayout()
         CType(Me.picTrkPic, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -437,6 +439,7 @@ Partial Class frmMain
         'pnlPlayer
         '
         Me.pnlPlayer.BackColor = System.Drawing.Color.FromArgb(CType(CType(140, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(164, Byte), Integer))
+        Me.pnlPlayer.Controls.Add(Me.AxWindowsMediaPlayer1)
         Me.pnlPlayer.Controls.Add(Me.lblSong)
         Me.pnlPlayer.Controls.Add(Me.lblArtist)
         Me.pnlPlayer.Controls.Add(Me.picPlayMusic)
@@ -446,6 +449,15 @@ Partial Class frmMain
         Me.pnlPlayer.ShadowDecoration.Parent = Me.pnlPlayer
         Me.pnlPlayer.Size = New System.Drawing.Size(1220, 61)
         Me.pnlPlayer.TabIndex = 2
+        '
+        'AxWindowsMediaPlayer1
+        '
+        Me.AxWindowsMediaPlayer1.Enabled = True
+        Me.AxWindowsMediaPlayer1.Location = New System.Drawing.Point(436, 6)
+        Me.AxWindowsMediaPlayer1.Name = "AxWindowsMediaPlayer1"
+        Me.AxWindowsMediaPlayer1.OcxState = CType(resources.GetObject("AxWindowsMediaPlayer1.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxWindowsMediaPlayer1.Size = New System.Drawing.Size(702, 45)
+        Me.AxWindowsMediaPlayer1.TabIndex = 4
         '
         'lblSong
         '
@@ -1226,6 +1238,7 @@ Partial Class frmMain
         Me.pnlMenu.PerformLayout()
         Me.pnlPlayer.ResumeLayout(False)
         Me.pnlPlayer.PerformLayout()
+        CType(Me.AxWindowsMediaPlayer1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPlayMusic, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlUpload.ResumeLayout(False)
         Me.pnlUpload.PerformLayout()
@@ -1310,4 +1323,5 @@ Partial Class frmMain
     Friend WithEvents user_print As DataGridViewButtonColumn
     Friend WithEvents user_changepwd As DataGridViewButtonColumn
     Friend WithEvents user_delete As DataGridViewButtonColumn
+    Friend WithEvents AxWindowsMediaPlayer1 As AxWMPLib.AxWindowsMediaPlayer
 End Class
