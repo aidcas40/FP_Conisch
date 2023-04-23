@@ -4,6 +4,7 @@ Imports System.IO
 Imports System.Data
 Imports System.DateTime
 Imports System.Drawing.Imaging
+Imports WMPLib
 
 Public Class frmMain
     Dim conn = New MySqlConnection(My.Settings.connString)
@@ -79,18 +80,18 @@ Public Class frmMain
         dgvSongs.Columns("trk_date").DataPropertyName = "trk_date"
         dgvSongs.Columns("trk_created").DataPropertyName = "trk_created"
 
-        dgvSongs.Columns("trk_id").Width = 50
-        dgvSongs.Columns("trk_picture").Width = 50
-        dgvSongs.Columns("trk_name").Width = 50
-        dgvSongs.Columns("trk_artist").Width = 50
-        dgvSongs.Columns("trk_genre").Width = 50
-        dgvSongs.Columns("trk_featartist").Width = 50
-        dgvSongs.Columns("trk_date").Width = 50
-        dgvSongs.Columns("trk_created").Width = 50
-        dgvSongs.Columns("trk_edit").Width = 50
-        dgvSongs.Columns("trk_delete").Width = 50
-        dgvSongs.Columns("trk_play").Width = 50
-        dgvSongs.Columns("trk_print").Width = 50
+        'dgvSongs.Columns("trk_id").Width = 50
+        'dgvSongs.Columns("trk_picture").Width = 50
+        'dgvSongs.Columns("trk_name").Width = 50
+        'dgvSongs.Columns("trk_artist").Width = 50
+        'dgvSongs.Columns("trk_genre").Width = 50
+        'dgvSongs.Columns("trk_featartist").Width = 50
+        'dgvSongs.Columns("trk_date").Width = 50
+        'dgvSongs.Columns("trk_created").Width = 50
+        'dgvSongs.Columns("trk_edit").Width = 50
+        'dgvSongs.Columns("trk_delete").Width = 50
+        'dgvSongs.Columns("trk_play").Width = 50
+        'dgvSongs.Columns("trk_print").Width = 50
 
         dgvSongs.Columns("trk_id").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvSongs.Columns("trk_picture").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -136,22 +137,13 @@ Public Class frmMain
         dgvUsers.Columns("user_active").DataPropertyName = "user_active"
         dgvUsers.Columns("user_istype").DataPropertyName = "user_istype"
 
-        dgvUsers.Columns("user_id").Width = 50
-        dgvUsers.Columns("user_username").Width = 50
-        dgvUsers.Columns("user_email").Width = 50
-        dgvUsers.Columns("user_password").Width = 50
-        dgvUsers.Columns("user_active").Width = 50
-        dgvUsers.Columns("user_istype").Width = 50
-        dgvUsers.Columns("user_print").Width = 50
-        dgvUsers.Columns("user_changepwd").Width = 50
-        dgvUsers.Columns("user_delete").Width = 50
-
         dgvUsers.Columns("user_id").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvUsers.Columns("user_username").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvUsers.Columns("user_email").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvUsers.Columns("user_password").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvUsers.Columns("user_active").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvUsers.Columns("user_istype").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvUsers.Columns("user_update").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvUsers.Columns("user_print").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvUsers.Columns("user_changepwd").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvUsers.Columns("user_delete").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
@@ -282,10 +274,45 @@ Public Class frmMain
     End Sub
 
     Private Sub dgvSongs_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSongs.CellContentClick
+        Dim trkName As String
+        Dim trkID As Integer
         Try
-            If dgvSongs.Columns(e.ColumnIndex).Name = "trk_edit" Then
+            If dgvSongs.Columns(e.ColumnIndex).Name = "trk_play" Then
+                'e.ColumnIndex = dgvSongs.Columns("trk_play").Index AndAlso e.RowIndex >= 0 Then
+                'Dim filePath As String = dgvSongs.Rows(e.RowIndex).Cells("trk_audio").Value.ToString()
+                'mediaPlayer.URL = filePath
+                'mediaPlayer.Play()
+                'tmrProgress.Start()
+                'btnPlayPause.Checked = True
+
+                trkId = CInt(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
+                Dim query As String = "SELECT trk_audio FROM track WHERE trk_id = " & trkId
+                Dim filePath As String = ""
+
+                Using conn
+                    conn.Open()
+
+                    Using cmd As New MySqlCommand(query, conn)
+                        Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+                        If reader.Read() Then
+                            filePath = reader("trk_audio").ToString()
+                        End If
+
+                        reader.Close()
+                    End Using
+
+                    conn.Close()
+                End Using
+
+                If filePath <> "" Then
+                    mediaPlayer.URL = filePath
+                    mediaPlayer.controls.play()
+                End If
+
+            ElseIf dgvSongs.Columns(e.ColumnIndex).Name = "trk_edit" Then
                 ' Get the trk_name of the selected row
-                Dim trkName As String = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
+                trkName = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
 
                 '' Open the Edit form and pass the trk_name as a parameter
                 'Dim editForm As New EditForm(trkName)
@@ -294,10 +321,11 @@ Public Class frmMain
                 ' Reload the data when the Edit form is closed
                 LoadTrackData()
                 'frmTrkEdit.Show()
+
             ElseIf dgvSongs.Columns(e.ColumnIndex).Name = "trk_delete" Then
                 ' Get the trk_name of the selected row
-                Dim trkName As String = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
-                Dim trkID As Integer = Convert.ToInt32(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
+                trkName = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
+                trkID = Convert.ToInt32(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
 
                 ' Prompt the user to confirm the deletion
                 Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete '{trkName}'?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -319,10 +347,45 @@ Public Class frmMain
         End Try
     End Sub
 
-    'Sub PlayBackgroundSoundFile()
-    '    My.Computer.Audio.Play("C:\Waterfall.wav",
-    '    AudioPlayMode.WaitToComplete)
-    'End Sub
+    Private Sub dgvUsers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUsers.CellContentClick
+        Dim userName As String
+        Dim userID As Integer
+        Try
+            If dgvUsers.Columns(e.ColumnIndex).Name = "user_update" Then
+                ' Get the trk_name of the selected row
+                userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
+
+                '' Open the Edit form and pass the trk_name as a parameter
+                'Dim editForm As New EditForm(trkName)
+                'editForm.ShowDialog()
+
+                ' Reload the data when the Edit form is closed
+                LoadTrackData()
+                'frmTrkEdit.Show()
+            ElseIf dgvUsers.Columns(e.ColumnIndex).Name = "user_delete" Then
+                ' Get the trk_name of the selected row
+                userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
+                userID = Convert.ToInt32(dgvUsers.Rows(e.RowIndex).Cells("user_id").Value)
+
+                ' Prompt the user to confirm the deletion
+                Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete '{userName}'?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+                If result = DialogResult.Yes Then
+                    ' Delete the row from the database
+                    Dim query As String = $"DELETE FROM users WHERE user_id = '{userID}'"
+                    Dim cmd As New MySqlCommand(query, conn)
+                    conn.Open()
+                    cmd.ExecuteNonQuery()
+                    conn.Close()
+
+                    ' Remove the row from the DataGridView
+                    dgvUsers.Rows.RemoveAt(e.RowIndex)
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 
     Private Sub picTrkPic_Click(sender As Object, e As EventArgs) Handles picTrkPic.Click
         Try
@@ -447,4 +510,6 @@ Public Class frmMain
             Exit Sub
         End If
     End Sub
+
+    Private mediaPlayer As New WindowsMediaPlayer()
 End Class
