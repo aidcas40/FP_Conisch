@@ -60,6 +60,15 @@ Public Class frmMain
         Next
     End Sub
 
+    Private Sub ClearCreateUser()
+        txtCrtUsername.Text = ""
+        txtCrtEmail.Text = ""
+        txtCrtPwd.Text = ""
+        txtCrtConfirmPwd.Text = ""
+        cbxCrtType.SelectedIndex = -1
+        chkCrtActive.Checked = False
+    End Sub
+
     Private Sub LoadTrackData()
         Dim query As String = "SELECT trk_id, trk_picture, trk_name, trk_artist, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%M %e, %Y') AS trk_date, DATE_FORMAT(trk_created, '%M %e, %Y %h:%i%p') AS trk_created FROM track"
         Dim cmd As New MySqlCommand(query, conn)
@@ -259,18 +268,28 @@ Public Class frmMain
         pnlUpload.Visible = True
         pnlDiscover.Visible = False
         pnlUsers.Visible = False
+        pnlCreateUser.Visible = False
     End Sub
 
     Private Sub btnDiscover_Click(sender As Object, e As EventArgs) Handles btnDiscover.Click
         pnlUpload.Visible = False
         pnlDiscover.Visible = True
         pnlUsers.Visible = False
+        pnlCreateUser.Visible = False
     End Sub
 
     Private Sub btnUsers_Click(sender As Object, e As EventArgs) Handles btnUsers.Click
         pnlUpload.Visible = False
         pnlDiscover.Visible = False
         pnlUsers.Visible = True
+        pnlCreateUser.Visible = False
+    End Sub
+
+    Private Sub btnCreateUser_Click(sender As Object, e As EventArgs) Handles btnCreateUser.Click
+        pnlUpload.Visible = False
+        pnlDiscover.Visible = False
+        pnlUsers.Visible = False
+        pnlCreateUser.Visible = True
     End Sub
 
     Private Sub dgvSongs_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSongs.CellContentClick
@@ -306,9 +325,6 @@ Public Class frmMain
                 End Using
 
                 If filePath <> "" Then
-                    'mediaPlayer.URL = filePath
-                    'mediaPlayer.controls.play()
-
                     ' Set the URL property of the media player control to the file path
                     AxWindowsMediaPlayer1.URL = filePath
                     ' Start playing the audio and show the play/pause button as "pause"
@@ -391,7 +407,7 @@ Public Class frmMain
             MsgBox(ex.Message)
         End Try
     End Sub
-
+    '========================================All Actions for pnlUpload====================================================================
     Private Sub picTrkPic_Click(sender As Object, e As EventArgs) Handles picTrkPic.Click
         Try
             Dim ofd As FileDialog = New OpenFileDialog()
@@ -483,6 +499,53 @@ Public Class frmMain
 
     Private Sub btnTrkClear_Click(sender As Object, e As EventArgs) Handles btnTrkClear.Click
         ClearUploadTrack()
+    End Sub
+    '========================================All Actions for pnlCreateUser====================================================================
+    Private Sub btnUploadUser_Click(sender As Object, e As EventArgs) Handles btnUploadUser.Click
+        Dim isActive As Boolean = chkCrtActive.Checked
+
+        If String.IsNullOrEmpty(txtCrtUsername.Text) OrElse String.IsNullOrEmpty(txtCrtEmail.Text) OrElse String.IsNullOrEmpty(txtCrtPwd.Text) OrElse
+            String.IsNullOrEmpty(cbxCrtType.Text) OrElse Not chkCrtActive.Checked Then
+            MessageBox.Show("Please enter a value in all required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        Else
+            ' Saves the image by connecting to the database (Image is saved as byte)
+            If txtCrtConfirmPwd.Text = txtCrtPwd.Text Then
+                Try
+                    Using conn
+                        conn.Open()
+
+                        Dim cmd As New MySqlCommand("INSERT INTO users(user_username, user_email, user_password, user_active, user_istype) VALUES(@uname,@uemail,@upwd,@uactive,@uistype)", conn)
+                        cmd.Parameters.AddWithValue("@uname", txtCrtUsername.Text)
+                        cmd.Parameters.AddWithValue("@uemail", txtCrtEmail.Text)
+                        cmd.Parameters.AddWithValue("@upwd", txtCrtPwd.Text)
+                        cmd.Parameters.AddWithValue("@uactive", isActive)
+                        cmd.Parameters.AddWithValue("@uistype", cbxCrtType.Text)
+
+                        Dim x As Integer
+
+                        x = cmd.ExecuteNonQuery()
+
+                        If x > 0 Then
+                            MessageBox.Show("User created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            ClearUploadTrack()
+                        Else
+                            MessageBox.Show("User was not created.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End If
+                        cmd.Parameters.Clear()
+                    End Using
+
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            Else
+                MessageBox.Show("Confirm Password and Password must be the same.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnCrtClear_Click(sender As Object, e As EventArgs) Handles btnCrtClear.Click
+        ClearCreateUser()
     End Sub
 
     Private Sub txtDiscSearch_TextChanged(sender As Object, e As EventArgs) Handles txtDiscSearch.TextChanged
