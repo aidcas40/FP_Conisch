@@ -16,6 +16,7 @@ Public Class frmMain
     Dim sql As String
 
     Private originalDataTable As DataTable
+    Private originalYourDataTable As DataTable
     Private originalUserDataTable As DataTable
 
     Private Sub LoadGenres()
@@ -117,8 +118,6 @@ Public Class frmMain
 
         dgvSongs.RowTemplate.Height = 30
 
-        'dgvSongs.Columns("trk_id").Visible = False
-
         dgvSongs.DataSource = dt
 
         ' Save the original DataTable
@@ -128,6 +127,47 @@ Public Class frmMain
         Next
     End Sub
 
+    Private Sub LoadYourTrackData()
+        Dim query As String = "SELECT trk_id, trk_picture, trk_name, trk_artist, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%M %e, %Y') AS trk_date, DATE_FORMAT(trk_created, '%M %e, %Y %h:%i%p') AS trk_created FROM track WHERE trk_user = " & frmLogin.intCurID
+        Dim cmd As New MySqlCommand(query, conn)
+        Dim da As New MySqlDataAdapter(cmd)
+        Dim dt As New DataTable()
+
+        conn.Open()
+        da.Fill(dt)
+        conn.Close()
+
+        ' Associate columns with DataPropertyName
+        dgvYourTrack.Columns("trk_yourid").DataPropertyName = "trk_id"
+        dgvYourTrack.Columns("trk_yourpicture").DataPropertyName = "trk_picture"
+        dgvYourTrack.Columns("trk_yourname").DataPropertyName = "trk_name"
+        dgvYourTrack.Columns("trk_yourartist").DataPropertyName = "trk_artist"
+        dgvYourTrack.Columns("trk_yourgenre").DataPropertyName = "trk_genre"
+        dgvYourTrack.Columns("trk_yourfeatartist").DataPropertyName = "trk_featartist"
+        dgvYourTrack.Columns("trk_yourdate").DataPropertyName = "trk_date"
+        dgvYourTrack.Columns("trk_yourcreated").DataPropertyName = "trk_created"
+
+        dgvYourTrack.Columns("trk_yourid").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvYourTrack.Columns("trk_yourpicture").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvYourTrack.Columns("trk_yourname").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvYourTrack.Columns("trk_yourartist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvYourTrack.Columns("trk_yourgenre").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvYourTrack.Columns("trk_yourfeatartist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvYourTrack.Columns("trk_yourdate").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvYourTrack.Columns("trk_yourcreated").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvYourTrack.Columns("trk_yourdelete").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        dgvYourTrack.Columns("trk_yourplay").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+
+        dgvYourTrack.RowTemplate.Height = 30
+
+        dgvYourTrack.DataSource = dt
+
+        ' Save the original DataTable
+        originalYourDataTable = dt.Clone()
+        For Each row As DataRow In dt.Rows
+            originalYourDataTable.ImportRow(row)
+        Next
+    End Sub
     Private Sub LoadUserData()
         Dim query As String = "SELECT user_id, user_username, user_email, user_password, user_active, user_istype FROM users"
         Dim cmd As New MySqlCommand(query, conn)
@@ -211,6 +251,46 @@ Public Class frmMain
         Return filteredDataTable
     End Function
 
+    Private Function SearchYourTrack() As DataTable
+        Dim cmd As MySqlCommand
+        Dim da As MySqlDataAdapter
+        Dim dt As DataTable
+        Dim sql As String
+
+        Try
+            conn.Open()
+            sql = "SELECT trk_id, trk_picture, trk_name, trk_artist, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%M %e, %Y') AS trk_date, DATE_FORMAT(trk_created, '%M %e, %Y %h:%i%p') AS trk_created 
+                    FROM track WHERE CONCAT_WS(trk_name, trk_artist, trk_genre, trk_featartist) LIKE '%" & txtYourSearch.Text & "%' AND trk_user = " & frmLogin.intCurID
+            cmd = New MySqlCommand(sql, conn)
+            da = New MySqlDataAdapter
+            dt = New DataTable
+            da.SelectCommand = cmd
+            da.Fill(dt)
+            dgvYourTrack.DataSource = dt
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+            da.Dispose()
+        End Try
+
+        ' Save the filtered DataTable
+        Dim filteredDataTable As New DataTable()
+        filteredDataTable = dt.Clone()
+        For Each row As DataRow In dt.Rows
+            filteredDataTable.ImportRow(row)
+        Next
+
+        ' Restore the original DataTable
+        dt = originalYourDataTable.Clone()
+        For Each row As DataRow In originalYourDataTable.Rows
+            dt.ImportRow(row)
+        Next
+
+        ' Return the filtered DataTable
+        Return filteredDataTable
+    End Function
+
     Private Function SearchUser() As DataTable
         Dim cmd As MySqlCommand
         Dim da As MySqlDataAdapter
@@ -258,6 +338,10 @@ Public Class frmMain
     End Sub
     Private Sub pnlDiscover_Paint(sender As Object, e As PaintEventArgs) Handles pnlDiscover.Paint
         LoadTrackData()
+    End Sub
+
+    Private Sub pnlYourSongs_Paint(sender As Object, e As PaintEventArgs) Handles pnlYourSongs.Paint
+        LoadYourTrackData()
     End Sub
 
     Private Sub pnlUsers_Paint(sender As Object, e As PaintEventArgs) Handles pnlUsers.Paint
@@ -373,6 +457,75 @@ Public Class frmMain
         End Try
     End Sub
 
+    Private Sub dgvYourTrack_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvYourTrack.CellContentClick
+        Dim trkYourName As String
+        Dim trkYourID As Integer
+        Try
+            If dgvYourTrack.Columns(e.ColumnIndex).Name = "trk_yourplay" Then
+                trkYourID = CInt(dgvYourTrack.Rows(e.RowIndex).Cells("trk_yourid").Value)
+                Dim query As String = "SELECT trk_audio FROM track WHERE trk_id = " & trkYourID
+                Dim filePath As String = ""
+
+                Using conn
+                    conn.Open()
+
+                    Using cmd As New MySqlCommand(query, conn)
+                        Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+                        If reader.Read() Then
+                            filePath = reader("trk_audio").ToString()
+                        End If
+
+                        reader.Close()
+                    End Using
+
+                    conn.Close()
+                End Using
+
+                If filePath <> "" Then
+                    ' Set the URL property of the media player control to the file path
+                    AxWindowsMediaPlayer1.URL = filePath
+                    ' Start playing the audio and show the play/pause button as "pause"
+                    AxWindowsMediaPlayer1.Ctlcontrols.play()
+                End If
+
+            ElseIf dgvYourTrack.Columns(e.ColumnIndex).Name = "trk_youredit" Then
+                ' Get the trk_name of the selected row
+                trkYourName = dgvYourTrack.Rows(e.RowIndex).Cells("trk_yourname").Value.ToString()
+
+                '' Open the Edit form and pass the trk_name as a parameter
+                'Dim editForm As New EditForm(trkName)
+                'editForm.ShowDialog()
+
+                ' Reload the data when the Edit form is closed
+                LoadTrackData()
+                'frmTrkEdit.Show()
+
+            ElseIf dgvYourTrack.Columns(e.ColumnIndex).Name = "trk_yourdelete" Then
+                ' Get the trk_name of the selected row
+                trkYourName = dgvYourTrack.Rows(e.RowIndex).Cells("trk_yourname").Value.ToString()
+                trkYourID = Convert.ToInt32(dgvYourTrack.Rows(e.RowIndex).Cells("trk_yourid").Value)
+
+                ' Prompt the user to confirm the deletion
+                Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete '{trkYourName}'?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+                If result = DialogResult.Yes Then
+                    ' Delete the row from the database
+                    Dim query As String = $"DELETE FROM track WHERE trk_id = '{trkYourID}'"
+                    Dim cmd As New MySqlCommand(query, conn)
+                    conn.Open()
+                    cmd.ExecuteNonQuery()
+                    conn.Close()
+
+                    ' Remove the row from the DataGridView
+                    dgvYourTrack.Rows.RemoveAt(e.RowIndex)
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
     Private Sub dgvUsers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUsers.CellContentClick
         Dim userName As String
         Dim userID As Integer
@@ -471,7 +624,7 @@ Public Class frmMain
                     Using conn
                         conn.Open()
 
-                        Dim cmd As New MySqlCommand("INSERT INTO track(trk_name, trk_artist, trk_audio, trk_picture, trk_genre, trk_featartist, trk_date) VALUES(@tname,@tartist,@taudiopath,@tpic,@tgenre,@tftartist,@tdate)", conn)
+                        Dim cmd As New MySqlCommand("INSERT INTO track(trk_name, trk_artist, trk_audio, trk_picture, trk_genre, trk_featartist, trk_date, trk_user) VALUES(@tname,@tartist,@taudiopath,@tpic,@tgenre,@tftartist,@tdate,@tuser)", conn)
                         cmd.Parameters.AddWithValue("@tname", txtTrkName.Text)
                         cmd.Parameters.AddWithValue("@tartist", txtArtist.Text)
                         cmd.Parameters.AddWithValue("@taudiopath", audiopath)
@@ -479,6 +632,7 @@ Public Class frmMain
                         cmd.Parameters.AddWithValue("@tgenre", cbxGenre.Text)
                         cmd.Parameters.AddWithValue("@tftartist", txtFtArtist.Text)
                         cmd.Parameters.AddWithValue("@tdate", dateString)
+                        cmd.Parameters.AddWithValue("@tuser", frmLogin.intCurID)
 
                         Dim x As Integer
 
@@ -555,6 +709,12 @@ Public Class frmMain
     Private Sub txtDiscSearch_TextChanged(sender As Object, e As EventArgs) Handles txtDiscSearch.TextChanged
         If txtDiscSearch.Focused Then
             SearchTrack()
+        End If
+    End Sub
+
+    Private Sub txtYourSearch_TextChanged(sender As Object, e As EventArgs) Handles txtYourSearch.TextChanged
+        If txtYourSearch.Focused Then
+            SearchYourTrack()
         End If
     End Sub
 
