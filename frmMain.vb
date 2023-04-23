@@ -15,25 +15,7 @@ Public Class frmMain
     Dim sql As String
 
     Private originalDataTable As DataTable
-
-    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadGenres()
-
-        'lblTest.Text = frmLogin.strCurUsername
-    End Sub
-    Private Sub pnlDiscover_Paint(sender As Object, e As PaintEventArgs) Handles pnlDiscover.Paint
-        LoadTrackData()
-    End Sub
-
-    Private Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
-        pnlUpload.Visible = True
-        pnlDiscover.Visible = False
-    End Sub
-
-    Private Sub btnDiscover_Click(sender As Object, e As EventArgs) Handles btnDiscover.Click
-        pnlUpload.Visible = False
-        pnlDiscover.Visible = True
-    End Sub
+    Private originalUserDataTable As DataTable
 
     Private Sub LoadGenres()
         conn.Open()
@@ -78,10 +60,7 @@ Public Class frmMain
     End Sub
 
     Private Sub LoadTrackData()
-        Dim pnlBlue As Color = Color.FromArgb(23, 35, 50, 255)
-        'Dim conn = New MySqlConnection(My.Settings.connString)
         Dim query As String = "SELECT trk_id, trk_picture, trk_name, trk_artist, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%M %e, %Y') AS trk_date, DATE_FORMAT(trk_created, '%M %e, %Y %h:%i%p') AS trk_created FROM track"
-
         Dim cmd As New MySqlCommand(query, conn)
         Dim da As New MySqlDataAdapter(cmd)
         Dim dt As New DataTable()
@@ -128,12 +107,8 @@ Public Class frmMain
 
         dgvSongs.RowTemplate.Height = 30
 
-        dgvSongs.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray
-        dgvSongs.ColumnHeadersDefaultCellStyle.BackColor = pnlBlue
-
         'dgvSongs.Columns("trk_id").Visible = False
 
-        'dgvSongs.Columns.Clear()
         dgvSongs.DataSource = dt
 
         ' Save the original DataTable
@@ -141,45 +116,57 @@ Public Class frmMain
         For Each row As DataRow In dt.Rows
             originalDataTable.ImportRow(row)
         Next
-
     End Sub
 
-    Private Sub dgvSongs_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSongs.CellContentClick
-        Try
-            If dgvSongs.Columns(e.ColumnIndex).Name = "trk_edit" Then
-                ' Get the trk_name of the selected row
-                Dim trkName As String = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
+    Private Sub LoadUserData()
+        Dim query As String = "SELECT user_id, user_username, user_email, user_password, user_active, user_istype FROM users"
+        Dim cmd As New MySqlCommand(query, conn)
+        Dim da As New MySqlDataAdapter(cmd)
+        Dim dt As New DataTable()
 
-                '' Open the Edit form and pass the trk_name as a parameter
-                'Dim editForm As New EditForm(trkName)
-                'editForm.ShowDialog()
+        conn.Open()
+        da.Fill(dt)
+        conn.Close()
 
-                ' Reload the data when the Edit form is closed
-                LoadTrackData()
-                'frmTrkEdit.Show()
-            ElseIf dgvSongs.Columns(e.ColumnIndex).Name = "trk_delete" Then
-                ' Get the trk_name of the selected row
-                Dim trkName As String = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
-                Dim trkID As Integer = Convert.ToInt32(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
+        ' Associate columns with DataPropertyName
+        dgvUsers.Columns("user_id").DataPropertyName = "user_id"
+        dgvUsers.Columns("user_username").DataPropertyName = "user_username"
+        dgvUsers.Columns("user_email").DataPropertyName = "user_email"
+        dgvUsers.Columns("user_password").DataPropertyName = "user_password"
+        dgvUsers.Columns("user_active").DataPropertyName = "user_active"
+        dgvUsers.Columns("user_istype").DataPropertyName = "user_istype"
 
-                ' Prompt the user to confirm the deletion
-                Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete '{trkName}'?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        dgvUsers.Columns("user_id").Width = 50
+        dgvUsers.Columns("user_username").Width = 50
+        dgvUsers.Columns("user_email").Width = 50
+        dgvUsers.Columns("user_password").Width = 50
+        dgvUsers.Columns("user_active").Width = 50
+        dgvUsers.Columns("user_istype").Width = 50
+        dgvUsers.Columns("user_print").Width = 50
+        dgvUsers.Columns("user_changepwd").Width = 50
+        dgvUsers.Columns("user_delete").Width = 50
 
-                If result = DialogResult.Yes Then
-                    ' Delete the row from the database
-                    Dim query As String = $"DELETE FROM track WHERE trk_id = '{trkID}'"
-                    Dim cmd As New MySqlCommand(query, conn)
-                    conn.Open()
-                    cmd.ExecuteNonQuery()
-                    conn.Close()
+        dgvUsers.Columns("user_id").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvUsers.Columns("user_username").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvUsers.Columns("user_email").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvUsers.Columns("user_password").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvUsers.Columns("user_active").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvUsers.Columns("user_istype").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvUsers.Columns("user_print").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        dgvUsers.Columns("user_changepwd").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        dgvUsers.Columns("user_delete").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
-                    ' Remove the row from the DataGridView
-                    dgvSongs.Rows.RemoveAt(e.RowIndex)
-                End If
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+        dgvUsers.RowTemplate.Height = 30
+
+        'dgvSongs.Columns("trk_id").Visible = False
+
+        dgvUsers.DataSource = dt
+
+        ' Save the original DataTable
+        originalUserDataTable = dt.Clone()
+        For Each row As DataRow In dt.Rows
+            originalUserDataTable.ImportRow(row)
+        Next
     End Sub
 
     'Creating search function for Product datagridview table. Connects to the database to accomplish this
@@ -223,10 +210,119 @@ Public Class frmMain
         Return filteredDataTable
     End Function
 
-    Sub PlayBackgroundSoundFile()
-        My.Computer.Audio.Play("C:\Waterfall.wav",
-        AudioPlayMode.WaitToComplete)
+    Private Function SearchUser() As DataTable
+        Dim cmd As MySqlCommand
+        Dim da As MySqlDataAdapter
+        Dim dt As DataTable
+        Dim sql As String
+
+        Try
+            conn.Open()
+            sql = "SELECT user_id, user_username, user_email, user_password, user_active, user_istype
+                    FROM users WHERE CONCAT_WS(user_username, user_email, user_istype) LIKE '%" & txtUserSearch.Text & "%'"
+            cmd = New MySqlCommand(sql, conn)
+            da = New MySqlDataAdapter
+            dt = New DataTable
+            da.SelectCommand = cmd
+            da.Fill(dt)
+            dgvUsers.DataSource = dt
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+            da.Dispose()
+        End Try
+
+        ' Save the filtered DataTable
+        Dim filteredDataTable As New DataTable()
+        filteredDataTable = dt.Clone()
+        For Each row As DataRow In dt.Rows
+            filteredDataTable.ImportRow(row)
+        Next
+
+        ' Restore the original DataTable
+        dt = originalUserDataTable.Clone()
+        For Each row As DataRow In originalUserDataTable.Rows
+            dt.ImportRow(row)
+        Next
+
+        ' Return the filtered DataTable
+        Return filteredDataTable
+    End Function
+
+    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LoadGenres()
+
+        'lblTest.Text = frmLogin.strCurUsername
     End Sub
+    Private Sub pnlDiscover_Paint(sender As Object, e As PaintEventArgs) Handles pnlDiscover.Paint
+        LoadTrackData()
+    End Sub
+
+    Private Sub pnlUsers_Paint(sender As Object, e As PaintEventArgs) Handles pnlUsers.Paint
+        LoadUserData()
+    End Sub
+
+    Private Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
+        pnlUpload.Visible = True
+        pnlDiscover.Visible = False
+        pnlUsers.Visible = False
+    End Sub
+
+    Private Sub btnDiscover_Click(sender As Object, e As EventArgs) Handles btnDiscover.Click
+        pnlUpload.Visible = False
+        pnlDiscover.Visible = True
+        pnlUsers.Visible = False
+    End Sub
+
+    Private Sub btnUsers_Click(sender As Object, e As EventArgs) Handles btnUsers.Click
+        pnlUpload.Visible = False
+        pnlDiscover.Visible = False
+        pnlUsers.Visible = True
+    End Sub
+
+    Private Sub dgvSongs_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSongs.CellContentClick
+        Try
+            If dgvSongs.Columns(e.ColumnIndex).Name = "trk_edit" Then
+                ' Get the trk_name of the selected row
+                Dim trkName As String = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
+
+                '' Open the Edit form and pass the trk_name as a parameter
+                'Dim editForm As New EditForm(trkName)
+                'editForm.ShowDialog()
+
+                ' Reload the data when the Edit form is closed
+                LoadTrackData()
+                'frmTrkEdit.Show()
+            ElseIf dgvSongs.Columns(e.ColumnIndex).Name = "trk_delete" Then
+                ' Get the trk_name of the selected row
+                Dim trkName As String = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
+                Dim trkID As Integer = Convert.ToInt32(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
+
+                ' Prompt the user to confirm the deletion
+                Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete '{trkName}'?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+                If result = DialogResult.Yes Then
+                    ' Delete the row from the database
+                    Dim query As String = $"DELETE FROM track WHERE trk_id = '{trkID}'"
+                    Dim cmd As New MySqlCommand(query, conn)
+                    conn.Open()
+                    cmd.ExecuteNonQuery()
+                    conn.Close()
+
+                    ' Remove the row from the DataGridView
+                    dgvSongs.Rows.RemoveAt(e.RowIndex)
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    'Sub PlayBackgroundSoundFile()
+    '    My.Computer.Audio.Play("C:\Waterfall.wav",
+    '    AudioPlayMode.WaitToComplete)
+    'End Sub
 
     Private Sub picTrkPic_Click(sender As Object, e As EventArgs) Handles picTrkPic.Click
         Try
@@ -327,7 +423,13 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+    Private Sub txtUserSearch_TextChanged(sender As Object, e As EventArgs) Handles txtUserSearch.TextChanged
+        If txtUserSearch.Focused Then
+            SearchUser()
+        End If
+    End Sub
+
+    Private Sub btnSignOut_Click(sender As Object, e As EventArgs) Handles btnSignOut.Click
         Dim msgSignOut = MessageBox.Show("Are you sure you want to sign out?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If msgSignOut = Windows.Forms.DialogResult.Yes Then
             Me.Close()
