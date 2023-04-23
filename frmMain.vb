@@ -18,6 +18,8 @@ Public Class frmMain
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadGenres()
+
+        'lblTest.Text = frmLogin.strCurUsername
     End Sub
     Private Sub pnlDiscover_Paint(sender As Object, e As PaintEventArgs) Handles pnlDiscover.Paint
         LoadTrackData()
@@ -46,9 +48,39 @@ Public Class frmMain
         conn.Close()
     End Sub
 
+    Private Sub ClearUploadTrack()
+        For Each control As Control In pnlUpload.Controls
+            If TypeOf control Is Guna2DateTimePicker Then
+                control.Text = Date.Now
+            End If
+            If TypeOf control Is PictureBox Then
+                CType(control, PictureBox).Image = Nothing
+                If control.Name = "picTrkPic" Then
+                    CType(control, PictureBox).Image = Image.FromFile(Application.StartupPath & "\icons\icons8-plus-math-100.png")
+                End If
+            End If
+            If TypeOf control Is Guna2Button Then
+                Dim button As Guna2Button = CType(control, Guna2Button)
+                If button.Name = "btnChooseUpload" Then
+                    Dim openFileDialog As New OpenFileDialog()
+                    openFileDialog.FileName = ""
+                End If
+            End If
+
+            lblAddImage.Visible = True
+
+            txtFilePath.Text = ""
+            txtTrkName.Text = ""
+            txtArtist.Text = ""
+            cbxGenre.SelectedIndex = -1
+            txtFtArtist.Text = ""
+        Next
+    End Sub
+
     Private Sub LoadTrackData()
+        Dim pnlBlue As Color = Color.FromArgb(23, 35, 50, 255)
         'Dim conn = New MySqlConnection(My.Settings.connString)
-        Dim query As String = "SELECT trk_picture, trk_name, trk_artist, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%M %e, %Y') AS trk_date, DATE_FORMAT(trk_created, '%M %e, %Y %h:%i%p') AS trk_created FROM track"
+        Dim query As String = "SELECT trk_id, trk_picture, trk_name, trk_artist, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%M %e, %Y') AS trk_date, DATE_FORMAT(trk_created, '%M %e, %Y %h:%i%p') AS trk_created FROM track"
 
         Dim cmd As New MySqlCommand(query, conn)
         Dim da As New MySqlDataAdapter(cmd)
@@ -59,6 +91,7 @@ Public Class frmMain
         conn.Close()
 
         ' Associate columns with DataPropertyName
+        dgvSongs.Columns("trk_id").DataPropertyName = "trk_id"
         dgvSongs.Columns("trk_picture").DataPropertyName = "trk_picture"
         dgvSongs.Columns("trk_name").DataPropertyName = "trk_name"
         dgvSongs.Columns("trk_artist").DataPropertyName = "trk_artist"
@@ -67,6 +100,7 @@ Public Class frmMain
         dgvSongs.Columns("trk_date").DataPropertyName = "trk_date"
         dgvSongs.Columns("trk_created").DataPropertyName = "trk_created"
 
+        dgvSongs.Columns("trk_id").Width = 50
         dgvSongs.Columns("trk_picture").Width = 50
         dgvSongs.Columns("trk_name").Width = 50
         dgvSongs.Columns("trk_artist").Width = 50
@@ -76,7 +110,10 @@ Public Class frmMain
         dgvSongs.Columns("trk_created").Width = 50
         dgvSongs.Columns("trk_edit").Width = 50
         dgvSongs.Columns("trk_delete").Width = 50
+        dgvSongs.Columns("trk_play").Width = 50
+        dgvSongs.Columns("trk_print").Width = 50
 
+        dgvSongs.Columns("trk_id").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvSongs.Columns("trk_picture").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvSongs.Columns("trk_name").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvSongs.Columns("trk_artist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -86,8 +123,15 @@ Public Class frmMain
         dgvSongs.Columns("trk_created").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvSongs.Columns("trk_edit").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvSongs.Columns("trk_delete").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        dgvSongs.Columns("trk_play").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        dgvSongs.Columns("trk_print").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
-        dgvSongs.AllowUserToAddRows = False
+        dgvSongs.RowTemplate.Height = 30
+
+        dgvSongs.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray
+        dgvSongs.ColumnHeadersDefaultCellStyle.BackColor = pnlBlue
+
+        'dgvSongs.Columns("trk_id").Visible = False
 
         'dgvSongs.Columns.Clear()
         dgvSongs.DataSource = dt
@@ -100,6 +144,44 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub dgvSongs_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSongs.CellContentClick
+        Try
+            If dgvSongs.Columns(e.ColumnIndex).Name = "trk_edit" Then
+                ' Get the trk_name of the selected row
+                Dim trkName As String = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
+
+                '' Open the Edit form and pass the trk_name as a parameter
+                'Dim editForm As New EditForm(trkName)
+                'editForm.ShowDialog()
+
+                ' Reload the data when the Edit form is closed
+                LoadTrackData()
+                'frmTrkEdit.Show()
+            ElseIf dgvSongs.Columns(e.ColumnIndex).Name = "trk_delete" Then
+                ' Get the trk_name of the selected row
+                Dim trkName As String = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
+                Dim trkID As Integer = Convert.ToInt32(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
+
+                ' Prompt the user to confirm the deletion
+                Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete '{trkName}'?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+                If result = DialogResult.Yes Then
+                    ' Delete the row from the database
+                    Dim query As String = $"DELETE FROM track WHERE trk_id = '{trkID}'"
+                    Dim cmd As New MySqlCommand(query, conn)
+                    conn.Open()
+                    cmd.ExecuteNonQuery()
+                    conn.Close()
+
+                    ' Remove the row from the DataGridView
+                    dgvSongs.Rows.RemoveAt(e.RowIndex)
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
     'Creating search function for Product datagridview table. Connects to the database to accomplish this
     Private Function SearchTrack() As DataTable
         Dim cmd As MySqlCommand
@@ -109,7 +191,7 @@ Public Class frmMain
 
         Try
             conn.Open()
-            sql = "SELECT trk_picture, trk_name, trk_artist, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%M %e, %Y') AS trk_date, DATE_FORMAT(trk_created, '%M %e, %Y %h:%i%p') AS trk_created 
+            sql = "SELECT trk_id, trk_picture, trk_name, trk_artist, trk_genre, trk_featartist, DATE_FORMAT(trk_date, '%M %e, %Y') AS trk_date, DATE_FORMAT(trk_created, '%M %e, %Y %h:%i%p') AS trk_created 
                     FROM track WHERE CONCAT_WS(trk_name, trk_artist, trk_genre, trk_featartist) LIKE '%" & txtDiscSearch.Text & "%'"
             cmd = New MySqlCommand(sql, conn)
             da = New MySqlDataAdapter
@@ -219,9 +301,10 @@ Public Class frmMain
                         x = cmd.ExecuteNonQuery()
 
                         If x > 0 Then
-                            MessageBox.Show("Songg uploaded successfully.")
+                            MessageBox.Show("Song uploaded successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            ClearUploadTrack()
                         Else
-                            MessageBox.Show("Upload was unsuccessful.")
+                            MessageBox.Show("Upload was unsuccessful.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         End If
                         cmd.Parameters.Clear()
                     End Using
@@ -233,33 +316,9 @@ Public Class frmMain
             End If
         End If
     End Sub
+
     Private Sub btnTrkClear_Click(sender As Object, e As EventArgs) Handles btnTrkClear.Click
-        For Each control As Control In pnlUpload.Controls
-            If TypeOf control Is Guna2DateTimePicker Then
-                control.Text = Date.Now
-            End If
-            If TypeOf control Is PictureBox Then
-                CType(control, PictureBox).Image = Nothing
-                If control.Name = "picTrkPic" Then
-                    CType(control, PictureBox).Image = Image.FromFile(Application.StartupPath & "\icons\icons8-plus-math-100.png")
-                End If
-            End If
-            If TypeOf control Is Guna2Button Then
-                Dim button As Guna2Button = CType(control, Guna2Button)
-                If button.Name = "btnChooseUpload" Then
-                    Dim openFileDialog As New OpenFileDialog()
-                    openFileDialog.FileName = ""
-                End If
-            End If
-
-            lblAddImage.Visible = True
-
-            txtFilePath.Text = ""
-            txtTrkName.Text = ""
-            txtArtist.Text = ""
-            cbxGenre.SelectedIndex = -1
-            txtFtArtist.Text = ""
-        Next
+        ClearUploadTrack()
     End Sub
 
     Private Sub txtDiscSearch_TextChanged(sender As Object, e As EventArgs) Handles txtDiscSearch.TextChanged
@@ -268,7 +327,22 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        Dim msgSignOut = MessageBox.Show("Are you sure you want to sign out?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If msgSignOut = Windows.Forms.DialogResult.Yes Then
+            Me.Close()
+            frmLogin.Show()
+        Else
+            Exit Sub
+        End If
+    End Sub
+
     Private Sub ctrlbxClose_Click(sender As Object, e As EventArgs) Handles ctrlbxClose.Click
-        Application.Exit()
+        Dim msgClose = MessageBox.Show("Are you sure you want to close the application?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If msgClose = Windows.Forms.DialogResult.Yes Then
+            Application.Exit()
+        Else
+            Exit Sub
+        End If
     End Sub
 End Class

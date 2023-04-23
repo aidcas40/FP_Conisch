@@ -24,16 +24,17 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
         Me.pnlBar = New Guna.UI2.WinForms.Guna2Panel()
         Me.ctrlbxMin = New Guna.UI2.WinForms.Guna2ControlBox()
@@ -72,6 +73,9 @@ Partial Class frmMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dgvSongs = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.lblDate = New System.Windows.Forms.Label()
+        Me.lblTest = New System.Windows.Forms.Label()
+        Me.trk_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_picture = New System.Windows.Forms.DataGridViewImageColumn()
         Me.trk_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_artist = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -79,6 +83,8 @@ Partial Class frmMain
         Me.trk_featartist = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_date = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_created = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_play = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.trk_print = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.trk_edit = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.trk_delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.pnlBar.SuspendLayout()
@@ -183,6 +189,7 @@ Partial Class frmMain
         Me.Guna2Button2.ShadowDecoration.Parent = Me.Guna2Button2
         Me.Guna2Button2.Size = New System.Drawing.Size(180, 45)
         Me.Guna2Button2.TabIndex = 11
+        Me.Guna2Button2.TabStop = False
         Me.Guna2Button2.Text = "Sign Out"
         Me.Guna2Button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button2.TextOffset = New System.Drawing.Point(27, 0)
@@ -205,6 +212,7 @@ Partial Class frmMain
         Me.Guna2Button1.ShadowDecoration.Parent = Me.Guna2Button1
         Me.Guna2Button1.Size = New System.Drawing.Size(180, 45)
         Me.Guna2Button1.TabIndex = 10
+        Me.Guna2Button1.TabStop = False
         Me.Guna2Button1.Text = "About Developers"
         Me.Guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button1.TextOffset = New System.Drawing.Point(27, 0)
@@ -235,6 +243,7 @@ Partial Class frmMain
         Me.btnLogout.ShadowDecoration.Parent = Me.btnLogout
         Me.btnLogout.Size = New System.Drawing.Size(180, 45)
         Me.btnLogout.TabIndex = 8
+        Me.btnLogout.TabStop = False
         Me.btnLogout.Text = "About Program"
         Me.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.btnLogout.TextOffset = New System.Drawing.Point(27, 0)
@@ -268,6 +277,7 @@ Partial Class frmMain
         Me.btnUpload.ShadowDecoration.Parent = Me.btnUpload
         Me.btnUpload.Size = New System.Drawing.Size(180, 45)
         Me.btnUpload.TabIndex = 6
+        Me.btnUpload.TabStop = False
         Me.btnUpload.Text = "Upload Song"
         Me.btnUpload.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.btnUpload.TextOffset = New System.Drawing.Point(27, 0)
@@ -290,6 +300,7 @@ Partial Class frmMain
         Me.btnUsers.ShadowDecoration.Parent = Me.btnUsers
         Me.btnUsers.Size = New System.Drawing.Size(180, 45)
         Me.btnUsers.TabIndex = 4
+        Me.btnUsers.TabStop = False
         Me.btnUsers.Text = "Users"
         Me.btnUsers.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.btnUsers.TextOffset = New System.Drawing.Point(27, 0)
@@ -312,6 +323,7 @@ Partial Class frmMain
         Me.btnYourSongs.ShadowDecoration.Parent = Me.btnYourSongs
         Me.btnYourSongs.Size = New System.Drawing.Size(180, 45)
         Me.btnYourSongs.TabIndex = 3
+        Me.btnYourSongs.TabStop = False
         Me.btnYourSongs.Text = "Your Songs"
         Me.btnYourSongs.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.btnYourSongs.TextOffset = New System.Drawing.Point(27, 0)
@@ -333,7 +345,8 @@ Partial Class frmMain
         Me.btnDiscover.Name = "btnDiscover"
         Me.btnDiscover.ShadowDecoration.Parent = Me.btnDiscover
         Me.btnDiscover.Size = New System.Drawing.Size(180, 45)
-        Me.btnDiscover.TabIndex = 2
+        Me.btnDiscover.TabIndex = 0
+        Me.btnDiscover.TabStop = False
         Me.btnDiscover.Text = "Discover"
         Me.btnDiscover.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.btnDiscover.TextOffset = New System.Drawing.Point(27, 0)
@@ -355,7 +368,8 @@ Partial Class frmMain
         Me.btnHome.Name = "btnHome"
         Me.btnHome.ShadowDecoration.Parent = Me.btnHome
         Me.btnHome.Size = New System.Drawing.Size(180, 45)
-        Me.btnHome.TabIndex = 1
+        Me.btnHome.TabIndex = 0
+        Me.btnHome.TabStop = False
         Me.btnHome.Text = "Home"
         Me.btnHome.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.btnHome.TextOffset = New System.Drawing.Point(27, 0)
@@ -393,6 +407,8 @@ Partial Class frmMain
         Me.pnlUpload.AutoRoundedCorners = True
         Me.pnlUpload.BackColor = System.Drawing.Color.White
         Me.pnlUpload.BorderRadius = 246
+        Me.pnlUpload.Controls.Add(Me.lblTest)
+        Me.pnlUpload.Controls.Add(Me.lblDate)
         Me.pnlUpload.Controls.Add(Me.btnTrkClear)
         Me.pnlUpload.Controls.Add(Me.txtFilePath)
         Me.pnlUpload.Controls.Add(Me.lblGenre)
@@ -422,11 +438,11 @@ Partial Class frmMain
         Me.btnTrkClear.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.btnTrkClear.ForeColor = System.Drawing.Color.White
         Me.btnTrkClear.HoverState.Parent = Me.btnTrkClear
-        Me.btnTrkClear.Location = New System.Drawing.Point(525, 423)
+        Me.btnTrkClear.Location = New System.Drawing.Point(631, 391)
         Me.btnTrkClear.Name = "btnTrkClear"
         Me.btnTrkClear.ShadowDecoration.Parent = Me.btnTrkClear
         Me.btnTrkClear.Size = New System.Drawing.Size(180, 45)
-        Me.btnTrkClear.TabIndex = 14
+        Me.btnTrkClear.TabIndex = 7
         Me.btnTrkClear.Text = "Clear"
         '
         'txtFilePath
@@ -442,7 +458,7 @@ Partial Class frmMain
         Me.txtFilePath.FocusedState.Parent = Me.txtFilePath
         Me.txtFilePath.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtFilePath.HoverState.Parent = Me.txtFilePath
-        Me.txtFilePath.Location = New System.Drawing.Point(298, 95)
+        Me.txtFilePath.Location = New System.Drawing.Point(423, 55)
         Me.txtFilePath.Margin = New System.Windows.Forms.Padding(13)
         Me.txtFilePath.Name = "txtFilePath"
         Me.txtFilePath.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -459,7 +475,7 @@ Partial Class frmMain
         Me.lblGenre.AutoSize = True
         Me.lblGenre.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGenre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(193, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(207, Byte), Integer))
-        Me.lblGenre.Location = New System.Drawing.Point(311, 305)
+        Me.lblGenre.Location = New System.Drawing.Point(436, 278)
         Me.lblGenre.Name = "lblGenre"
         Me.lblGenre.Size = New System.Drawing.Size(81, 15)
         Me.lblGenre.TabIndex = 12
@@ -478,18 +494,18 @@ Partial Class frmMain
         Me.cbxGenre.HoverState.Parent = Me.cbxGenre
         Me.cbxGenre.ItemHeight = 30
         Me.cbxGenre.ItemsAppearance.Parent = Me.cbxGenre
-        Me.cbxGenre.Location = New System.Drawing.Point(298, 323)
+        Me.cbxGenre.Location = New System.Drawing.Point(423, 298)
         Me.cbxGenre.Name = "cbxGenre"
         Me.cbxGenre.ShadowDecoration.Parent = Me.cbxGenre
         Me.cbxGenre.Size = New System.Drawing.Size(200, 36)
-        Me.cbxGenre.TabIndex = 11
+        Me.cbxGenre.TabIndex = 3
         '
         'lblAddImage
         '
         Me.lblAddImage.AutoSize = True
         Me.lblAddImage.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAddImage.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblAddImage.Location = New System.Drawing.Point(105, 293)
+        Me.lblAddImage.Location = New System.Drawing.Point(154, 351)
         Me.lblAddImage.Name = "lblAddImage"
         Me.lblAddImage.Size = New System.Drawing.Size(81, 15)
         Me.lblAddImage.TabIndex = 10
@@ -505,11 +521,11 @@ Partial Class frmMain
         Me.btnTrkInsert.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.btnTrkInsert.ForeColor = System.Drawing.Color.White
         Me.btnTrkInsert.HoverState.Parent = Me.btnTrkInsert
-        Me.btnTrkInsert.Location = New System.Drawing.Point(298, 423)
+        Me.btnTrkInsert.Location = New System.Drawing.Point(423, 391)
         Me.btnTrkInsert.Name = "btnTrkInsert"
         Me.btnTrkInsert.ShadowDecoration.Parent = Me.btnTrkInsert
         Me.btnTrkInsert.Size = New System.Drawing.Size(180, 45)
-        Me.btnTrkInsert.TabIndex = 9
+        Me.btnTrkInsert.TabIndex = 6
         Me.btnTrkInsert.Text = "Upload"
         '
         'dtpDate
@@ -521,13 +537,13 @@ Partial Class frmMain
         Me.dtpDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         Me.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpDate.HoverState.Parent = Me.dtpDate
-        Me.dtpDate.Location = New System.Drawing.Point(599, 244)
+        Me.dtpDate.Location = New System.Drawing.Point(724, 207)
         Me.dtpDate.MaxDate = New Date(2050, 1, 1, 0, 0, 0, 0)
         Me.dtpDate.MinDate = New Date(1920, 1, 1, 0, 0, 0, 0)
         Me.dtpDate.Name = "dtpDate"
         Me.dtpDate.ShadowDecoration.Parent = Me.dtpDate
         Me.dtpDate.Size = New System.Drawing.Size(200, 36)
-        Me.dtpDate.TabIndex = 7
+        Me.dtpDate.TabIndex = 5
         Me.dtpDate.Value = New Date(2023, 4, 20, 13, 7, 49, 604)
         '
         'btnChooseUpload
@@ -540,11 +556,11 @@ Partial Class frmMain
         Me.btnChooseUpload.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.btnChooseUpload.ForeColor = System.Drawing.Color.White
         Me.btnChooseUpload.HoverState.Parent = Me.btnChooseUpload
-        Me.btnChooseUpload.Location = New System.Drawing.Point(599, 91)
+        Me.btnChooseUpload.Location = New System.Drawing.Point(724, 55)
         Me.btnChooseUpload.Name = "btnChooseUpload"
         Me.btnChooseUpload.ShadowDecoration.Parent = Me.btnChooseUpload
         Me.btnChooseUpload.Size = New System.Drawing.Size(180, 45)
-        Me.btnChooseUpload.TabIndex = 6
+        Me.btnChooseUpload.TabIndex = 0
         Me.btnChooseUpload.Text = "Choose File"
         '
         'txtFtArtist
@@ -560,7 +576,7 @@ Partial Class frmMain
         Me.txtFtArtist.FocusedState.Parent = Me.txtFtArtist
         Me.txtFtArtist.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtFtArtist.HoverState.Parent = Me.txtFtArtist
-        Me.txtFtArtist.Location = New System.Drawing.Point(599, 165)
+        Me.txtFtArtist.Location = New System.Drawing.Point(724, 131)
         Me.txtFtArtist.Margin = New System.Windows.Forms.Padding(13)
         Me.txtFtArtist.Name = "txtFtArtist"
         Me.txtFtArtist.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -569,17 +585,17 @@ Partial Class frmMain
         Me.txtFtArtist.ShadowDecoration.Parent = Me.txtFtArtist
         Me.txtFtArtist.Size = New System.Drawing.Size(200, 36)
         Me.txtFtArtist.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
-        Me.txtFtArtist.TabIndex = 5
+        Me.txtFtArtist.TabIndex = 4
         '
         'picTrkPic
         '
         Me.picTrkPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.picTrkPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.picTrkPic.Image = CType(resources.GetObject("picTrkPic.Image"), System.Drawing.Image)
-        Me.picTrkPic.Location = New System.Drawing.Point(40, 95)
+        Me.picTrkPic.Location = New System.Drawing.Point(29, 55)
         Me.picTrkPic.Name = "picTrkPic"
         Me.picTrkPic.ShadowDecoration.Parent = Me.picTrkPic
-        Me.picTrkPic.Size = New System.Drawing.Size(211, 195)
+        Me.picTrkPic.Size = New System.Drawing.Size(330, 284)
         Me.picTrkPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.picTrkPic.TabIndex = 3
         Me.picTrkPic.TabStop = False
@@ -597,7 +613,7 @@ Partial Class frmMain
         Me.txtArtist.FocusedState.Parent = Me.txtArtist
         Me.txtArtist.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtArtist.HoverState.Parent = Me.txtArtist
-        Me.txtArtist.Location = New System.Drawing.Point(298, 244)
+        Me.txtArtist.Location = New System.Drawing.Point(423, 207)
         Me.txtArtist.Margin = New System.Windows.Forms.Padding(8)
         Me.txtArtist.Name = "txtArtist"
         Me.txtArtist.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -613,7 +629,7 @@ Partial Class frmMain
         Me.lblUploadHead.AutoSize = True
         Me.lblUploadHead.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUploadHead.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblUploadHead.Location = New System.Drawing.Point(17, 57)
+        Me.lblUploadHead.Location = New System.Drawing.Point(6, 17)
         Me.lblUploadHead.Name = "lblUploadHead"
         Me.lblUploadHead.Size = New System.Drawing.Size(148, 21)
         Me.lblUploadHead.TabIndex = 1
@@ -632,7 +648,7 @@ Partial Class frmMain
         Me.txtTrkName.FocusedState.Parent = Me.txtTrkName
         Me.txtTrkName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtTrkName.HoverState.Parent = Me.txtTrkName
-        Me.txtTrkName.Location = New System.Drawing.Point(298, 165)
+        Me.txtTrkName.Location = New System.Drawing.Point(423, 131)
         Me.txtTrkName.Margin = New System.Windows.Forms.Padding(5)
         Me.txtTrkName.Name = "txtTrkName"
         Me.txtTrkName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -641,7 +657,7 @@ Partial Class frmMain
         Me.txtTrkName.ShadowDecoration.Parent = Me.txtTrkName
         Me.txtTrkName.Size = New System.Drawing.Size(200, 36)
         Me.txtTrkName.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
-        Me.txtTrkName.TabIndex = 0
+        Me.txtTrkName.TabIndex = 1
         '
         'pnlDiscover
         '
@@ -677,7 +693,7 @@ Partial Class frmMain
         Me.txtDiscSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtDiscSearch.HoverState.Parent = Me.txtDiscSearch
         Me.txtDiscSearch.IconLeft = CType(resources.GetObject("txtDiscSearch.IconLeft"), System.Drawing.Image)
-        Me.txtDiscSearch.Location = New System.Drawing.Point(726, 49)
+        Me.txtDiscSearch.Location = New System.Drawing.Point(726, 82)
         Me.txtDiscSearch.Margin = New System.Windows.Forms.Padding(5)
         Me.txtDiscSearch.Name = "txtDiscSearch"
         Me.txtDiscSearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -693,7 +709,7 @@ Partial Class frmMain
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(17, 57)
+        Me.Label1.Location = New System.Drawing.Point(6, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(90, 21)
         Me.Label1.TabIndex = 2
@@ -701,40 +717,44 @@ Partial Class frmMain
         '
         'dgvSongs
         '
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.White
-        Me.dgvSongs.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+        Me.dgvSongs.AllowUserToAddRows = False
+        Me.dgvSongs.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro
+        Me.dgvSongs.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvSongs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvSongs.BackgroundColor = System.Drawing.Color.White
         Me.dgvSongs.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvSongs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvSongs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvSongs.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(33, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvSongs.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvSongs.ColumnHeadersHeight = 44
-        Me.dgvSongs.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trk_picture, Me.trk_name, Me.trk_artist, Me.trk_genre, Me.trk_featartist, Me.trk_date, Me.trk_created, Me.trk_edit, Me.trk_delete})
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle19.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle19.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvSongs.DefaultCellStyle = DataGridViewCellStyle19
+        Me.dgvSongs.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trk_id, Me.trk_picture, Me.trk_name, Me.trk_artist, Me.trk_genre, Me.trk_featartist, Me.trk_date, Me.trk_created, Me.trk_play, Me.trk_print, Me.trk_edit, Me.trk_delete})
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvSongs.DefaultCellStyle = DataGridViewCellStyle10
         Me.dgvSongs.EnableHeadersVisualStyles = False
         Me.dgvSongs.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.dgvSongs.Location = New System.Drawing.Point(38, 95)
+        Me.dgvSongs.Location = New System.Drawing.Point(38, 131)
         Me.dgvSongs.Name = "dgvSongs"
+        Me.dgvSongs.ReadOnly = True
         Me.dgvSongs.RowHeadersVisible = False
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.dgvSongs.RowsDefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.dgvSongs.RowsDefaultCellStyle = DataGridViewCellStyle11
+        Me.dgvSongs.RowTemplate.Height = 25
         Me.dgvSongs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvSongs.Size = New System.Drawing.Size(940, 280)
+        Me.dgvSongs.Size = New System.Drawing.Size(940, 324)
         Me.dgvSongs.TabIndex = 0
         Me.dgvSongs.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.[Default]
         Me.dgvSongs.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
@@ -750,12 +770,12 @@ Partial Class frmMain
         Me.dgvSongs.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
         Me.dgvSongs.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Me.dgvSongs.ThemeStyle.HeaderStyle.Height = 44
-        Me.dgvSongs.ThemeStyle.ReadOnly = False
+        Me.dgvSongs.ThemeStyle.ReadOnly = True
         Me.dgvSongs.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
         Me.dgvSongs.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvSongs.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvSongs.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.dgvSongs.ThemeStyle.RowsStyle.Height = 22
+        Me.dgvSongs.ThemeStyle.RowsStyle.Height = 25
         Me.dgvSongs.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.dgvSongs.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
@@ -763,12 +783,43 @@ Partial Class frmMain
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'lblDate
+        '
+        Me.lblDate.AutoSize = True
+        Me.lblDate.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(193, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(207, Byte), Integer))
+        Me.lblDate.Location = New System.Drawing.Point(737, 189)
+        Me.lblDate.Name = "lblDate"
+        Me.lblDate.Size = New System.Drawing.Size(116, 15)
+        Me.lblDate.TabIndex = 15
+        Me.lblDate.Text = "Choose Release Date"
+        '
+        'lblTest
+        '
+        Me.lblTest.AutoSize = True
+        Me.lblTest.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTest.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblTest.Location = New System.Drawing.Point(154, 421)
+        Me.lblTest.Name = "lblTest"
+        Me.lblTest.Size = New System.Drawing.Size(15, 15)
+        Me.lblTest.TabIndex = 16
+        Me.lblTest.Text = "U"
+        '
+        'trk_id
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_id.DefaultCellStyle = DataGridViewCellStyle3
+        Me.trk_id.HeaderText = "ID"
+        Me.trk_id.Name = "trk_id"
+        Me.trk_id.ReadOnly = True
+        '
         'trk_picture
         '
         Me.trk_picture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.trk_picture.HeaderText = "Image"
         Me.trk_picture.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
         Me.trk_picture.Name = "trk_picture"
+        Me.trk_picture.ReadOnly = True
         Me.trk_picture.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.trk_picture.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.trk_picture.Width = 87
@@ -776,72 +827,97 @@ Partial Class frmMain
         'trk_name
         '
         Me.trk_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_name.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_name.DefaultCellStyle = DataGridViewCellStyle4
         Me.trk_name.FillWeight = 50.0!
         Me.trk_name.HeaderText = "Song"
         Me.trk_name.Name = "trk_name"
+        Me.trk_name.ReadOnly = True
         Me.trk_name.Width = 74
         '
         'trk_artist
         '
         Me.trk_artist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_artist.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_artist.DefaultCellStyle = DataGridViewCellStyle5
         Me.trk_artist.FillWeight = 50.0!
         Me.trk_artist.HeaderText = "Artist"
         Me.trk_artist.Name = "trk_artist"
+        Me.trk_artist.ReadOnly = True
         Me.trk_artist.Width = 76
         '
         'trk_genre
         '
         Me.trk_genre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_genre.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_genre.DefaultCellStyle = DataGridViewCellStyle6
         Me.trk_genre.FillWeight = 50.0!
         Me.trk_genre.HeaderText = "Genre"
         Me.trk_genre.Name = "trk_genre"
+        Me.trk_genre.ReadOnly = True
         Me.trk_genre.Width = 84
         '
         'trk_featartist
         '
         Me.trk_featartist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_featartist.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_featartist.DefaultCellStyle = DataGridViewCellStyle7
         Me.trk_featartist.FillWeight = 50.0!
         Me.trk_featartist.HeaderText = "Featuring Artist"
         Me.trk_featartist.Name = "trk_featartist"
+        Me.trk_featartist.ReadOnly = True
         Me.trk_featartist.Width = 155
         '
         'trk_date
         '
         Me.trk_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle17.Format = "d"
-        DataGridViewCellStyle17.NullValue = Nothing
-        Me.trk_date.DefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.Format = "d"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.trk_date.DefaultCellStyle = DataGridViewCellStyle8
         Me.trk_date.FillWeight = 50.0!
         Me.trk_date.HeaderText = "Released"
         Me.trk_date.Name = "trk_date"
+        Me.trk_date.ReadOnly = True
         Me.trk_date.Width = 106
         '
         'trk_created
         '
         Me.trk_created.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle18.Format = "g"
-        DataGridViewCellStyle18.NullValue = Nothing
-        Me.trk_created.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.Format = "g"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.trk_created.DefaultCellStyle = DataGridViewCellStyle9
         Me.trk_created.FillWeight = 30.0!
         Me.trk_created.HeaderText = "Uploaded"
         Me.trk_created.Name = "trk_created"
+        Me.trk_created.ReadOnly = True
         Me.trk_created.Width = 113
+        '
+        'trk_play
+        '
+        Me.trk_play.HeaderText = "Play"
+        Me.trk_play.Name = "trk_play"
+        Me.trk_play.ReadOnly = True
+        Me.trk_play.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.trk_play.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.trk_play.Text = "Play"
+        Me.trk_play.UseColumnTextForButtonValue = True
+        '
+        'trk_print
+        '
+        Me.trk_print.HeaderText = "Print"
+        Me.trk_print.Name = "trk_print"
+        Me.trk_print.ReadOnly = True
+        Me.trk_print.Text = "Print"
+        Me.trk_print.UseColumnTextForButtonValue = True
         '
         'trk_edit
         '
         Me.trk_edit.FillWeight = 50.0!
         Me.trk_edit.HeaderText = "Edit"
         Me.trk_edit.Name = "trk_edit"
+        Me.trk_edit.ReadOnly = True
         Me.trk_edit.Text = "Edit"
         Me.trk_edit.UseColumnTextForButtonValue = True
         '
@@ -850,6 +926,7 @@ Partial Class frmMain
         Me.trk_delete.FillWeight = 50.0!
         Me.trk_delete.HeaderText = "Delete"
         Me.trk_delete.Name = "trk_delete"
+        Me.trk_delete.ReadOnly = True
         Me.trk_delete.Text = "Delete"
         Me.trk_delete.UseColumnTextForButtonValue = True
         '
@@ -921,6 +998,9 @@ Partial Class frmMain
     Friend WithEvents sepMenu As Guna.UI2.WinForms.Guna2Separator
     Friend WithEvents Label1 As Label
     Friend WithEvents txtDiscSearch As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents lblDate As Label
+    Friend WithEvents lblTest As Label
+    Friend WithEvents trk_id As DataGridViewTextBoxColumn
     Friend WithEvents trk_picture As DataGridViewImageColumn
     Friend WithEvents trk_name As DataGridViewTextBoxColumn
     Friend WithEvents trk_artist As DataGridViewTextBoxColumn
@@ -928,6 +1008,8 @@ Partial Class frmMain
     Friend WithEvents trk_featartist As DataGridViewTextBoxColumn
     Friend WithEvents trk_date As DataGridViewTextBoxColumn
     Friend WithEvents trk_created As DataGridViewTextBoxColumn
+    Friend WithEvents trk_play As DataGridViewButtonColumn
+    Friend WithEvents trk_print As DataGridViewButtonColumn
     Friend WithEvents trk_edit As DataGridViewButtonColumn
     Friend WithEvents trk_delete As DataGridViewButtonColumn
 End Class

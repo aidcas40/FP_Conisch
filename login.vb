@@ -12,6 +12,8 @@
 '----------------------------------------------------------------------------------
 Imports MySql.Data.MySqlClient
 Public Class frmLogin
+    Public Shared strCurUsername As String
+
     Dim conn = New MySqlConnection(My.Settings.connString)
     'Dim Mysqlcon As MySqlConnection
     Dim command As MySqlCommand
@@ -39,6 +41,8 @@ Public Class frmLogin
             End While
 
             If count = 1 Then
+                strCurUsername = reader.GetValue(1)
+                'gusertype = reader.GetValue(5)
                 MessageBox.Show(Me, "Successfully login.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 frmMain.Show()
                 Me.Hide()
