@@ -12,22 +12,21 @@
 '----------------------------------------------------------------------------------
 Imports MySql.Data.MySqlClient
 Public Class frmLogin
+    Public Shared intCurID As Int32
+    Public Shared intCurActive As Int32
     Public Shared strCurUsername As String
+    Public Shared strCurType As String
 
     Dim conn = New MySqlConnection(My.Settings.connString)
-    'Dim Mysqlcon As MySqlConnection
     Dim command As MySqlCommand
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connection()
     End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        'Mysqlcon = New MySqlConnection
-        'Mysqlcon.ConnectionString = ("server=localhost; port=3307; database=cs206finalproject; user=root; password='';")
         Dim reader As MySqlDataReader
 
         Try
-            'Mysqlcon.Open()
             conn.Open()
             Dim query As String
             query = "SELECT * FROM  users WHERE user_username ='" & txtUsername.Text & "' AND BINARY user_password='" & txtUserPwd.Text & "' "
@@ -41,13 +40,33 @@ Public Class frmLogin
             End While
 
             If count = 1 Then
-                strCurUsername = reader.GetValue(1)
-                'gusertype = reader.GetValue(5)
-                MessageBox.Show(Me, "Successfully login.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                frmMain.Show()
-                Me.Hide()
+                'intCurID = reader.GetValue(0)
+                'strCurUsername = reader.GetValue(1)
+                'intCurActive = reader.GetValue(4)
+                'strCurType = reader.GetValue(5)
+
+                intCurID = reader.GetInt32(0)
+                strCurUsername = reader.GetString(1)
+                If Not reader.IsDBNull(4) Then
+                    intCurActive = reader.GetInt32(4)
+                End If
+                If Not reader.IsDBNull(5) Then
+                    strCurType = reader.GetString(5)
+                End If
+
+                If intCurActive <> 1 Then
+                    MessageBox.Show(Me, "Account hasn't been activated.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                ElseIf strCurType = Nothing Then
+                    MessageBox.Show(Me, "Account hasn't been assigned a role.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Else
+                    MessageBox.Show(Me, "Successfully login as " & strCurType & ".", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    frmMain.Show()
+                    Me.Hide()
+                End If
+
             ElseIf count > 1 Then
                 MessageBox.Show(Me, "Username and Password Duplicate.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
             Else
                 If txtUsername.Text = "" Then
                     MessageBox.Show(Me, "Please enter a username.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -57,14 +76,10 @@ Public Class frmLogin
                     MessageBox.Show(Me, "Invalid login, please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             End If
-
-            'Mysqlcon.Close()
             conn.Close()
-
         Catch ex As MySqlException
             MessageBox.Show(ex.Message)
         Finally
-            'Mysqlcon.Dispose()
             conn.Dispose()
         End Try
     End Sub

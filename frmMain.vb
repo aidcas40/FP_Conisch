@@ -254,7 +254,7 @@ Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadGenres()
 
-        'lblTest.Text = frmLogin.strCurUsername
+        lblTest.Text = frmLogin.strCurUsername
     End Sub
     Private Sub pnlDiscover_Paint(sender As Object, e As PaintEventArgs) Handles pnlDiscover.Paint
         LoadTrackData()
@@ -269,6 +269,7 @@ Public Class frmMain
         pnlDiscover.Visible = False
         pnlUsers.Visible = False
         pnlCreateUser.Visible = False
+        pnlYourSongs.Visible = False
     End Sub
 
     Private Sub btnDiscover_Click(sender As Object, e As EventArgs) Handles btnDiscover.Click
@@ -276,6 +277,15 @@ Public Class frmMain
         pnlDiscover.Visible = True
         pnlUsers.Visible = False
         pnlCreateUser.Visible = False
+        pnlYourSongs.Visible = False
+    End Sub
+
+    Private Sub btnYourSongs_Click(sender As Object, e As EventArgs) Handles btnYourSongs.Click
+        pnlUpload.Visible = False
+        pnlDiscover.Visible = False
+        pnlUsers.Visible = False
+        pnlCreateUser.Visible = False
+        pnlYourSongs.Visible = True
     End Sub
 
     Private Sub btnUsers_Click(sender As Object, e As EventArgs) Handles btnUsers.Click
@@ -283,6 +293,7 @@ Public Class frmMain
         pnlDiscover.Visible = False
         pnlUsers.Visible = True
         pnlCreateUser.Visible = False
+        pnlYourSongs.Visible = False
     End Sub
 
     Private Sub btnCreateUser_Click(sender As Object, e As EventArgs) Handles btnCreateUser.Click
@@ -290,6 +301,7 @@ Public Class frmMain
         pnlDiscover.Visible = False
         pnlUsers.Visible = False
         pnlCreateUser.Visible = True
+        pnlYourSongs.Visible = False
     End Sub
 
     Private Sub dgvSongs_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSongs.CellContentClick
@@ -297,15 +309,8 @@ Public Class frmMain
         Dim trkID As Integer
         Try
             If dgvSongs.Columns(e.ColumnIndex).Name = "trk_play" Then
-                'e.ColumnIndex = dgvSongs.Columns("trk_play").Index AndAlso e.RowIndex >= 0 Then
-                'Dim filePath As String = dgvSongs.Rows(e.RowIndex).Cells("trk_audio").Value.ToString()
-                'mediaPlayer.URL = filePath
-                'mediaPlayer.Play()
-                'tmrProgress.Start()
-                'btnPlayPause.Checked = True
-
                 trkID = CInt(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
-                Dim query As String = "SELECT trk_audio FROM track WHERE trk_id = " & trkId
+                Dim query As String = "SELECT trk_audio FROM track WHERE trk_id = " & trkID
                 Dim filePath As String = ""
 
                 Using conn
@@ -449,7 +454,6 @@ Public Class frmMain
         If String.IsNullOrEmpty(txtTrkName.Text) OrElse String.IsNullOrEmpty(txtArtist.Text) OrElse String.IsNullOrEmpty(cbxGenre.Text) OrElse
             dtpDate.Value = Nothing Then
             MessageBox.Show("Please enter a value in all required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
         Else
             ' Saves the image by connecting to the database (Image is saved as byte)
             If Not IsNothing(picTrkPic.Image) And Not String.IsNullOrEmpty(audiopath) Then
