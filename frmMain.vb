@@ -529,18 +529,42 @@ Public Class frmMain
     Private Sub dgvUsers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUsers.CellContentClick
         Dim userName As String
         Dim userID As Integer
+        Dim userActive As Boolean
+        Dim userIsType As String
         Try
             If dgvUsers.Columns(e.ColumnIndex).Name = "user_update" Then
                 ' Get the trk_name of the selected row
+                'userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
+                'LoadTrackData()
+
+                'Dim columnName As String = dgvUsers.Columns(e.ColumnIndex).Name
+                'If columnName = "user_active" OrElse columnName = "user_istype" Then
                 userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
+                userID = Convert.ToInt32(dgvUsers.Rows(e.RowIndex).Cells("user_id").Value)
+                userActive = CBool(dgvUsers.Rows(e.RowIndex).Cells("user_active").Value)
+                userIsType = dgvUsers.Rows(e.RowIndex).Cells("user_istype").Value.ToString()
 
-                '' Open the Edit form and pass the trk_name as a parameter
-                'Dim editForm As New EditForm(trkName)
-                'editForm.ShowDialog()
+                Dim result As DialogResult = MessageBox.Show($"Are you sure you want to update '{userName}'?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-                ' Reload the data when the Edit form is closed
-                LoadTrackData()
-                'frmTrkEdit.Show()
+                ' Update the database with the new values
+                If result = DialogResult.Yes Then
+                    Using conn
+                        conn.Open()
+                        Dim query As String = "UPDATE users SET user_active=@uactive, user_istype=@uistype WHERE user_id=@uid"
+                        Using cmd As New MySqlCommand(query, conn)
+                            cmd.Parameters.AddWithValue("@uactive", userActive)
+                            cmd.Parameters.AddWithValue("@uistype", userIsType)
+                            cmd.Parameters.AddWithValue("@uid", userID)
+                            cmd.ExecuteNonQuery()
+                        End Using
+                    End Using
+
+                    MessageBox.Show($"'{userName}' was successfully updated.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    LoadTrackData()
+                Else
+                    MessageBox.Show($"Update unsuccesful", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+
             ElseIf dgvUsers.Columns(e.ColumnIndex).Name = "user_delete" Then
                 ' Get the trk_name of the selected row
                 userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
@@ -686,7 +710,7 @@ Public Class frmMain
 
                         If x > 0 Then
                             MessageBox.Show("User created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            ClearUploadTrack()
+                            ClearCreateUser()
                         Else
                             MessageBox.Show("User was not created.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         End If
