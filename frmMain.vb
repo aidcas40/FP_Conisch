@@ -32,6 +32,45 @@ Public Class frmMain
         conn.Close()
     End Sub
 
+    Private Sub LoadHomeQueriesAd()
+        Try
+            conn.Open()
+            Dim cmdActU As New MySqlCommand("SELECT COUNT(*) FROM users WHERE user_active = 1", conn)
+            Dim countActUsers As Object = cmdActU.ExecuteScalar()
+
+            Dim cmdUnActU As New MySqlCommand("SELECT COUNT(*) FROM users WHERE user_active = 0", conn)
+            Dim countUnActUsers As Object = cmdUnActU.ExecuteScalar()
+
+            Dim cmdTotTrk As New MySqlCommand("SELECT COUNT(*) FROM track", conn)
+            Dim countTotTrk As Object = cmdTotTrk.ExecuteScalar()
+
+            tbtnCountActUsers.Text = $"{countActUsers} Active Users"
+            tbtnCountUnActUsers.Text = $"{countUnActUsers} Inactive Users"
+            tbtnCountTotTrk.Text = $"{countTotTrk} Total Uploaded Songs"
+
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+            conn.Dispose()
+        End Try
+    End Sub
+
+    Private Sub LoadHomeQueriesUser()
+        Try
+            conn.Open()
+            Dim cmdTotUsTrk As New MySqlCommand("SELECT COUNT(*) FROM track WHERE trk_user = " & frmLogin.intCurID, conn)
+            Dim countTotUsTrk As Object = cmdTotUsTrk.ExecuteScalar()
+
+            tbtnCountTotTrk.Text = $"{countTotUsTrk} Uploaded Songs"
+
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+            conn.Dispose()
+        End Try
+    End Sub
     Private Sub ClearUploadTrack()
         For Each control As Control In pnlUpload.Controls
             If TypeOf control Is Guna2DateTimePicker Then
@@ -332,7 +371,6 @@ Public Class frmMain
     End Function
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadGenres()
         If frmLogin.strCurType = "Admin" Then
 
         ElseIf frmLogin.strCurType = "Manager" Then
@@ -348,30 +386,38 @@ Public Class frmMain
             dgvSongs.Columns("trk_delete").Visible = False
 
         End If
+
+        LoadGenres()
     End Sub
 
-    Private Sub pnlHomeAdmin_Paint(sender As Object, e As PaintEventArgs) Handles pnlHomeAdmin.Paint
-        lblAdminWelcome.Text = lblAdminWelcome.Text & " " & frmLogin.strCurUsername
+    Private Sub pnlHome_Paint(sender As Object, e As PaintEventArgs) Handles pnlHome.Paint
+        lblAdminWelcome.Text = $"Welcome, {frmLogin.strCurUsername}"
+        lblHomeRoleAd.Text = $"Role: {frmLogin.strCurType}"
 
-        Try
-            conn.Open()
-            Dim cmdActU As New MySqlCommand("SELECT COUNT(*) FROM users WHERE user_active = 1", conn)
-            Dim countActUsers As Object = cmdActU.ExecuteScalar()
+        If frmLogin.strCurType = "Admin" Or frmLogin.strCurType = "Manager" Then
+            tbtnCountActUsers.Visible = True
+            tbtnCountUnActUsers.Visible = True
+            tbtnCountTotTrk.Visible = True
+            picCountAUsers.Visible = True
+            picCountUnUsers.Visible = True
+            picCountTracks.Visible = True
 
-            Dim cmdUnActU As New MySqlCommand("SELECT COUNT(*) FROM users WHERE user_active = 0", conn)
-            Dim countUnActUsers As Object = cmdUnActU.ExecuteScalar()
+            LoadHomeQueriesAd()
 
-            Dim cmdTotTrk As New MySqlCommand("SELECT COUNT(*) FROM track", conn)
-            Dim countTotTrk As Object = cmdTotTrk.ExecuteScalar()
+        ElseIf frmLogin.strCurType = "User" Then
+            tbtnCountActUsers.Visible = False
+            tbtnCountUnActUsers.Visible = False
+            picCountAUsers.Visible = False
+            picCountUnUsers.Visible = False
 
-            tbtnCountActUsers.Text = countActUsers.ToString() & " Active Users"
-            tbtnCountUnActUsers.Text = countUnActUsers.ToString() & " Unactive Users"
-            tbtnCountTotTrk.Text = countTotTrk.ToString() & " Uploaded Songs"
-        Catch ex As MySqlException
-            MsgBox(ex.Message)
-        Finally
-            conn.Close()
-        End Try
+            picCountTracks.Location = New Point(38, 117)
+            tbtnCountTotTrk.Location = New Point(71, 148)
+
+            tbtnCountTotTrk.Visible = True
+            picCountTracks.Visible = True
+
+            LoadHomeQueriesUser()
+        End If
     End Sub
 
     Private Sub pnlDiscover_Paint(sender As Object, e As PaintEventArgs) Handles pnlDiscover.Paint
@@ -387,18 +433,16 @@ Public Class frmMain
     End Sub
 
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
-        If frmLogin.strCurType = "Admin" Or frmLogin.strCurType = "Manager" Then
-            pnlHomeAdmin.Visible = True
-            pnlDiscover.Visible = False
-            pnlYourSongs.Visible = False
-            pnlUpload.Visible = False
-            pnlUsers.Visible = False
-            pnlCreateUser.Visible = False
-        End If
+        pnlHome.Visible = True
+        pnlDiscover.Visible = False
+        pnlYourSongs.Visible = False
+        pnlUpload.Visible = False
+        pnlUsers.Visible = False
+        pnlCreateUser.Visible = False
     End Sub
 
     Private Sub btnDiscover_Click(sender As Object, e As EventArgs) Handles btnDiscover.Click
-        pnlHomeAdmin.Visible = False
+        pnlHome.Visible = False
         pnlDiscover.Visible = True
         pnlYourSongs.Visible = False
         pnlUpload.Visible = False
@@ -407,7 +451,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnYourSongs_Click(sender As Object, e As EventArgs) Handles btnYourSongs.Click
-        pnlHomeAdmin.Visible = False
+        pnlHome.Visible = False
         pnlDiscover.Visible = False
         pnlYourSongs.Visible = True
         pnlUpload.Visible = False
@@ -416,7 +460,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
-        pnlHomeAdmin.Visible = False
+        pnlHome.Visible = False
         pnlDiscover.Visible = False
         pnlYourSongs.Visible = False
         pnlUpload.Visible = True
@@ -425,7 +469,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnUsers_Click(sender As Object, e As EventArgs) Handles btnUsers.Click
-        pnlHomeAdmin.Visible = False
+        pnlHome.Visible = False
         pnlDiscover.Visible = False
         pnlYourSongs.Visible = False
         pnlUpload.Visible = False
@@ -434,7 +478,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnCreateUser_Click(sender As Object, e As EventArgs) Handles btnCreateUser.Click
-        pnlHomeAdmin.Visible = False
+        pnlHome.Visible = False
         pnlDiscover.Visible = False
         pnlYourSongs.Visible = False
         pnlUpload.Visible = False
