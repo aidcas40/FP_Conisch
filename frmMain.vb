@@ -90,7 +90,7 @@ Public Class frmMain
         dgvSongs.Columns("trk_date").DataPropertyName = "trk_date"
         dgvSongs.Columns("trk_created").DataPropertyName = "trk_created"
 
-        'dgvSongs.Columns("trk_id").Width = 50
+        'dgvSongs.Columns("trk_id").Width = 30
         'dgvSongs.Columns("trk_picture").Width = 50
         'dgvSongs.Columns("trk_name").Width = 50
         'dgvSongs.Columns("trk_artist").Width = 50
@@ -103,8 +103,8 @@ Public Class frmMain
         'dgvSongs.Columns("trk_play").Width = 50
         'dgvSongs.Columns("trk_print").Width = 50
 
-        dgvSongs.Columns("trk_id").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        dgvSongs.Columns("trk_picture").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvSongs.Columns("trk_id").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        dgvSongs.Columns("trk_picture").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvSongs.Columns("trk_name").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvSongs.Columns("trk_artist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvSongs.Columns("trk_genre").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -333,9 +333,27 @@ Public Class frmMain
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadGenres()
+        If frmLogin.strCurType = "Admin" Then
 
-        lblTest.Text = frmLogin.strCurUsername
+        ElseIf frmLogin.strCurType = "Manager" Then
+            btnCreateUser.Visible = False
+
+            dgvUsers.Columns("user_delete").Visible = False
+
+        ElseIf frmLogin.strCurType = "User" Then
+            btnCreateUser.Visible = False
+            btnUsers.Visible = False
+
+            dgvSongs.Columns("trk_edit").Visible = False
+            dgvSongs.Columns("trk_delete").Visible = False
+
+        End If
     End Sub
+
+    Private Sub pnlHomeAdmin_Paint(sender As Object, e As PaintEventArgs) Handles pnlHomeAdmin.Paint
+        lblAdminWelcome.Text = lblAdminWelcome.Text & frmLogin.strCurUsername
+    End Sub
+
     Private Sub pnlDiscover_Paint(sender As Object, e As PaintEventArgs) Handles pnlDiscover.Paint
         LoadTrackData()
     End Sub
@@ -348,46 +366,63 @@ Public Class frmMain
         LoadUserData()
     End Sub
 
-    Private Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
-        pnlUpload.Visible = True
-        pnlDiscover.Visible = False
-        pnlUsers.Visible = False
-        pnlCreateUser.Visible = False
-        pnlYourSongs.Visible = False
+    Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
+        If frmLogin.strCurType = "Admine" Or frmLogin.strCurType = "Manager" Then
+            pnlHomeAdmin.Visible = True
+            pnlDiscover.Visible = False
+            pnlYourSongs.Visible = False
+            pnlUpload.Visible = False
+            pnlUsers.Visible = False
+            pnlCreateUser.Visible = False
+        End If
     End Sub
 
     Private Sub btnDiscover_Click(sender As Object, e As EventArgs) Handles btnDiscover.Click
-        pnlUpload.Visible = False
+        pnlHomeAdmin.Visible = False
         pnlDiscover.Visible = True
+        pnlYourSongs.Visible = False
+        pnlUpload.Visible = False
         pnlUsers.Visible = False
         pnlCreateUser.Visible = False
-        pnlYourSongs.Visible = False
     End Sub
 
     Private Sub btnYourSongs_Click(sender As Object, e As EventArgs) Handles btnYourSongs.Click
-        pnlUpload.Visible = False
+        pnlHomeAdmin.Visible = False
         pnlDiscover.Visible = False
+        pnlYourSongs.Visible = True
+        pnlUpload.Visible = False
         pnlUsers.Visible = False
         pnlCreateUser.Visible = False
-        pnlYourSongs.Visible = True
+    End Sub
+
+    Private Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
+        pnlHomeAdmin.Visible = False
+        pnlDiscover.Visible = False
+        pnlYourSongs.Visible = False
+        pnlUpload.Visible = True
+        pnlUsers.Visible = False
+        pnlCreateUser.Visible = False
     End Sub
 
     Private Sub btnUsers_Click(sender As Object, e As EventArgs) Handles btnUsers.Click
-        pnlUpload.Visible = False
+        pnlHomeAdmin.Visible = False
         pnlDiscover.Visible = False
+        pnlYourSongs.Visible = False
+        pnlUpload.Visible = False
         pnlUsers.Visible = True
         pnlCreateUser.Visible = False
-        pnlYourSongs.Visible = False
     End Sub
 
     Private Sub btnCreateUser_Click(sender As Object, e As EventArgs) Handles btnCreateUser.Click
-        pnlUpload.Visible = False
+        pnlHomeAdmin.Visible = False
         pnlDiscover.Visible = False
+        pnlYourSongs.Visible = False
+        pnlUpload.Visible = False
         pnlUsers.Visible = False
         pnlCreateUser.Visible = True
-        pnlYourSongs.Visible = False
     End Sub
 
+    '========================================All Actions for pnlSongs====================================================================
     Private Sub dgvSongs_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSongs.CellContentClick
         Dim trkName As String
         Dim trkID As Integer
@@ -457,6 +492,7 @@ Public Class frmMain
         End Try
     End Sub
 
+    '========================================All Actions for pnlYourTrack====================================================================
     Private Sub dgvYourTrack_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvYourTrack.CellContentClick
         Dim trkYourName As String
         Dim trkYourID As Integer
@@ -492,14 +528,7 @@ Public Class frmMain
             ElseIf dgvYourTrack.Columns(e.ColumnIndex).Name = "trk_youredit" Then
                 ' Get the trk_name of the selected row
                 trkYourName = dgvYourTrack.Rows(e.RowIndex).Cells("trk_yourname").Value.ToString()
-
-                '' Open the Edit form and pass the trk_name as a parameter
-                'Dim editForm As New EditForm(trkName)
-                'editForm.ShowDialog()
-
-                ' Reload the data when the Edit form is closed
                 LoadTrackData()
-                'frmTrkEdit.Show()
 
             ElseIf dgvYourTrack.Columns(e.ColumnIndex).Name = "trk_yourdelete" Then
                 ' Get the trk_name of the selected row
@@ -526,6 +555,7 @@ Public Class frmMain
         End Try
     End Sub
 
+    '========================================All Actions for pnlUsers====================================================================
     Private Sub dgvUsers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUsers.CellContentClick
         Dim userName As String
         Dim userID As Integer
@@ -533,12 +563,6 @@ Public Class frmMain
         Dim userIsType As String
         Try
             If dgvUsers.Columns(e.ColumnIndex).Name = "user_update" Then
-                ' Get the trk_name of the selected row
-                'userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
-                'LoadTrackData()
-
-                'Dim columnName As String = dgvUsers.Columns(e.ColumnIndex).Name
-                'If columnName = "user_active" OrElse columnName = "user_istype" Then
                 userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
                 userID = Convert.ToInt32(dgvUsers.Rows(e.RowIndex).Cells("user_id").Value)
                 userActive = CBool(dgvUsers.Rows(e.RowIndex).Cells("user_active").Value)
