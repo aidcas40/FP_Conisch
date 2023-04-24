@@ -19,6 +19,10 @@ Public Class frmMain
     Private originalYourDataTable As DataTable
     Private originalUserDataTable As DataTable
 
+    Public Shared intSelUserID As Int32
+    Public Shared strSelUserName As String
+    Public Shared strSelUserPwd As String
+
     Private Sub LoadGenres()
         conn.Open()
         Dim gcmd As New MySqlCommand("SELECT gnr_name FROM genre", conn)
@@ -523,13 +527,10 @@ Public Class frmMain
                 ' Get the trk_name of the selected row
                 trkName = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
 
-                '' Open the Edit form and pass the trk_name as a parameter
-                'Dim editForm As New EditForm(trkName)
-                'editForm.ShowDialog()
+                frmEdit.ShowDialog()
 
                 ' Reload the data when the Edit form is closed
                 LoadTrackData()
-                'frmTrkEdit.Show()
 
             ElseIf dgvSongs.Columns(e.ColumnIndex).Name = "trk_delete" Then
                 ' Get the trk_name of the selected row
@@ -648,11 +649,24 @@ Public Class frmMain
                     End Using
 
                     MessageBox.Show($"'{userName}' was successfully updated.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    LoadTrackData()
+                    LoadUserData()
                 Else
                     MessageBox.Show($"Update unsuccesful", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
 
+            ElseIf dgvUsers.Columns(e.ColumnIndex).Name = "user_changepwd" Then
+                userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
+
+                If Convert.ToBoolean(dgvUsers.Rows(e.RowIndex).Cells("user_active").Value) Then
+
+                    intSelUserID = Convert.ToInt32(dgvUsers.Rows(e.RowIndex).Cells("user_id").Value)
+                    strSelUserName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
+                    strSelUserPwd = dgvUsers.Rows(e.RowIndex).Cells("user_password").Value.ToString()
+                    frmChangePwd.ShowDialog()
+                    LoadUserData()
+                Else
+                    MessageBox.Show($"'{userName}' account hasn't been activated.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
             ElseIf dgvUsers.Columns(e.ColumnIndex).Name = "user_delete" Then
                 ' Get the trk_name of the selected row
                 userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
@@ -841,6 +855,8 @@ Public Class frmMain
         If msgSignOut = Windows.Forms.DialogResult.Yes Then
             Me.Close()
             frmLogin.Show()
+            frmLogin.txtUsername.Text = ""
+            frmLogin.txtUserPwd.Text = ""
         Else
             Exit Sub
         End If
