@@ -351,7 +351,27 @@ Public Class frmMain
     End Sub
 
     Private Sub pnlHomeAdmin_Paint(sender As Object, e As PaintEventArgs) Handles pnlHomeAdmin.Paint
-        lblAdminWelcome.Text = lblAdminWelcome.Text & frmLogin.strCurUsername
+        lblAdminWelcome.Text = lblAdminWelcome.Text & " " & frmLogin.strCurUsername
+
+        Try
+            conn.Open()
+            Dim cmdActU As New MySqlCommand("SELECT COUNT(*) FROM users WHERE user_active = 1", conn)
+            Dim countActUsers As Object = cmdActU.ExecuteScalar()
+
+            Dim cmdUnActU As New MySqlCommand("SELECT COUNT(*) FROM users WHERE user_active = 0", conn)
+            Dim countUnActUsers As Object = cmdUnActU.ExecuteScalar()
+
+            Dim cmdTotTrk As New MySqlCommand("SELECT COUNT(*) FROM track", conn)
+            Dim countTotTrk As Object = cmdTotTrk.ExecuteScalar()
+
+            tbtnCountActUsers.Text = countActUsers.ToString() & " Active Users"
+            tbtnCountUnActUsers.Text = countUnActUsers.ToString() & " Unactive Users"
+            tbtnCountTotTrk.Text = countTotTrk.ToString() & " Uploaded Songs"
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+        End Try
     End Sub
 
     Private Sub pnlDiscover_Paint(sender As Object, e As PaintEventArgs) Handles pnlDiscover.Paint
@@ -367,7 +387,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
-        If frmLogin.strCurType = "Admine" Or frmLogin.strCurType = "Manager" Then
+        If frmLogin.strCurType = "Admin" Or frmLogin.strCurType = "Manager" Then
             pnlHomeAdmin.Visible = True
             pnlDiscover.Visible = False
             pnlYourSongs.Visible = False
