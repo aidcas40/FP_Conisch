@@ -22,6 +22,7 @@ Partial Class frmChangePwd
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmChangePwd))
         Me.txtCrtPwd = New Guna.UI2.WinForms.Guna2TextBox()
         Me.lblChangePwd = New System.Windows.Forms.Label()
         Me.txtCrtConfirmPwd = New Guna.UI2.WinForms.Guna2TextBox()
@@ -41,7 +42,7 @@ Partial Class frmChangePwd
         Me.txtCrtPwd.FocusedState.Parent = Me.txtCrtPwd
         Me.txtCrtPwd.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtCrtPwd.HoverState.Parent = Me.txtCrtPwd
-        Me.txtCrtPwd.Location = New System.Drawing.Point(46, 75)
+        Me.txtCrtPwd.Location = New System.Drawing.Point(55, 75)
         Me.txtCrtPwd.Margin = New System.Windows.Forms.Padding(37, 34, 37, 34)
         Me.txtCrtPwd.Name = "txtCrtPwd"
         Me.txtCrtPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -77,7 +78,7 @@ Partial Class frmChangePwd
         Me.txtCrtConfirmPwd.FocusedState.Parent = Me.txtCrtConfirmPwd
         Me.txtCrtConfirmPwd.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtCrtConfirmPwd.HoverState.Parent = Me.txtCrtConfirmPwd
-        Me.txtCrtConfirmPwd.Location = New System.Drawing.Point(46, 161)
+        Me.txtCrtConfirmPwd.Location = New System.Drawing.Point(55, 161)
         Me.txtCrtConfirmPwd.Margin = New System.Windows.Forms.Padding(62, 55, 62, 55)
         Me.txtCrtConfirmPwd.Name = "txtCrtConfirmPwd"
         Me.txtCrtConfirmPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -99,7 +100,7 @@ Partial Class frmChangePwd
         Me.btnUpdatePwd.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUpdatePwd.ForeColor = System.Drawing.Color.White
         Me.btnUpdatePwd.HoverState.Parent = Me.btnUpdatePwd
-        Me.btnUpdatePwd.Location = New System.Drawing.Point(122, 247)
+        Me.btnUpdatePwd.Location = New System.Drawing.Point(131, 247)
         Me.btnUpdatePwd.Name = "btnUpdatePwd"
         Me.btnUpdatePwd.ShadowDecoration.Parent = Me.btnUpdatePwd
         Me.btnUpdatePwd.Size = New System.Drawing.Size(180, 45)
@@ -116,6 +117,7 @@ Partial Class frmChangePwd
         Me.Controls.Add(Me.txtCrtConfirmPwd)
         Me.Controls.Add(Me.lblChangePwd)
         Me.Controls.Add(Me.txtCrtPwd)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmChangePwd"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Change Password"

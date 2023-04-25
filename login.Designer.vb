@@ -48,9 +48,8 @@ Partial Class frmLogin
         Me.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtUsername.HoverState.Parent = Me.txtUsername
         Me.txtUsername.IconLeft = CType(resources.GetObject("txtUsername.IconLeft"), System.Drawing.Image)
-        Me.txtUsername.Location = New System.Drawing.Point(298, 206)
+        Me.txtUsername.Location = New System.Drawing.Point(298, 211)
         Me.txtUsername.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtUsername.MaxLength = 25
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtUsername.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
@@ -81,7 +80,6 @@ Partial Class frmLogin
         Me.txtUserPwd.IconLeft = CType(resources.GetObject("txtUserPwd.IconLeft"), System.Drawing.Image)
         Me.txtUserPwd.Location = New System.Drawing.Point(298, 266)
         Me.txtUserPwd.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtUserPwd.MaxLength = 25
         Me.txtUserPwd.Name = "txtUserPwd"
         Me.txtUserPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtUserPwd.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
@@ -135,6 +133,7 @@ Partial Class frmLogin
         Me.Controls.Add(Me.txtUserPwd)
         Me.Controls.Add(Me.txtUsername)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Conisch"

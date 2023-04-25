@@ -196,9 +196,10 @@ Partial Class frmRegister
         Me.Controls.Add(Me.txtRegPwd)
         Me.Controls.Add(Me.txtRegEmail)
         Me.Controls.Add(Me.txtRegUsername)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmRegister"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmRegister"
+        Me.Text = "Conisch"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

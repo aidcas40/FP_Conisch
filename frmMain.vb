@@ -5,6 +5,7 @@ Imports System.Data
 Imports System.DateTime
 Imports System.Drawing.Imaging
 Imports WMPLib
+Imports System.ComponentModel
 
 Public Class frmMain
     Dim conn = New MySqlConnection(My.Settings.connString)
@@ -23,6 +24,14 @@ Public Class frmMain
     Public Shared strSelUserName As String
     Public Shared strSelUserPwd As String
 
+    Public Shared intSelTrkID As Int32
+    Public Shared strSelTrkName As String
+    Public Shared strSelTrkArtist As String
+    Public Shared strSelTrkGenre As String
+    Public Shared strSelTrkFtArtist As String
+    Public Shared strSelTrkDate As String
+    Public Shared bytSelTrkPic As Byte()
+
     Private Sub LoadGenres()
         conn.Open()
         Dim gcmd As New MySqlCommand("SELECT gnr_name FROM genre", conn)
@@ -36,30 +45,52 @@ Public Class frmMain
         conn.Close()
     End Sub
 
-    Private Sub LoadHomeQueriesAd()
+    '=======================================================================================================================
+    Private bw As BackgroundWorker
+
+    Private Sub frmMain_LoadQueries(sender As Object, e As EventArgs) Handles MyBase.Load
+        bw = New BackgroundWorker()
+        AddHandler bw.DoWork, AddressOf LoadHomeQueriesWorker
+        bw.RunWorkerAsync()
+    End Sub
+
+    Private Sub LoadHomeQueriesWorker(sender As Object, e As DoWorkEventArgs)
+        Dim bgConn As MySqlConnection = New MySqlConnection(conn.ConnectionString)
         Try
-            conn.Open()
-            Dim cmdActU As New MySqlCommand("SELECT COUNT(*) FROM users WHERE user_active = 1", conn)
-            Dim countActUsers As Object = cmdActU.ExecuteScalar()
+            bgConn.Open()
 
-            Dim cmdUnActU As New MySqlCommand("SELECT COUNT(*) FROM users WHERE user_active = 0", conn)
-            Dim countUnActUsers As Object = cmdUnActU.ExecuteScalar()
+            Dim cmd As New MySqlCommand()
+            cmd.Connection = bgConn
 
-            Dim cmdTotTrk As New MySqlCommand("SELECT COUNT(*) FROM track", conn)
-            Dim countTotTrk As Object = cmdTotTrk.ExecuteScalar()
+            cmd.CommandText = "SELECT COUNT(*) FROM users WHERE user_active = 1"
+            Dim countActUsers As Object = cmd.ExecuteScalar()
 
-            tbtnCountActUsers.Text = $"{countActUsers} Active Users"
-            tbtnCountUnActUsers.Text = $"{countUnActUsers} Inactive Users"
-            tbtnCountTotTrk.Text = $"{countTotTrk} Total Uploaded Songs"
+            cmd.CommandText = "SELECT COUNT(*) FROM users WHERE user_active = 0"
+            Dim countUnActUsers As Object = cmd.ExecuteScalar()
+
+            cmd.CommandText = "SELECT COUNT(*) FROM track"
+            Dim countTotTrk As Object = cmd.ExecuteScalar()
+
+            If Not bw.CancellationPending Then
+                Me.Invoke(Sub() tbtnCountActUsers.Text = $"{countActUsers} Active Users")
+                Me.Invoke(Sub() tbtnCountUnActUsers.Text = $"{countUnActUsers} Inactive Users")
+                Me.Invoke(Sub() tbtnCountTotTrk.Text = $"{countTotTrk} Total Uploaded Songs")
+            End If
 
         Catch ex As MySqlException
             MsgBox(ex.Message)
         Finally
-            conn.Close()
-            conn.Dispose()
+            bgConn.Close()
+            bgConn.Dispose()
         End Try
     End Sub
 
+    Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If bw IsNot Nothing AndAlso bw.IsBusy Then
+            bw.CancelAsync()
+        End If
+    End Sub
+    '=======================================================================================================================
     Private Sub LoadHomeQueriesUser()
         Try
             conn.Open()
@@ -406,7 +437,7 @@ Public Class frmMain
             picCountUnUsers.Visible = True
             picCountTracks.Visible = True
 
-            LoadHomeQueriesAd()
+            'LoadHomeQueriesAd()
 
         ElseIf frmLogin.strCurType = "User" Then
             tbtnCountActUsers.Visible = False
@@ -422,6 +453,7 @@ Public Class frmMain
 
             LoadHomeQueriesUser()
         End If
+
     End Sub
 
     Private Sub pnlDiscover_Paint(sender As Object, e As PaintEventArgs) Handles pnlDiscover.Paint
@@ -436,6 +468,27 @@ Public Class frmMain
         LoadUserData()
     End Sub
 
+    Private Sub pnlAboutProgram_Paint(sender As Object, e As PaintEventArgs) Handles pnlAboutProgram.Paint
+        lblAboutProgDesc.Text = "Conisch is a music app created by students that offers a convenient platform for users 
+to add and listen to their personal music collection. With the ability to add, delete, 
+and edit music, Conisch provides a versatile music management system that allows users 
+to keep their music organized. The app also includes administrative tools that enable 
+administrators to easily remove or edit user data. Whether you're looking to discover 
+new artists or simply listen to your favorite tracks, Conisch provides a user-friendly 
+and accessible music listening experience."
+    End Sub
+
+    Private Sub pnlAboutDev_Paint(sender As Object, e As PaintEventArgs) Handles pnlAboutDev.Paint
+        lblAboutDevDesc.Text = "Dennis Villanueva, Aiden Castillo, Francis Sharp, and Kayden Cervantes are four 
+passionate computer science students from Belize who develop groundbreaking programs. 
+These students share a love for technology and have dedicated their time and effort to 
+create programs that will push the boundaries of what is possible in the field. Pursuing 
+their computer science degrees, these students have taken their skills to new heights, 
+producing programs that are sure to make a significant impact in the industry. Their 
+shared dedication and passion for computer science has allowed them to achieve great 
+success in their work."
+    End Sub
+
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
         pnlHome.Visible = True
         pnlDiscover.Visible = False
@@ -443,6 +496,8 @@ Public Class frmMain
         pnlUpload.Visible = False
         pnlUsers.Visible = False
         pnlCreateUser.Visible = False
+        pnlAboutProgram.Visible = False
+        pnlAboutDev.Visible = False
     End Sub
 
     Private Sub btnDiscover_Click(sender As Object, e As EventArgs) Handles btnDiscover.Click
@@ -452,6 +507,8 @@ Public Class frmMain
         pnlUpload.Visible = False
         pnlUsers.Visible = False
         pnlCreateUser.Visible = False
+        pnlAboutProgram.Visible = False
+        pnlAboutDev.Visible = False
     End Sub
 
     Private Sub btnYourSongs_Click(sender As Object, e As EventArgs) Handles btnYourSongs.Click
@@ -461,6 +518,8 @@ Public Class frmMain
         pnlUpload.Visible = False
         pnlUsers.Visible = False
         pnlCreateUser.Visible = False
+        pnlAboutProgram.Visible = False
+        pnlAboutDev.Visible = False
     End Sub
 
     Private Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
@@ -470,6 +529,8 @@ Public Class frmMain
         pnlUpload.Visible = True
         pnlUsers.Visible = False
         pnlCreateUser.Visible = False
+        pnlAboutProgram.Visible = False
+        pnlAboutDev.Visible = False
     End Sub
 
     Private Sub btnUsers_Click(sender As Object, e As EventArgs) Handles btnUsers.Click
@@ -479,6 +540,8 @@ Public Class frmMain
         pnlUpload.Visible = False
         pnlUsers.Visible = True
         pnlCreateUser.Visible = False
+        pnlAboutProgram.Visible = False
+        pnlAboutDev.Visible = False
     End Sub
 
     Private Sub btnCreateUser_Click(sender As Object, e As EventArgs) Handles btnCreateUser.Click
@@ -488,6 +551,30 @@ Public Class frmMain
         pnlUpload.Visible = False
         pnlUsers.Visible = False
         pnlCreateUser.Visible = True
+        pnlAboutProgram.Visible = False
+        pnlAboutDev.Visible = False
+    End Sub
+
+    Private Sub btnAboutProg_Click(sender As Object, e As EventArgs) Handles btnAboutProg.Click
+        pnlHome.Visible = False
+        pnlDiscover.Visible = False
+        pnlYourSongs.Visible = False
+        pnlUpload.Visible = False
+        pnlUsers.Visible = False
+        pnlCreateUser.Visible = False
+        pnlAboutProgram.Visible = True
+        pnlAboutDev.Visible = False
+    End Sub
+
+    Private Sub btnAboutDev_Click(sender As Object, e As EventArgs) Handles btnAboutDev.Click
+        pnlHome.Visible = False
+        pnlDiscover.Visible = False
+        pnlYourSongs.Visible = False
+        pnlUpload.Visible = False
+        pnlUsers.Visible = False
+        pnlCreateUser.Visible = False
+        pnlAboutProgram.Visible = False
+        pnlAboutDev.Visible = True
     End Sub
 
     '========================================All Actions for pnlSongs====================================================================
@@ -526,6 +613,14 @@ Public Class frmMain
             ElseIf dgvSongs.Columns(e.ColumnIndex).Name = "trk_edit" Then
                 ' Get the trk_name of the selected row
                 trkName = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
+
+                intSelTrkID = Convert.ToInt32(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
+                bytSelTrkPic = DirectCast(dgvSongs.Rows(e.RowIndex).Cells("trk_picture").Value, Byte())
+                strSelTrkName = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
+                strSelTrkArtist = dgvSongs.Rows(e.RowIndex).Cells("trk_artist").Value.ToString()
+                strSelTrkGenre = dgvSongs.Rows(e.RowIndex).Cells("trk_genre").Value.ToString()
+                strSelTrkFtArtist = dgvSongs.Rows(e.RowIndex).Cells("trk_featartist").Value.ToString()
+                strSelTrkDate = dgvSongs.Rows(e.RowIndex).Cells("trk_date").Value.ToString()
 
                 frmEdit.ShowDialog()
 
@@ -865,8 +960,10 @@ Public Class frmMain
     Private Sub ctrlbxClose_Click(sender As Object, e As EventArgs) Handles ctrlbxClose.Click
         Dim msgClose = MessageBox.Show("Are you sure you want to close the application?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If msgClose = Windows.Forms.DialogResult.Yes Then
+            'Me.Show()
             Application.Exit()
         Else
+            'Me.Show()
             Exit Sub
         End If
     End Sub

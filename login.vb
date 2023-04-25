@@ -1,6 +1,6 @@
 ﻿'----------------------------------------------------------------------------------
 'Program Title: 		Conisch
-'Program Author: 		Aiden Castillo, Kayden Cervantes, Dennis Villanueva
+'Program Author: 		Aiden Castillo, Kayden Cervantes, Dennis Villanueva, Francis Sharp
 'Date Created:  		15 April, 2023
 'School:			    Corozal Junior College
 'Course Number/Name:	CS206 - Programming II
@@ -12,13 +12,16 @@
 '----------------------------------------------------------------------------------
 Imports MySql.Data.MySqlClient
 Public Class frmLogin
+    'Declaring public variables to be used accross different forms
     Public Shared intCurID As Int32
     Public Shared intCurActive As Int32
     Public Shared strCurUsername As String
     Public Shared strCurType As String
 
+    'Defining connection string and mysql commands
     Dim conn = New MySqlConnection(My.Settings.connString)
     Dim command As MySqlCommand
+
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connection()
     End Sub
@@ -27,6 +30,7 @@ Public Class frmLogin
         Dim reader As MySqlDataReader
 
         Try
+            'Connecting to the database to check if the username and password entered in the login forms matches
             conn.Open()
             Dim query As String
             query = "SELECT * FROM  users WHERE user_username ='" & txtUsername.Text & "' AND BINARY user_password='" & txtUserPwd.Text & "' "
@@ -40,11 +44,7 @@ Public Class frmLogin
             End While
 
             If count = 1 Then
-                'intCurID = reader.GetValue(0)
-                'strCurUsername = reader.GetValue(1)
-                'intCurActive = reader.GetValue(4)
-                'strCurType = reader.GetValue(5)
-
+                ' use reader function to save specific user data from the database
                 intCurID = reader.GetInt32(0)
                 strCurUsername = reader.GetString(1)
                 If Not reader.IsDBNull(4) Then
@@ -54,6 +54,7 @@ Public Class frmLogin
                     strCurType = reader.GetString(5)
                 End If
 
+                ' if statements to deal with if the user accouunt 
                 If intCurActive <> 1 Then
                     MessageBox.Show(Me, "Account hasn't been activated.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf strCurType = Nothing Then
