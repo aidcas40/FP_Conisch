@@ -19,7 +19,7 @@ Public Class frmEdit
     End Sub
 
     Private Sub frmEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim ms As New System.IO.MemoryStream(frmMain.bytSelTrkPic)
+        Dim ms As New MemoryStream(frmMain.bytSelTrkPic)
         picTrkPicUpd.Image = Image.FromStream(ms)
         txtTrkNameUpd.Text = frmMain.strSelTrkName
         txtArtistUpd.Text = frmMain.strSelTrkArtist

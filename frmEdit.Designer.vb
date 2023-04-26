@@ -66,7 +66,6 @@ Partial Class frmEdit
         Me.txtTrkNameUpd.HoverState.Parent = Me.txtTrkNameUpd
         Me.txtTrkNameUpd.Location = New System.Drawing.Point(274, 65)
         Me.txtTrkNameUpd.Margin = New System.Windows.Forms.Padding(5)
-        Me.txtTrkNameUpd.MaxLength = 25
         Me.txtTrkNameUpd.Name = "txtTrkNameUpd"
         Me.txtTrkNameUpd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtTrkNameUpd.PlaceholderText = "Song Name"
@@ -91,7 +90,6 @@ Partial Class frmEdit
         Me.txtArtistUpd.HoverState.Parent = Me.txtArtistUpd
         Me.txtArtistUpd.Location = New System.Drawing.Point(274, 143)
         Me.txtArtistUpd.Margin = New System.Windows.Forms.Padding(8)
-        Me.txtArtistUpd.MaxLength = 25
         Me.txtArtistUpd.Name = "txtArtistUpd"
         Me.txtArtistUpd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtArtistUpd.PlaceholderText = "Artist"
@@ -135,7 +133,6 @@ Partial Class frmEdit
         Me.txtFtArtistUpd.HoverState.Parent = Me.txtFtArtistUpd
         Me.txtFtArtistUpd.Location = New System.Drawing.Point(528, 65)
         Me.txtFtArtistUpd.Margin = New System.Windows.Forms.Padding(13)
-        Me.txtFtArtistUpd.MaxLength = 100
         Me.txtFtArtistUpd.Name = "txtFtArtistUpd"
         Me.txtFtArtistUpd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtFtArtistUpd.PlaceholderText = "Featuring Artist"
@@ -247,7 +244,7 @@ Partial Class frmEdit
         Me.Controls.Add(Me.picTrkPicUpd)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmEdit"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Update Song"
         CType(Me.picTrkPicUpd, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

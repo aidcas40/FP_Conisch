@@ -119,7 +119,7 @@ Partial Class frmChangePwd
         Me.Controls.Add(Me.txtCrtPwd)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmChangePwd"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Change Password"
         Me.ResumeLayout(False)
         Me.PerformLayout()

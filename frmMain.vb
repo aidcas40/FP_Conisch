@@ -22,7 +22,10 @@ Public Class frmMain
 
     Public Shared intSelUserID As Int32
     Public Shared strSelUserName As String
+    Public Shared strSelUserEmail As String
+    Public Shared strSelUserType As String
     Public Shared strSelUserPwd As String
+
 
     Public Shared intSelTrkID As Int32
     Public Shared strSelTrkName As String
@@ -610,6 +613,18 @@ success in their work."
                     AxWindowsMediaPlayer1.Ctlcontrols.play()
                 End If
 
+            ElseIf dgvSongs.Columns(e.ColumnIndex).Name = "trk_print" Then
+
+                intSelTrkID = Convert.ToInt32(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
+                bytSelTrkPic = DirectCast(dgvSongs.Rows(e.RowIndex).Cells("trk_picture").Value, Byte())
+                strSelTrkName = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
+                strSelTrkArtist = dgvSongs.Rows(e.RowIndex).Cells("trk_artist").Value.ToString()
+                strSelTrkGenre = dgvSongs.Rows(e.RowIndex).Cells("trk_genre").Value.ToString()
+                strSelTrkFtArtist = dgvSongs.Rows(e.RowIndex).Cells("trk_featartist").Value.ToString()
+                strSelTrkDate = dgvSongs.Rows(e.RowIndex).Cells("trk_date").Value.ToString()
+
+                frmPrint.ShowDialog()
+
             ElseIf dgvSongs.Columns(e.ColumnIndex).Name = "trk_edit" Then
                 ' Get the trk_name of the selected row
                 trkName = dgvSongs.Rows(e.RowIndex).Cells("trk_name").Value.ToString()
@@ -716,6 +731,7 @@ success in their work."
     End Sub
 
     '========================================All Actions for pnlUsers====================================================================
+
     Private Sub dgvUsers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUsers.CellContentClick
         Dim userName As String
         Dim userID As Integer
@@ -748,6 +764,15 @@ success in their work."
                 Else
                     MessageBox.Show($"Update unsuccesful", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
+
+            ElseIf dgvUsers.Columns(e.ColumnIndex).Name = "user_print" Then
+
+                'intSelUserID = Convert.ToInt32(dgvUsers.Rows(e.RowIndex).Cells("user_id").Value)
+                'strSelUserName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
+                'strSelUserEmail = dgvUsers.Rows(e.RowIndex).Cells("user_email").Value.ToString()
+                'strSelUserType = dgvUsers.Rows(e.RowIndex).Cells("user_istype").Value.ToString()
+
+                'frmPrintUser.ShowDialog()
 
             ElseIf dgvUsers.Columns(e.ColumnIndex).Name = "user_changepwd" Then
                 userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
