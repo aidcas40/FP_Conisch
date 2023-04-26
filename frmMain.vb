@@ -270,7 +270,6 @@ Public Class frmMain
         dgvUsers.Columns("user_active").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvUsers.Columns("user_istype").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvUsers.Columns("user_update").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-        dgvUsers.Columns("user_print").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvUsers.Columns("user_changepwd").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvUsers.Columns("user_delete").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
@@ -587,7 +586,7 @@ success in their work."
         Try
             If dgvSongs.Columns(e.ColumnIndex).Name = "trk_play" Then
                 trkID = CInt(dgvSongs.Rows(e.RowIndex).Cells("trk_id").Value)
-                Dim query As String = "SELECT trk_audio FROM track WHERE trk_id = " & trkID
+                Dim query As String = "SELECT trk_audio, trk_picture, trk_artist, trk_name FROM track WHERE trk_id = " & trkID
                 Dim filePath As String = ""
 
                 Using conn
@@ -597,7 +596,16 @@ success in their work."
                         Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
                         If reader.Read() Then
+                            ' Retrieve the image data from the "trk_pic" column
+                            Dim imageBytes As Byte() = DirectCast(reader("trk_picture"), Byte())
+                            ' Create a new MemoryStream object from the byte array
+                            Dim msPlay As New MemoryStream(imageBytes)
+                            ' Set the image of the "picPlayMusic" PictureBox control
+                            picPlayMusic.Image = Image.FromStream(msPlay)
+
                             filePath = reader("trk_audio").ToString()
+                            lblArtist.Text = reader("trk_artist").ToString()
+                            lblSong.Text = reader("trk_name")
                         End If
 
                         reader.Close()
@@ -674,7 +682,7 @@ success in their work."
         Try
             If dgvYourTrack.Columns(e.ColumnIndex).Name = "trk_yourplay" Then
                 trkYourID = CInt(dgvYourTrack.Rows(e.RowIndex).Cells("trk_yourid").Value)
-                Dim query As String = "SELECT trk_audio FROM track WHERE trk_id = " & trkYourID
+                Dim query As String = "SELECT trk_audio, trk_picture, trk_artist, trk_name FROM track WHERE trk_id = " & trkYourID
                 Dim filePath As String = ""
 
                 Using conn
@@ -684,7 +692,16 @@ success in their work."
                         Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
                         If reader.Read() Then
+                            ' Retrieve the image data from the "trk_pic" column
+                            Dim imageBytes As Byte() = DirectCast(reader("trk_picture"), Byte())
+                            ' Create a new MemoryStream object from the byte array
+                            Dim msPlay As New MemoryStream(imageBytes)
+                            ' Set the image of the "picPlayMusic" PictureBox control
+                            picPlayMusic.Image = Image.FromStream(msPlay)
+
                             filePath = reader("trk_audio").ToString()
+                            lblArtist.Text = reader("trk_artist").ToString()
+                            lblSong.Text = reader("trk_name")
                         End If
 
                         reader.Close()
@@ -764,15 +781,6 @@ success in their work."
                 Else
                     MessageBox.Show($"Update unsuccesful", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
-
-            ElseIf dgvUsers.Columns(e.ColumnIndex).Name = "user_print" Then
-
-                'intSelUserID = Convert.ToInt32(dgvUsers.Rows(e.RowIndex).Cells("user_id").Value)
-                'strSelUserName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()
-                'strSelUserEmail = dgvUsers.Rows(e.RowIndex).Cells("user_email").Value.ToString()
-                'strSelUserType = dgvUsers.Rows(e.RowIndex).Cells("user_istype").Value.ToString()
-
-                'frmPrintUser.ShowDialog()
 
             ElseIf dgvUsers.Columns(e.ColumnIndex).Name = "user_changepwd" Then
                 userName = dgvUsers.Rows(e.RowIndex).Cells("user_username").Value.ToString()

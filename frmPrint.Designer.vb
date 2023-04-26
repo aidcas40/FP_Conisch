@@ -33,6 +33,12 @@ Partial Class frmPrint
         Me.txtCreatedPrt = New Guna.UI2.WinForms.Guna2TextBox()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.lblTrkNamePrt = New System.Windows.Forms.Label()
+        Me.lblArtistPrt = New System.Windows.Forms.Label()
+        Me.lblGenrePrt = New System.Windows.Forms.Label()
+        Me.lblFtArtistPrt = New System.Windows.Forms.Label()
+        Me.lblDatePrt = New System.Windows.Forms.Label()
+        Me.lblCreatedPrt = New System.Windows.Forms.Label()
         CType(Me.picTrkPicPrt, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -41,10 +47,10 @@ Partial Class frmPrint
         Me.picTrkPicPrt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.picTrkPicPrt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.picTrkPicPrt.Image = CType(resources.GetObject("picTrkPicPrt.Image"), System.Drawing.Image)
-        Me.picTrkPicPrt.Location = New System.Drawing.Point(28, 41)
+        Me.picTrkPicPrt.Location = New System.Drawing.Point(12, 42)
         Me.picTrkPicPrt.Name = "picTrkPicPrt"
         Me.picTrkPicPrt.ShadowDecoration.Parent = Me.picTrkPicPrt
-        Me.picTrkPicPrt.Size = New System.Drawing.Size(218, 193)
+        Me.picTrkPicPrt.Size = New System.Drawing.Size(249, 220)
         Me.picTrkPicPrt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.picTrkPicPrt.TabIndex = 5
         Me.picTrkPicPrt.TabStop = False
@@ -62,7 +68,7 @@ Partial Class frmPrint
         Me.txtTrkNamePrt.FocusedState.Parent = Me.txtTrkNamePrt
         Me.txtTrkNamePrt.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtTrkNamePrt.HoverState.Parent = Me.txtTrkNamePrt
-        Me.txtTrkNamePrt.Location = New System.Drawing.Point(268, 41)
+        Me.txtTrkNamePrt.Location = New System.Drawing.Point(288, 42)
         Me.txtTrkNamePrt.Margin = New System.Windows.Forms.Padding(5)
         Me.txtTrkNamePrt.Name = "txtTrkNamePrt"
         Me.txtTrkNamePrt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -87,7 +93,7 @@ Partial Class frmPrint
         Me.txtArtistPrt.FocusedState.Parent = Me.txtArtistPrt
         Me.txtArtistPrt.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtArtistPrt.HoverState.Parent = Me.txtArtistPrt
-        Me.txtArtistPrt.Location = New System.Drawing.Point(268, 119)
+        Me.txtArtistPrt.Location = New System.Drawing.Point(288, 134)
         Me.txtArtistPrt.Margin = New System.Windows.Forms.Padding(8)
         Me.txtArtistPrt.Name = "txtArtistPrt"
         Me.txtArtistPrt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -112,7 +118,7 @@ Partial Class frmPrint
         Me.txtFtArtistPrt.FocusedState.Parent = Me.txtFtArtistPrt
         Me.txtFtArtistPrt.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtFtArtistPrt.HoverState.Parent = Me.txtFtArtistPrt
-        Me.txtFtArtistPrt.Location = New System.Drawing.Point(515, 41)
+        Me.txtFtArtistPrt.Location = New System.Drawing.Point(535, 42)
         Me.txtFtArtistPrt.Margin = New System.Windows.Forms.Padding(13)
         Me.txtFtArtistPrt.Name = "txtFtArtistPrt"
         Me.txtFtArtistPrt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -137,7 +143,7 @@ Partial Class frmPrint
         Me.txtGenrePrt.FocusedState.Parent = Me.txtGenrePrt
         Me.txtGenrePrt.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtGenrePrt.HoverState.Parent = Me.txtGenrePrt
-        Me.txtGenrePrt.Location = New System.Drawing.Point(268, 197)
+        Me.txtGenrePrt.Location = New System.Drawing.Point(288, 226)
         Me.txtGenrePrt.Margin = New System.Windows.Forms.Padding(8)
         Me.txtGenrePrt.Name = "txtGenrePrt"
         Me.txtGenrePrt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -162,7 +168,7 @@ Partial Class frmPrint
         Me.txtDatePrt.FocusedState.Parent = Me.txtDatePrt
         Me.txtDatePrt.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtDatePrt.HoverState.Parent = Me.txtDatePrt
-        Me.txtDatePrt.Location = New System.Drawing.Point(515, 119)
+        Me.txtDatePrt.Location = New System.Drawing.Point(535, 134)
         Me.txtDatePrt.Margin = New System.Windows.Forms.Padding(8)
         Me.txtDatePrt.Name = "txtDatePrt"
         Me.txtDatePrt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -184,7 +190,7 @@ Partial Class frmPrint
         Me.btnTrkPrint.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnTrkPrint.ForeColor = System.Drawing.Color.White
         Me.btnTrkPrint.HoverState.Parent = Me.btnTrkPrint
-        Me.btnTrkPrint.Location = New System.Drawing.Point(268, 304)
+        Me.btnTrkPrint.Location = New System.Drawing.Point(288, 304)
         Me.btnTrkPrint.Name = "btnTrkPrint"
         Me.btnTrkPrint.ShadowDecoration.Parent = Me.btnTrkPrint
         Me.btnTrkPrint.Size = New System.Drawing.Size(180, 45)
@@ -204,7 +210,7 @@ Partial Class frmPrint
         Me.txtCreatedPrt.FocusedState.Parent = Me.txtCreatedPrt
         Me.txtCreatedPrt.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtCreatedPrt.HoverState.Parent = Me.txtCreatedPrt
-        Me.txtCreatedPrt.Location = New System.Drawing.Point(515, 198)
+        Me.txtCreatedPrt.Location = New System.Drawing.Point(535, 226)
         Me.txtCreatedPrt.Margin = New System.Windows.Forms.Padding(8)
         Me.txtCreatedPrt.Name = "txtCreatedPrt"
         Me.txtCreatedPrt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -223,26 +229,99 @@ Partial Class frmPrint
         '
         Me.PrintDialog1.UseEXDialog = True
         '
+        'lblTrkNamePrt
+        '
+        Me.lblTrkNamePrt.AutoSize = True
+        Me.lblTrkNamePrt.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTrkNamePrt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(193, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(207, Byte), Integer))
+        Me.lblTrkNamePrt.Location = New System.Drawing.Point(295, 33)
+        Me.lblTrkNamePrt.Name = "lblTrkNamePrt"
+        Me.lblTrkNamePrt.Size = New System.Drawing.Size(72, 15)
+        Me.lblTrkNamePrt.TabIndex = 20
+        Me.lblTrkNamePrt.Text = "Song Name:"
+        '
+        'lblArtistPrt
+        '
+        Me.lblArtistPrt.AutoSize = True
+        Me.lblArtistPrt.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblArtistPrt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(193, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(207, Byte), Integer))
+        Me.lblArtistPrt.Location = New System.Drawing.Point(296, 123)
+        Me.lblArtistPrt.Name = "lblArtistPrt"
+        Me.lblArtistPrt.Size = New System.Drawing.Size(38, 15)
+        Me.lblArtistPrt.TabIndex = 21
+        Me.lblArtistPrt.Text = "Artist:"
+        '
+        'lblGenrePrt
+        '
+        Me.lblGenrePrt.AutoSize = True
+        Me.lblGenrePrt.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGenrePrt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(193, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(207, Byte), Integer))
+        Me.lblGenrePrt.Location = New System.Drawing.Point(295, 216)
+        Me.lblGenrePrt.Name = "lblGenrePrt"
+        Me.lblGenrePrt.Size = New System.Drawing.Size(41, 15)
+        Me.lblGenrePrt.TabIndex = 22
+        Me.lblGenrePrt.Text = "Genre:"
+        '
+        'lblFtArtistPrt
+        '
+        Me.lblFtArtistPrt.AutoSize = True
+        Me.lblFtArtistPrt.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFtArtistPrt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(193, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(207, Byte), Integer))
+        Me.lblFtArtistPrt.Location = New System.Drawing.Point(542, 33)
+        Me.lblFtArtistPrt.Name = "lblFtArtistPrt"
+        Me.lblFtArtistPrt.Size = New System.Drawing.Size(91, 15)
+        Me.lblFtArtistPrt.TabIndex = 23
+        Me.lblFtArtistPrt.Text = "Featuring Artist:"
+        '
+        'lblDatePrt
+        '
+        Me.lblDatePrt.AutoSize = True
+        Me.lblDatePrt.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDatePrt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(193, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(207, Byte), Integer))
+        Me.lblDatePrt.Location = New System.Drawing.Point(542, 123)
+        Me.lblDatePrt.Name = "lblDatePrt"
+        Me.lblDatePrt.Size = New System.Drawing.Size(73, 15)
+        Me.lblDatePrt.TabIndex = 24
+        Me.lblDatePrt.Text = "Released on:"
+        '
+        'lblCreatedPrt
+        '
+        Me.lblCreatedPrt.AutoSize = True
+        Me.lblCreatedPrt.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCreatedPrt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(193, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(207, Byte), Integer))
+        Me.lblCreatedPrt.Location = New System.Drawing.Point(542, 216)
+        Me.lblCreatedPrt.Name = "lblCreatedPrt"
+        Me.lblCreatedPrt.Size = New System.Drawing.Size(78, 15)
+        Me.lblCreatedPrt.TabIndex = 25
+        Me.lblCreatedPrt.Text = "Uploaded on:"
+        '
         'frmPrint
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(775, 372)
-        Me.Controls.Add(Me.txtCreatedPrt)
+        Me.Controls.Add(Me.lblTrkNamePrt)
+        Me.Controls.Add(Me.lblCreatedPrt)
+        Me.Controls.Add(Me.lblDatePrt)
+        Me.Controls.Add(Me.lblFtArtistPrt)
+        Me.Controls.Add(Me.lblGenrePrt)
+        Me.Controls.Add(Me.lblArtistPrt)
         Me.Controls.Add(Me.btnTrkPrint)
-        Me.Controls.Add(Me.txtDatePrt)
-        Me.Controls.Add(Me.txtGenrePrt)
-        Me.Controls.Add(Me.txtFtArtistPrt)
-        Me.Controls.Add(Me.txtArtistPrt)
-        Me.Controls.Add(Me.txtTrkNamePrt)
         Me.Controls.Add(Me.picTrkPicPrt)
+        Me.Controls.Add(Me.txtTrkNamePrt)
+        Me.Controls.Add(Me.txtFtArtistPrt)
+        Me.Controls.Add(Me.txtDatePrt)
+        Me.Controls.Add(Me.txtArtistPrt)
+        Me.Controls.Add(Me.txtGenrePrt)
+        Me.Controls.Add(Me.txtCreatedPrt)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmPrint"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Print View"
         CType(Me.picTrkPicPrt, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -256,4 +335,10 @@ Partial Class frmPrint
     Friend WithEvents txtCreatedPrt As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents PrintDialog1 As PrintDialog
+    Friend WithEvents lblTrkNamePrt As Label
+    Friend WithEvents lblArtistPrt As Label
+    Friend WithEvents lblGenrePrt As Label
+    Friend WithEvents lblFtArtistPrt As Label
+    Friend WithEvents lblDatePrt As Label
+    Friend WithEvents lblCreatedPrt As Label
 End Class

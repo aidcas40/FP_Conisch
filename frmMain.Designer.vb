@@ -24,23 +24,23 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim DataGridViewCellStyle120 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle121 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle129 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle130 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle122 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle123 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle124 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle125 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle126 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle127 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle128 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle131 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle132 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle133 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle134 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle135 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle136 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
         Me.pnlBar = New Guna.UI2.WinForms.Guna2Panel()
         Me.ctrlbxMin = New Guna.UI2.WinForms.Guna2ControlBox()
@@ -101,16 +101,6 @@ Partial Class frmMain
         Me.txtUserSearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.lblUsers = New System.Windows.Forms.Label()
         Me.dgvUsers = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.user_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.user_username = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.user_email = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.user_password = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.user_active = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.user_istype = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.user_update = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.user_print = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.user_changepwd = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.user_delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.pnlCreateUser = New Guna.UI2.WinForms.Guna2Panel()
         Me.txtCrtConfirmPwd = New Guna.UI2.WinForms.Guna2TextBox()
         Me.btnCrtClear = New Guna.UI2.WinForms.Guna2Button()
@@ -154,6 +144,15 @@ Partial Class frmMain
         Me.picAboutDev = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.lblAboutDev = New System.Windows.Forms.Label()
         Me.txtCrtEmail = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.user_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.user_username = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.user_email = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.user_password = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.user_active = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.user_istype = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.user_update = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.user_changepwd = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.user_delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.pnlBar.SuspendLayout()
         Me.pnlMenu.SuspendLayout()
         Me.pnlPlayer.SuspendLayout()
@@ -521,11 +520,10 @@ Partial Class frmMain
         Me.lblSong.AutoSize = True
         Me.lblSong.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSong.ForeColor = System.Drawing.Color.White
-        Me.lblSong.Location = New System.Drawing.Point(141, 34)
+        Me.lblSong.Location = New System.Drawing.Point(140, 34)
         Me.lblSong.Name = "lblSong"
-        Me.lblSong.Size = New System.Drawing.Size(77, 17)
+        Me.lblSong.Size = New System.Drawing.Size(0, 17)
         Me.lblSong.TabIndex = 3
-        Me.lblSong.Text = "Track Name"
         '
         'lblArtist
         '
@@ -534,9 +532,8 @@ Partial Class frmMain
         Me.lblArtist.ForeColor = System.Drawing.Color.White
         Me.lblArtist.Location = New System.Drawing.Point(140, 14)
         Me.lblArtist.Name = "lblArtist"
-        Me.lblArtist.Size = New System.Drawing.Size(72, 17)
+        Me.lblArtist.Size = New System.Drawing.Size(0, 17)
         Me.lblArtist.TabIndex = 2
-        Me.lblArtist.Text = "Track Artist"
         '
         'picPlayMusic
         '
@@ -884,39 +881,39 @@ Partial Class frmMain
         '
         Me.dgvSongs.AllowUserToAddRows = False
         Me.dgvSongs.AllowUserToDeleteRows = False
-        DataGridViewCellStyle120.BackColor = System.Drawing.Color.White
-        Me.dgvSongs.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle120
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.White
+        Me.dgvSongs.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle18
         Me.dgvSongs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvSongs.BackgroundColor = System.Drawing.Color.White
         Me.dgvSongs.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvSongs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvSongs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle121.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle121.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle121.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle121.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle121.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle121.SelectionForeColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle121.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvSongs.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle121
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvSongs.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
         Me.dgvSongs.ColumnHeadersHeight = 44
         Me.dgvSongs.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trk_id, Me.trk_picture, Me.trk_name, Me.trk_artist, Me.trk_genre, Me.trk_featartist, Me.trk_date, Me.trk_created, Me.trk_play, Me.trk_print, Me.trk_edit, Me.trk_delete})
-        DataGridViewCellStyle129.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle129.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle129.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle129.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle129.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle129.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle129.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvSongs.DefaultCellStyle = DataGridViewCellStyle129
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle27.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle27.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvSongs.DefaultCellStyle = DataGridViewCellStyle27
         Me.dgvSongs.EnableHeadersVisualStyles = False
         Me.dgvSongs.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.dgvSongs.Location = New System.Drawing.Point(36, 106)
         Me.dgvSongs.Name = "dgvSongs"
         Me.dgvSongs.ReadOnly = True
         Me.dgvSongs.RowHeadersVisible = False
-        DataGridViewCellStyle130.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.dgvSongs.RowsDefaultCellStyle = DataGridViewCellStyle130
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.dgvSongs.RowsDefaultCellStyle = DataGridViewCellStyle28
         Me.dgvSongs.RowTemplate.Height = 25
         Me.dgvSongs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvSongs.Size = New System.Drawing.Size(940, 364)
@@ -946,8 +943,8 @@ Partial Class frmMain
         '
         'trk_id
         '
-        DataGridViewCellStyle122.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_id.DefaultCellStyle = DataGridViewCellStyle122
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_id.DefaultCellStyle = DataGridViewCellStyle20
         Me.trk_id.FillWeight = 30.0!
         Me.trk_id.HeaderText = "ID"
         Me.trk_id.Name = "trk_id"
@@ -967,8 +964,8 @@ Partial Class frmMain
         'trk_name
         '
         Me.trk_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle123.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_name.DefaultCellStyle = DataGridViewCellStyle123
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_name.DefaultCellStyle = DataGridViewCellStyle21
         Me.trk_name.FillWeight = 50.0!
         Me.trk_name.HeaderText = "Song"
         Me.trk_name.Name = "trk_name"
@@ -978,8 +975,8 @@ Partial Class frmMain
         'trk_artist
         '
         Me.trk_artist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle124.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_artist.DefaultCellStyle = DataGridViewCellStyle124
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_artist.DefaultCellStyle = DataGridViewCellStyle22
         Me.trk_artist.FillWeight = 25.0!
         Me.trk_artist.HeaderText = "Artist"
         Me.trk_artist.Name = "trk_artist"
@@ -989,8 +986,8 @@ Partial Class frmMain
         'trk_genre
         '
         Me.trk_genre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle125.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_genre.DefaultCellStyle = DataGridViewCellStyle125
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_genre.DefaultCellStyle = DataGridViewCellStyle23
         Me.trk_genre.FillWeight = 50.0!
         Me.trk_genre.HeaderText = "Genre"
         Me.trk_genre.Name = "trk_genre"
@@ -1000,8 +997,8 @@ Partial Class frmMain
         'trk_featartist
         '
         Me.trk_featartist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle126.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_featartist.DefaultCellStyle = DataGridViewCellStyle126
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_featartist.DefaultCellStyle = DataGridViewCellStyle24
         Me.trk_featartist.FillWeight = 50.0!
         Me.trk_featartist.HeaderText = "Featuring Artist"
         Me.trk_featartist.Name = "trk_featartist"
@@ -1011,10 +1008,10 @@ Partial Class frmMain
         'trk_date
         '
         Me.trk_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle127.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle127.Format = "d"
-        DataGridViewCellStyle127.NullValue = Nothing
-        Me.trk_date.DefaultCellStyle = DataGridViewCellStyle127
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle25.Format = "d"
+        DataGridViewCellStyle25.NullValue = Nothing
+        Me.trk_date.DefaultCellStyle = DataGridViewCellStyle25
         Me.trk_date.FillWeight = 50.0!
         Me.trk_date.HeaderText = "Released"
         Me.trk_date.Name = "trk_date"
@@ -1024,10 +1021,10 @@ Partial Class frmMain
         'trk_created
         '
         Me.trk_created.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle128.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle128.Format = "g"
-        DataGridViewCellStyle128.NullValue = Nothing
-        Me.trk_created.DefaultCellStyle = DataGridViewCellStyle128
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle26.Format = "g"
+        DataGridViewCellStyle26.NullValue = Nothing
+        Me.trk_created.DefaultCellStyle = DataGridViewCellStyle26
         Me.trk_created.FillWeight = 30.0!
         Me.trk_created.HeaderText = "Uploaded"
         Me.trk_created.Name = "trk_created"
@@ -1131,31 +1128,31 @@ Partial Class frmMain
         '
         Me.dgvUsers.AllowUserToAddRows = False
         Me.dgvUsers.AllowUserToDeleteRows = False
-        DataGridViewCellStyle131.BackColor = System.Drawing.Color.White
-        Me.dgvUsers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle131
+        DataGridViewCellStyle29.BackColor = System.Drawing.Color.White
+        Me.dgvUsers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle29
         Me.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvUsers.BackgroundColor = System.Drawing.Color.White
         Me.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle132.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle132.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle132.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle132.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle132.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle132.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle132.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvUsers.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle132
+        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle30.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle30.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvUsers.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle30
         Me.dgvUsers.ColumnHeadersHeight = 44
-        Me.dgvUsers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.user_id, Me.user_username, Me.user_email, Me.user_password, Me.user_active, Me.user_istype, Me.user_update, Me.user_print, Me.user_changepwd, Me.user_delete})
-        DataGridViewCellStyle133.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle133.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle133.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle133.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle133.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle133.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle133.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvUsers.DefaultCellStyle = DataGridViewCellStyle133
+        Me.dgvUsers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.user_id, Me.user_username, Me.user_email, Me.user_password, Me.user_active, Me.user_istype, Me.user_update, Me.user_changepwd, Me.user_delete})
+        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle31.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle31.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle31.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvUsers.DefaultCellStyle = DataGridViewCellStyle31
         Me.dgvUsers.EnableHeadersVisualStyles = False
         Me.dgvUsers.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.dgvUsers.Location = New System.Drawing.Point(36, 106)
@@ -1186,69 +1183,6 @@ Partial Class frmMain
         Me.dgvUsers.ThemeStyle.RowsStyle.Height = 22
         Me.dgvUsers.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.dgvUsers.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        '
-        'user_id
-        '
-        Me.user_id.HeaderText = "ID"
-        Me.user_id.Name = "user_id"
-        '
-        'user_username
-        '
-        Me.user_username.HeaderText = "Username"
-        Me.user_username.Name = "user_username"
-        '
-        'user_email
-        '
-        Me.user_email.HeaderText = "Email"
-        Me.user_email.Name = "user_email"
-        '
-        'user_password
-        '
-        Me.user_password.HeaderText = "Password"
-        Me.user_password.Name = "user_password"
-        '
-        'user_active
-        '
-        Me.user_active.HeaderText = "Activation"
-        Me.user_active.Name = "user_active"
-        Me.user_active.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.user_active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'user_istype
-        '
-        Me.user_istype.HeaderText = "User Type"
-        Me.user_istype.Items.AddRange(New Object() {"Admin", "Manager", "User"})
-        Me.user_istype.Name = "user_istype"
-        '
-        'user_update
-        '
-        Me.user_update.HeaderText = "Update"
-        Me.user_update.Name = "user_update"
-        Me.user_update.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.user_update.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.user_update.Text = "Update"
-        Me.user_update.UseColumnTextForButtonValue = True
-        '
-        'user_print
-        '
-        Me.user_print.HeaderText = "Print"
-        Me.user_print.Name = "user_print"
-        Me.user_print.Text = "Print"
-        Me.user_print.UseColumnTextForButtonValue = True
-        '
-        'user_changepwd
-        '
-        Me.user_changepwd.HeaderText = "Change Password"
-        Me.user_changepwd.Name = "user_changepwd"
-        Me.user_changepwd.Text = "Change"
-        Me.user_changepwd.UseColumnTextForButtonValue = True
-        '
-        'user_delete
-        '
-        Me.user_delete.HeaderText = "Delete"
-        Me.user_delete.Name = "user_delete"
-        Me.user_delete.Text = "Delete"
-        Me.user_delete.UseColumnTextForButtonValue = True
         '
         'pnlCreateUser
         '
@@ -1497,31 +1431,31 @@ Partial Class frmMain
         '
         Me.dgvYourTrack.AllowUserToAddRows = False
         Me.dgvYourTrack.AllowUserToDeleteRows = False
-        DataGridViewCellStyle134.BackColor = System.Drawing.Color.White
-        Me.dgvYourTrack.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle134
+        DataGridViewCellStyle32.BackColor = System.Drawing.Color.White
+        Me.dgvYourTrack.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle32
         Me.dgvYourTrack.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvYourTrack.BackgroundColor = System.Drawing.Color.White
         Me.dgvYourTrack.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvYourTrack.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvYourTrack.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle135.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle135.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle135.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle135.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle135.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle135.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle135.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvYourTrack.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle135
+        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle33.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle33.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvYourTrack.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle33
         Me.dgvYourTrack.ColumnHeadersHeight = 44
         Me.dgvYourTrack.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trk_yourid, Me.trk_yourpicture, Me.trk_yourname, Me.trk_yourartist, Me.trk_yourgenre, Me.trk_yourfeatartist, Me.trk_yourdate, Me.trk_yourcreated, Me.trk_yourplay, Me.trk_yourdelete})
-        DataGridViewCellStyle136.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle136.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle136.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle136.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle136.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle136.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle136.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvYourTrack.DefaultCellStyle = DataGridViewCellStyle136
+        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle34.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle34.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle34.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvYourTrack.DefaultCellStyle = DataGridViewCellStyle34
         Me.dgvYourTrack.EnableHeadersVisualStyles = False
         Me.dgvYourTrack.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.dgvYourTrack.Location = New System.Drawing.Point(36, 106)
@@ -1878,6 +1812,62 @@ Partial Class frmMain
         Me.txtCrtEmail.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
         Me.txtCrtEmail.TabIndex = 1
         '
+        'user_id
+        '
+        Me.user_id.HeaderText = "ID"
+        Me.user_id.Name = "user_id"
+        '
+        'user_username
+        '
+        Me.user_username.HeaderText = "Username"
+        Me.user_username.Name = "user_username"
+        '
+        'user_email
+        '
+        Me.user_email.HeaderText = "Email"
+        Me.user_email.Name = "user_email"
+        '
+        'user_password
+        '
+        Me.user_password.HeaderText = "Password"
+        Me.user_password.Name = "user_password"
+        '
+        'user_active
+        '
+        Me.user_active.HeaderText = "Activation"
+        Me.user_active.Name = "user_active"
+        Me.user_active.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.user_active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'user_istype
+        '
+        Me.user_istype.HeaderText = "User Type"
+        Me.user_istype.Items.AddRange(New Object() {"Admin", "Manager", "User"})
+        Me.user_istype.Name = "user_istype"
+        '
+        'user_update
+        '
+        Me.user_update.HeaderText = "Update"
+        Me.user_update.Name = "user_update"
+        Me.user_update.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.user_update.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.user_update.Text = "Update"
+        Me.user_update.UseColumnTextForButtonValue = True
+        '
+        'user_changepwd
+        '
+        Me.user_changepwd.HeaderText = "Change Password"
+        Me.user_changepwd.Name = "user_changepwd"
+        Me.user_changepwd.Text = "Change"
+        Me.user_changepwd.UseColumnTextForButtonValue = True
+        '
+        'user_delete
+        '
+        Me.user_delete.HeaderText = "Delete"
+        Me.user_delete.Name = "user_delete"
+        Me.user_delete.Text = "Delete"
+        Me.user_delete.UseColumnTextForButtonValue = True
+        '
         'frmMain
         '
         Me.AcceptButton = Me.btnHome
@@ -1886,12 +1876,12 @@ Partial Class frmMain
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.CancelButton = Me.btnSignOut
         Me.ClientSize = New System.Drawing.Size(1220, 604)
-        Me.Controls.Add(Me.pnlCreateUser)
-        Me.Controls.Add(Me.pnlUsers)
-        Me.Controls.Add(Me.pnlUpload)
-        Me.Controls.Add(Me.pnlDiscover)
         Me.Controls.Add(Me.pnlHome)
+        Me.Controls.Add(Me.pnlDiscover)
+        Me.Controls.Add(Me.pnlUpload)
         Me.Controls.Add(Me.pnlYourSongs)
+        Me.Controls.Add(Me.pnlUsers)
+        Me.Controls.Add(Me.pnlCreateUser)
         Me.Controls.Add(Me.pnlAboutDev)
         Me.Controls.Add(Me.pnlAboutProgram)
         Me.Controls.Add(Me.pnlMenu)
@@ -2002,16 +1992,6 @@ Partial Class frmMain
     Friend WithEvents txtYourSearch As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblYourSong As Label
     Friend WithEvents dgvYourTrack As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents user_id As DataGridViewTextBoxColumn
-    Friend WithEvents user_username As DataGridViewTextBoxColumn
-    Friend WithEvents user_email As DataGridViewTextBoxColumn
-    Friend WithEvents user_password As DataGridViewTextBoxColumn
-    Friend WithEvents user_active As DataGridViewCheckBoxColumn
-    Friend WithEvents user_istype As DataGridViewComboBoxColumn
-    Friend WithEvents user_update As DataGridViewButtonColumn
-    Friend WithEvents user_print As DataGridViewButtonColumn
-    Friend WithEvents user_changepwd As DataGridViewButtonColumn
-    Friend WithEvents user_delete As DataGridViewButtonColumn
     Friend WithEvents trk_id As DataGridViewTextBoxColumn
     Friend WithEvents trk_picture As DataGridViewImageColumn
     Friend WithEvents trk_name As DataGridViewTextBoxColumn
@@ -2053,4 +2033,13 @@ Partial Class frmMain
     Friend WithEvents picAboutDev As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents lblAboutDev As Label
     Friend WithEvents txtCrtEmail As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents user_id As DataGridViewTextBoxColumn
+    Friend WithEvents user_username As DataGridViewTextBoxColumn
+    Friend WithEvents user_email As DataGridViewTextBoxColumn
+    Friend WithEvents user_password As DataGridViewTextBoxColumn
+    Friend WithEvents user_active As DataGridViewCheckBoxColumn
+    Friend WithEvents user_istype As DataGridViewComboBoxColumn
+    Friend WithEvents user_update As DataGridViewButtonColumn
+    Friend WithEvents user_changepwd As DataGridViewButtonColumn
+    Friend WithEvents user_delete As DataGridViewButtonColumn
 End Class

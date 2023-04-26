@@ -25,6 +25,11 @@ Public Class frmPrint
         txtTrkNamePrt.Text = frmMain.strSelTrkName
         txtArtistPrt.Text = frmMain.strSelTrkArtist
         txtGenrePrt.Text = frmMain.strSelTrkGenre
+        If frmMain.strSelTrkFtArtist = "" Then
+            txtFtArtistPrt.PlaceholderText = ""
+        Else
+            txtFtArtistPrt.Text = frmMain.strSelTrkFtArtist
+        End If
         txtDatePrt.Text = frmMain.strSelTrkDate
     End Sub
 
@@ -44,6 +49,10 @@ Public Class frmPrint
 
     Private Sub btnTrkPrint_Click(sender As Object, e As EventArgs) Handles btnTrkPrint.Click
         PrintDialog1.Document = PrintDocument1
+
+        ' Set the page settings
+        PrintDocument1.DefaultPageSettings.Landscape = True ' Set to landscape orientation
+        PrintDocument1.DefaultPageSettings.Margins = New Printing.Margins(50, 50, 50, 50) ' Set margins to 50 pixels on all sides
 
         'Display the Print dialog box
         If PrintDialog1.ShowDialog() = DialogResult.OK Then
