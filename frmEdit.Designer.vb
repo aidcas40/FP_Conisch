@@ -73,7 +73,7 @@ Partial Class frmEdit
         Me.txtTrkNameUpd.ShadowDecoration.Parent = Me.txtTrkNameUpd
         Me.txtTrkNameUpd.Size = New System.Drawing.Size(200, 36)
         Me.txtTrkNameUpd.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
-        Me.txtTrkNameUpd.TabIndex = 5
+        Me.txtTrkNameUpd.TabIndex = 0
         '
         'txtArtistUpd
         '
@@ -97,7 +97,7 @@ Partial Class frmEdit
         Me.txtArtistUpd.ShadowDecoration.Parent = Me.txtArtistUpd
         Me.txtArtistUpd.Size = New System.Drawing.Size(200, 36)
         Me.txtArtistUpd.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
-        Me.txtArtistUpd.TabIndex = 6
+        Me.txtArtistUpd.TabIndex = 1
         '
         'cbxGenreUpd
         '
@@ -116,7 +116,7 @@ Partial Class frmEdit
         Me.cbxGenreUpd.Name = "cbxGenreUpd"
         Me.cbxGenreUpd.ShadowDecoration.Parent = Me.cbxGenreUpd
         Me.cbxGenreUpd.Size = New System.Drawing.Size(200, 36)
-        Me.cbxGenreUpd.TabIndex = 7
+        Me.cbxGenreUpd.TabIndex = 2
         '
         'txtFtArtistUpd
         '
@@ -140,7 +140,7 @@ Partial Class frmEdit
         Me.txtFtArtistUpd.ShadowDecoration.Parent = Me.txtFtArtistUpd
         Me.txtFtArtistUpd.Size = New System.Drawing.Size(200, 36)
         Me.txtFtArtistUpd.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
-        Me.txtFtArtistUpd.TabIndex = 8
+        Me.txtFtArtistUpd.TabIndex = 3
         '
         'dtpDateUpd
         '
@@ -157,7 +157,7 @@ Partial Class frmEdit
         Me.dtpDateUpd.Name = "dtpDateUpd"
         Me.dtpDateUpd.ShadowDecoration.Parent = Me.dtpDateUpd
         Me.dtpDateUpd.Size = New System.Drawing.Size(200, 36)
-        Me.dtpDateUpd.TabIndex = 9
+        Me.dtpDateUpd.TabIndex = 4
         Me.dtpDateUpd.Value = New Date(2023, 4, 20, 13, 7, 49, 604)
         '
         'lblGenreUpd
@@ -196,7 +196,7 @@ Partial Class frmEdit
         Me.btnTrkUpdate.Name = "btnTrkUpdate"
         Me.btnTrkUpdate.ShadowDecoration.Parent = Me.btnTrkUpdate
         Me.btnTrkUpdate.Size = New System.Drawing.Size(180, 45)
-        Me.btnTrkUpdate.TabIndex = 17
+        Me.btnTrkUpdate.TabIndex = 5
         Me.btnTrkUpdate.Text = "Update"
         '
         'lblUpdateHead
@@ -227,6 +227,7 @@ Partial Class frmEdit
         '
         'frmEdit
         '
+        Me.AcceptButton = Me.btnTrkUpdate
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White

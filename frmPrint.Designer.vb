@@ -194,7 +194,7 @@ Partial Class frmPrint
         Me.btnTrkPrint.Name = "btnTrkPrint"
         Me.btnTrkPrint.ShadowDecoration.Parent = Me.btnTrkPrint
         Me.btnTrkPrint.Size = New System.Drawing.Size(180, 45)
-        Me.btnTrkPrint.TabIndex = 18
+        Me.btnTrkPrint.TabIndex = 0
         Me.btnTrkPrint.Text = "Print"
         '
         'txtCreatedPrt
@@ -297,6 +297,7 @@ Partial Class frmPrint
         '
         'frmPrint
         '
+        Me.AcceptButton = Me.btnTrkPrint
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White

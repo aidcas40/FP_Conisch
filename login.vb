@@ -23,7 +23,7 @@ Public Class frmLogin
     Dim command As MySqlCommand
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        connection()
+        'connection()
     End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click

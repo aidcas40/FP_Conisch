@@ -51,7 +51,7 @@ Partial Class frmChangePwd
         Me.txtCrtPwd.ShadowDecoration.Parent = Me.txtCrtPwd
         Me.txtCrtPwd.Size = New System.Drawing.Size(333, 58)
         Me.txtCrtPwd.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
-        Me.txtCrtPwd.TabIndex = 4
+        Me.txtCrtPwd.TabIndex = 0
         Me.txtCrtPwd.UseSystemPasswordChar = True
         '
         'lblChangePwd
@@ -87,7 +87,7 @@ Partial Class frmChangePwd
         Me.txtCrtConfirmPwd.ShadowDecoration.Parent = Me.txtCrtConfirmPwd
         Me.txtCrtConfirmPwd.Size = New System.Drawing.Size(333, 58)
         Me.txtCrtConfirmPwd.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material
-        Me.txtCrtConfirmPwd.TabIndex = 13
+        Me.txtCrtConfirmPwd.TabIndex = 1
         Me.txtCrtConfirmPwd.UseSystemPasswordChar = True
         '
         'btnUpdatePwd
@@ -104,11 +104,12 @@ Partial Class frmChangePwd
         Me.btnUpdatePwd.Name = "btnUpdatePwd"
         Me.btnUpdatePwd.ShadowDecoration.Parent = Me.btnUpdatePwd
         Me.btnUpdatePwd.Size = New System.Drawing.Size(180, 45)
-        Me.btnUpdatePwd.TabIndex = 14
-        Me.btnUpdatePwd.Text = "Update"
+        Me.btnUpdatePwd.TabIndex = 2
+        Me.btnUpdatePwd.Text = "Change"
         '
         'frmChangePwd
         '
+        Me.AcceptButton = Me.btnUpdatePwd
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight

@@ -20,6 +20,8 @@ Public Class frmMain
     Private originalYourDataTable As DataTable
     Private originalUserDataTable As DataTable
 
+    Public Shared intCurIDMain As Int32
+
     Public Shared intSelUserID As Int32
     Public Shared strSelUserName As String
     Public Shared strSelUserEmail As String
@@ -778,6 +780,8 @@ success in their work."
 
                     MessageBox.Show($"'{userName}' was successfully updated.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     LoadUserData()
+                ElseIf result = DialogResult.No Then
+                    Exit Sub
                 Else
                     MessageBox.Show($"Update unsuccesful", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
@@ -991,13 +995,19 @@ success in their work."
     End Sub
 
     Private Sub ctrlbxClose_Click(sender As Object, e As EventArgs) Handles ctrlbxClose.Click
-        Dim msgClose = MessageBox.Show("Are you sure you want to close the application?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If msgClose = Windows.Forms.DialogResult.Yes Then
-            'Me.Show()
-            Application.Exit()
-        Else
-            'Me.Show()
-            Exit Sub
+        Application.Exit()
+    End Sub
+
+    Private Sub dgvUsers_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvUsers.CellFormatting
+        If (dgvUsers.Columns(e.ColumnIndex).Name = "user_password" AndAlso frmLogin.strCurType = "Manager") Then
+            e.Value = New String("○", e.Value.ToString().Length)
         End If
+    End Sub
+
+    Private Sub lnkChangePwd_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkChangePwd.LinkClicked
+        intCurIDMain = frmLogin.intCurID
+
+        frmChangePwd.ShowDialog()
+        LoadUserData()
     End Sub
 End Class
