@@ -28,10 +28,11 @@ Public Class frmUserChangePwd
                             Using cmd As New MySqlCommand(query, conn)
                                 cmd.Parameters.AddWithValue("@upassword", txtChgUserPwd.Text)
                                 cmd.Parameters.AddWithValue("@uid", frmMain.intCurIDMain)
+
                                 cmd.ExecuteNonQuery()
                             End Using
                         End Using
-
+                        'MessageBox.Show($"@upassword: {txtChgUserPwd.Text}, @uid: {frmMain.intCurIDMain}")
                         MessageBox.Show($"Your password was successfully updated.", "Change Password", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                         txtChgUserPwd.Text = ""

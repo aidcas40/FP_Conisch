@@ -55,7 +55,6 @@ Partial Class frmUserChangePwd
         Me.txtChgUserPwd.HoverState.Parent = Me.txtChgUserPwd
         Me.txtChgUserPwd.Location = New System.Drawing.Point(55, 75)
         Me.txtChgUserPwd.Margin = New System.Windows.Forms.Padding(37, 34, 37, 34)
-        Me.txtChgUserPwd.MaxLength = 25
         Me.txtChgUserPwd.Name = "txtChgUserPwd"
         Me.txtChgUserPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtChgUserPwd.PlaceholderText = "New Password"
@@ -81,7 +80,6 @@ Partial Class frmUserChangePwd
         Me.txtChgConfirmPwd.HoverState.Parent = Me.txtChgConfirmPwd
         Me.txtChgConfirmPwd.Location = New System.Drawing.Point(55, 161)
         Me.txtChgConfirmPwd.Margin = New System.Windows.Forms.Padding(62, 55, 62, 55)
-        Me.txtChgConfirmPwd.MaxLength = 25
         Me.txtChgConfirmPwd.Name = "txtChgConfirmPwd"
         Me.txtChgConfirmPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtChgConfirmPwd.PlaceholderText = "Confirm Password"
@@ -113,6 +111,7 @@ Partial Class frmUserChangePwd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(452, 396)
         Me.Controls.Add(Me.btnChangePwd)
         Me.Controls.Add(Me.txtChgConfirmPwd)
@@ -120,7 +119,8 @@ Partial Class frmUserChangePwd
         Me.Controls.Add(Me.lblChangePwd)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmUserChangePwd"
-        Me.Text = "Change Password"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Change Your Password"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

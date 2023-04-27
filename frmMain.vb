@@ -414,7 +414,6 @@ Public Class frmMain
 
         ElseIf frmLogin.strCurType = "Manager" Then
             btnCreateUser.Visible = False
-
             dgvUsers.Columns("user_delete").Visible = False
 
         ElseIf frmLogin.strCurType = "User" Then
@@ -1006,8 +1005,15 @@ success in their work."
 
     Private Sub lnkChangePwd_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkChangePwd.LinkClicked
         intCurIDMain = frmLogin.intCurID
-
-        frmChangePwd.ShowDialog()
+        frmUserChangePwd.ShowDialog()
         LoadUserData()
+    End Sub
+
+    Private Sub lblUserManual_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblUserManual.LinkClicked
+        ' Specify the path to the PDF file
+        Dim strUserManual As String = Application.StartupPath & "\manual\user-manual.pdf"
+
+        ' Launch the Chrome browser and open the PDF file
+        Process.Start("chrome.exe", $"--disable-infobars ""{strUserManual}""")
     End Sub
 End Class

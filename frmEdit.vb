@@ -68,8 +68,10 @@ Public Class frmEdit
                 MessageBox.Show($"'{frmMain.strSelTrkName}' was successfully updated.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Me.Close()
+            ElseIf updateTrk = DialogResult.No Then
+                Exit Sub
             Else
-                MessageBox.Show($"Update was unsuccesful.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show($"Update was unsuccessful.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
