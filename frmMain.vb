@@ -173,20 +173,27 @@ Public Class frmMain
         dgvSongs.Columns("trk_date").DataPropertyName = "trk_date"
         dgvSongs.Columns("trk_created").DataPropertyName = "trk_created"
 
+        dgvSongs.Columns("trk_name").Width = 50
+        dgvSongs.Columns("trk_artist").Width = 90
+        dgvSongs.Columns("trk_genre").Width = 80
+        dgvSongs.Columns("trk_featartist").Width = 70
+        dgvSongs.Columns("trk_date").Width = 60
+        dgvSongs.Columns("trk_created").Width = 100
+
         dgvSongs.Columns("trk_id").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvSongs.Columns("trk_picture").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-        dgvSongs.Columns("trk_name").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        dgvSongs.Columns("trk_artist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        dgvSongs.Columns("trk_genre").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        dgvSongs.Columns("trk_featartist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        dgvSongs.Columns("trk_date").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        dgvSongs.Columns("trk_created").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        'dgvSongs.Columns("trk_name").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        'dgvSongs.Columns("trk_artist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        'dgvSongs.Columns("trk_genre").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        'dgvSongs.Columns("trk_featartist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        'dgvSongs.Columns("trk_date").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        'dgvSongs.Columns("trk_created").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvSongs.Columns("trk_edit").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvSongs.Columns("trk_delete").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvSongs.Columns("trk_play").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvSongs.Columns("trk_print").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
-        dgvSongs.RowTemplate.Height = 30
+        dgvSongs.RowTemplate.Height = 40
 
         dgvSongs.DataSource = dt
 
@@ -217,8 +224,8 @@ Public Class frmMain
         dgvYourTrack.Columns("trk_yourdate").DataPropertyName = "trk_date"
         dgvYourTrack.Columns("trk_yourcreated").DataPropertyName = "trk_created"
 
-        dgvYourTrack.Columns("trk_yourid").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        dgvYourTrack.Columns("trk_yourpicture").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvYourTrack.Columns("trk_yourid").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        dgvYourTrack.Columns("trk_yourpicture").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvYourTrack.Columns("trk_yourname").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvYourTrack.Columns("trk_yourartist").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvYourTrack.Columns("trk_yourgenre").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -228,7 +235,7 @@ Public Class frmMain
         dgvYourTrack.Columns("trk_yourdelete").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvYourTrack.Columns("trk_yourplay").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
-        dgvYourTrack.RowTemplate.Height = 30
+        dgvYourTrack.RowTemplate.Height = 40
 
         dgvYourTrack.DataSource = dt
 

@@ -28,6 +28,12 @@ Partial Class frmMain
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -35,14 +41,10 @@ Partial Class frmMain
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
         Me.pnlBar = New Guna.UI2.WinForms.Guna2Panel()
+        Me.lblProgConisch = New System.Windows.Forms.Label()
+        Me.picProgLogo = New Guna.UI2.WinForms.Guna2CirclePictureBox()
         Me.ctrlbxMin = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.ctrlbxMax = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.ctrlbxClose = New Guna.UI2.WinForms.Guna2ControlBox()
@@ -84,18 +86,6 @@ Partial Class frmMain
         Me.txtDiscSearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.lblBrowseAll = New System.Windows.Forms.Label()
         Me.dgvSongs = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.trk_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_picture = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.trk_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_artist = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_genre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_featartist = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_date = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_created = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_play = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.trk_print = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.trk_edit = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.trk_delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.pnlUsers = New Guna.UI2.WinForms.Guna2Panel()
         Me.txtUserSearch = New Guna.UI2.WinForms.Guna2TextBox()
@@ -146,8 +136,19 @@ Partial Class frmMain
         Me.picAboutDev = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.lblAboutDev = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.picProgLogo = New Guna.UI2.WinForms.Guna2CirclePictureBox()
-        Me.lblProgConisch = New System.Windows.Forms.Label()
+        Me.trk_play = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.trk_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_picture = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.trk_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_artist = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_genre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_featartist = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_date = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_created = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_print = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.trk_edit = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.trk_delete = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.trk_yourplay = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.trk_yourid = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_yourpicture = New System.Windows.Forms.DataGridViewImageColumn()
         Me.trk_yourname = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -156,9 +157,9 @@ Partial Class frmMain
         Me.trk_yourfeatartist = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_yourdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.trk_yourcreated = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_yourplay = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.trk_yourdelete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.pnlBar.SuspendLayout()
+        CType(Me.picProgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlMenu.SuspendLayout()
         Me.pnlPlayer.SuspendLayout()
         CType(Me.AxWindowsMediaPlayer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -180,7 +181,6 @@ Partial Class frmMain
         CType(Me.picAboutProgram, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlAboutDev.SuspendLayout()
         CType(Me.picAboutDev, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picProgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2Elipse1
@@ -200,6 +200,29 @@ Partial Class frmMain
         Me.pnlBar.ShadowDecoration.Parent = Me.pnlBar
         Me.pnlBar.Size = New System.Drawing.Size(1220, 28)
         Me.pnlBar.TabIndex = 0
+        '
+        'lblProgConisch
+        '
+        Me.lblProgConisch.AutoSize = True
+        Me.lblProgConisch.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblProgConisch.ForeColor = System.Drawing.Color.White
+        Me.lblProgConisch.Location = New System.Drawing.Point(43, 6)
+        Me.lblProgConisch.Name = "lblProgConisch"
+        Me.lblProgConisch.Size = New System.Drawing.Size(55, 17)
+        Me.lblProgConisch.TabIndex = 11
+        Me.lblProgConisch.Text = "Conisch"
+        '
+        'picProgLogo
+        '
+        Me.picProgLogo.Image = CType(resources.GetObject("picProgLogo.Image"), System.Drawing.Image)
+        Me.picProgLogo.Location = New System.Drawing.Point(12, 3)
+        Me.picProgLogo.Name = "picProgLogo"
+        Me.picProgLogo.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.picProgLogo.ShadowDecoration.Parent = Me.picProgLogo
+        Me.picProgLogo.Size = New System.Drawing.Size(25, 23)
+        Me.picProgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picProgLogo.TabIndex = 11
+        Me.picProgLogo.TabStop = False
         '
         'ctrlbxMin
         '
@@ -905,7 +928,7 @@ Partial Class frmMain
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvSongs.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvSongs.ColumnHeadersHeight = 44
-        Me.dgvSongs.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trk_id, Me.trk_picture, Me.trk_name, Me.trk_artist, Me.trk_genre, Me.trk_featartist, Me.trk_date, Me.trk_created, Me.trk_play, Me.trk_print, Me.trk_edit, Me.trk_delete})
+        Me.dgvSongs.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trk_play, Me.trk_id, Me.trk_picture, Me.trk_name, Me.trk_artist, Me.trk_genre, Me.trk_featartist, Me.trk_date, Me.trk_created, Me.trk_print, Me.trk_edit, Me.trk_delete})
         DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -948,132 +971,6 @@ Partial Class frmMain
         Me.dgvSongs.ThemeStyle.RowsStyle.Height = 25
         Me.dgvSongs.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.dgvSongs.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        '
-        'trk_id
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_id.DefaultCellStyle = DataGridViewCellStyle3
-        Me.trk_id.FillWeight = 30.0!
-        Me.trk_id.HeaderText = "ID"
-        Me.trk_id.Name = "trk_id"
-        Me.trk_id.ReadOnly = True
-        '
-        'trk_picture
-        '
-        Me.trk_picture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.trk_picture.HeaderText = "Image"
-        Me.trk_picture.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
-        Me.trk_picture.Name = "trk_picture"
-        Me.trk_picture.ReadOnly = True
-        Me.trk_picture.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.trk_picture.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.trk_picture.Width = 87
-        '
-        'trk_name
-        '
-        Me.trk_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_name.DefaultCellStyle = DataGridViewCellStyle4
-        Me.trk_name.FillWeight = 50.0!
-        Me.trk_name.HeaderText = "Song"
-        Me.trk_name.Name = "trk_name"
-        Me.trk_name.ReadOnly = True
-        Me.trk_name.Width = 74
-        '
-        'trk_artist
-        '
-        Me.trk_artist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_artist.DefaultCellStyle = DataGridViewCellStyle5
-        Me.trk_artist.FillWeight = 25.0!
-        Me.trk_artist.HeaderText = "Artist"
-        Me.trk_artist.Name = "trk_artist"
-        Me.trk_artist.ReadOnly = True
-        Me.trk_artist.Width = 76
-        '
-        'trk_genre
-        '
-        Me.trk_genre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_genre.DefaultCellStyle = DataGridViewCellStyle6
-        Me.trk_genre.FillWeight = 50.0!
-        Me.trk_genre.HeaderText = "Genre"
-        Me.trk_genre.Name = "trk_genre"
-        Me.trk_genre.ReadOnly = True
-        Me.trk_genre.Width = 84
-        '
-        'trk_featartist
-        '
-        Me.trk_featartist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.trk_featartist.DefaultCellStyle = DataGridViewCellStyle7
-        Me.trk_featartist.FillWeight = 50.0!
-        Me.trk_featartist.HeaderText = "Featuring Artist"
-        Me.trk_featartist.Name = "trk_featartist"
-        Me.trk_featartist.ReadOnly = True
-        Me.trk_featartist.Width = 155
-        '
-        'trk_date
-        '
-        Me.trk_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.Format = "d"
-        DataGridViewCellStyle8.NullValue = Nothing
-        Me.trk_date.DefaultCellStyle = DataGridViewCellStyle8
-        Me.trk_date.FillWeight = 50.0!
-        Me.trk_date.HeaderText = "Released"
-        Me.trk_date.Name = "trk_date"
-        Me.trk_date.ReadOnly = True
-        Me.trk_date.Width = 106
-        '
-        'trk_created
-        '
-        Me.trk_created.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.Format = "g"
-        DataGridViewCellStyle9.NullValue = Nothing
-        Me.trk_created.DefaultCellStyle = DataGridViewCellStyle9
-        Me.trk_created.FillWeight = 30.0!
-        Me.trk_created.HeaderText = "Uploaded"
-        Me.trk_created.Name = "trk_created"
-        Me.trk_created.ReadOnly = True
-        Me.trk_created.Width = 113
-        '
-        'trk_play
-        '
-        Me.trk_play.HeaderText = "Play"
-        Me.trk_play.Name = "trk_play"
-        Me.trk_play.ReadOnly = True
-        Me.trk_play.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.trk_play.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.trk_play.Text = "Play"
-        Me.trk_play.UseColumnTextForButtonValue = True
-        '
-        'trk_print
-        '
-        Me.trk_print.HeaderText = "Print"
-        Me.trk_print.Name = "trk_print"
-        Me.trk_print.ReadOnly = True
-        Me.trk_print.Text = "Print"
-        Me.trk_print.UseColumnTextForButtonValue = True
-        '
-        'trk_edit
-        '
-        Me.trk_edit.FillWeight = 50.0!
-        Me.trk_edit.HeaderText = "Edit"
-        Me.trk_edit.Name = "trk_edit"
-        Me.trk_edit.ReadOnly = True
-        Me.trk_edit.Text = "Edit"
-        Me.trk_edit.UseColumnTextForButtonValue = True
-        '
-        'trk_delete
-        '
-        Me.trk_delete.FillWeight = 50.0!
-        Me.trk_delete.HeaderText = "Delete"
-        Me.trk_delete.Name = "trk_delete"
-        Me.trk_delete.ReadOnly = True
-        Me.trk_delete.Text = "Delete"
-        Me.trk_delete.UseColumnTextForButtonValue = True
         '
         'OpenFileDialog1
         '
@@ -1535,7 +1432,7 @@ Partial Class frmMain
         DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvYourTrack.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.dgvYourTrack.ColumnHeadersHeight = 44
-        Me.dgvYourTrack.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trk_yourid, Me.trk_yourpicture, Me.trk_yourname, Me.trk_yourartist, Me.trk_yourgenre, Me.trk_yourfeatartist, Me.trk_yourdate, Me.trk_yourcreated, Me.trk_yourplay, Me.trk_yourdelete})
+        Me.dgvYourTrack.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trk_yourplay, Me.trk_yourid, Me.trk_yourpicture, Me.trk_yourname, Me.trk_yourartist, Me.trk_yourgenre, Me.trk_yourfeatartist, Me.trk_yourdate, Me.trk_yourcreated, Me.trk_yourdelete})
         DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle14.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1850,28 +1747,140 @@ Partial Class frmMain
         '
         Me.Timer1.Enabled = True
         '
-        'picProgLogo
+        'trk_play
         '
-        Me.picProgLogo.Image = CType(resources.GetObject("picProgLogo.Image"), System.Drawing.Image)
-        Me.picProgLogo.Location = New System.Drawing.Point(12, 3)
-        Me.picProgLogo.Name = "picProgLogo"
-        Me.picProgLogo.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.picProgLogo.ShadowDecoration.Parent = Me.picProgLogo
-        Me.picProgLogo.Size = New System.Drawing.Size(25, 23)
-        Me.picProgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picProgLogo.TabIndex = 11
-        Me.picProgLogo.TabStop = False
+        Me.trk_play.HeaderText = "Play"
+        Me.trk_play.Name = "trk_play"
+        Me.trk_play.ReadOnly = True
+        Me.trk_play.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.trk_play.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.trk_play.Text = "Play"
+        Me.trk_play.UseColumnTextForButtonValue = True
         '
-        'lblProgConisch
+        'trk_id
         '
-        Me.lblProgConisch.AutoSize = True
-        Me.lblProgConisch.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblProgConisch.ForeColor = System.Drawing.Color.White
-        Me.lblProgConisch.Location = New System.Drawing.Point(43, 6)
-        Me.lblProgConisch.Name = "lblProgConisch"
-        Me.lblProgConisch.Size = New System.Drawing.Size(55, 17)
-        Me.lblProgConisch.TabIndex = 11
-        Me.lblProgConisch.Text = "Conisch"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_id.DefaultCellStyle = DataGridViewCellStyle3
+        Me.trk_id.FillWeight = 30.0!
+        Me.trk_id.HeaderText = "ID"
+        Me.trk_id.Name = "trk_id"
+        Me.trk_id.ReadOnly = True
+        '
+        'trk_picture
+        '
+        Me.trk_picture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.trk_picture.HeaderText = "Image"
+        Me.trk_picture.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
+        Me.trk_picture.Name = "trk_picture"
+        Me.trk_picture.ReadOnly = True
+        Me.trk_picture.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.trk_picture.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.trk_picture.Width = 87
+        '
+        'trk_name
+        '
+        Me.trk_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_name.DefaultCellStyle = DataGridViewCellStyle4
+        Me.trk_name.FillWeight = 50.0!
+        Me.trk_name.HeaderText = "Song"
+        Me.trk_name.Name = "trk_name"
+        Me.trk_name.ReadOnly = True
+        Me.trk_name.Width = 74
+        '
+        'trk_artist
+        '
+        Me.trk_artist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_artist.DefaultCellStyle = DataGridViewCellStyle5
+        Me.trk_artist.FillWeight = 25.0!
+        Me.trk_artist.HeaderText = "Artist"
+        Me.trk_artist.Name = "trk_artist"
+        Me.trk_artist.ReadOnly = True
+        Me.trk_artist.Width = 76
+        '
+        'trk_genre
+        '
+        Me.trk_genre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_genre.DefaultCellStyle = DataGridViewCellStyle6
+        Me.trk_genre.FillWeight = 50.0!
+        Me.trk_genre.HeaderText = "Genre"
+        Me.trk_genre.Name = "trk_genre"
+        Me.trk_genre.ReadOnly = True
+        Me.trk_genre.Width = 84
+        '
+        'trk_featartist
+        '
+        Me.trk_featartist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.trk_featartist.DefaultCellStyle = DataGridViewCellStyle7
+        Me.trk_featartist.FillWeight = 50.0!
+        Me.trk_featartist.HeaderText = "Featuring Artist"
+        Me.trk_featartist.Name = "trk_featartist"
+        Me.trk_featartist.ReadOnly = True
+        Me.trk_featartist.Width = 155
+        '
+        'trk_date
+        '
+        Me.trk_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.Format = "d"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.trk_date.DefaultCellStyle = DataGridViewCellStyle8
+        Me.trk_date.FillWeight = 50.0!
+        Me.trk_date.HeaderText = "Released"
+        Me.trk_date.Name = "trk_date"
+        Me.trk_date.ReadOnly = True
+        Me.trk_date.Width = 106
+        '
+        'trk_created
+        '
+        Me.trk_created.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.Format = "g"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.trk_created.DefaultCellStyle = DataGridViewCellStyle9
+        Me.trk_created.FillWeight = 30.0!
+        Me.trk_created.HeaderText = "Uploaded"
+        Me.trk_created.Name = "trk_created"
+        Me.trk_created.ReadOnly = True
+        Me.trk_created.Width = 113
+        '
+        'trk_print
+        '
+        Me.trk_print.HeaderText = "Print"
+        Me.trk_print.Name = "trk_print"
+        Me.trk_print.ReadOnly = True
+        Me.trk_print.Text = "Print"
+        Me.trk_print.UseColumnTextForButtonValue = True
+        '
+        'trk_edit
+        '
+        Me.trk_edit.FillWeight = 50.0!
+        Me.trk_edit.HeaderText = "Edit"
+        Me.trk_edit.Name = "trk_edit"
+        Me.trk_edit.ReadOnly = True
+        Me.trk_edit.Text = "Edit"
+        Me.trk_edit.UseColumnTextForButtonValue = True
+        '
+        'trk_delete
+        '
+        Me.trk_delete.FillWeight = 50.0!
+        Me.trk_delete.HeaderText = "Delete"
+        Me.trk_delete.Name = "trk_delete"
+        Me.trk_delete.ReadOnly = True
+        Me.trk_delete.Text = "Delete"
+        Me.trk_delete.UseColumnTextForButtonValue = True
+        '
+        'trk_yourplay
+        '
+        Me.trk_yourplay.HeaderText = "Play"
+        Me.trk_yourplay.Name = "trk_yourplay"
+        Me.trk_yourplay.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.trk_yourplay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.trk_yourplay.Text = "Play"
+        Me.trk_yourplay.UseColumnTextForButtonValue = True
         '
         'trk_yourid
         '
@@ -1882,10 +1891,13 @@ Partial Class frmMain
         '
         'trk_yourpicture
         '
+        Me.trk_yourpicture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.trk_yourpicture.HeaderText = "Image"
+        Me.trk_yourpicture.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
         Me.trk_yourpicture.Name = "trk_yourpicture"
         Me.trk_yourpicture.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.trk_yourpicture.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.trk_yourpicture.Width = 85
         '
         'trk_yourname
         '
@@ -1916,15 +1928,6 @@ Partial Class frmMain
         '
         Me.trk_yourcreated.HeaderText = "Uploaded"
         Me.trk_yourcreated.Name = "trk_yourcreated"
-        '
-        'trk_yourplay
-        '
-        Me.trk_yourplay.HeaderText = "Play"
-        Me.trk_yourplay.Name = "trk_yourplay"
-        Me.trk_yourplay.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.trk_yourplay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.trk_yourplay.Text = "Play"
-        Me.trk_yourplay.UseColumnTextForButtonValue = True
         '
         'trk_yourdelete
         '
@@ -1963,6 +1966,7 @@ Partial Class frmMain
         Me.Text = "frmMain"
         Me.pnlBar.ResumeLayout(False)
         Me.pnlBar.PerformLayout()
+        CType(Me.picProgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlMenu.ResumeLayout(False)
         Me.pnlMenu.PerformLayout()
         Me.pnlPlayer.ResumeLayout(False)
@@ -1994,7 +1998,6 @@ Partial Class frmMain
         Me.pnlAboutDev.ResumeLayout(False)
         Me.pnlAboutDev.PerformLayout()
         CType(Me.picAboutDev, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picProgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2061,18 +2064,6 @@ Partial Class frmMain
     Friend WithEvents txtYourSearch As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblYourSong As Label
     Friend WithEvents dgvYourTrack As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents trk_id As DataGridViewTextBoxColumn
-    Friend WithEvents trk_picture As DataGridViewImageColumn
-    Friend WithEvents trk_name As DataGridViewTextBoxColumn
-    Friend WithEvents trk_artist As DataGridViewTextBoxColumn
-    Friend WithEvents trk_genre As DataGridViewTextBoxColumn
-    Friend WithEvents trk_featartist As DataGridViewTextBoxColumn
-    Friend WithEvents trk_date As DataGridViewTextBoxColumn
-    Friend WithEvents trk_created As DataGridViewTextBoxColumn
-    Friend WithEvents trk_play As DataGridViewButtonColumn
-    Friend WithEvents trk_print As DataGridViewButtonColumn
-    Friend WithEvents trk_edit As DataGridViewButtonColumn
-    Friend WithEvents trk_delete As DataGridViewButtonColumn
     Friend WithEvents pnlHome As Guna.UI2.WinForms.Guna2GradientPanel
     Friend WithEvents tbtnCountActUsers As Guna.UI2.WinForms.Guna2TileButton
     Friend WithEvents lblAdminWelcome As Label
@@ -2106,6 +2097,19 @@ Partial Class frmMain
     Friend WithEvents Timer1 As Timer
     Friend WithEvents lblProgConisch As Label
     Friend WithEvents picProgLogo As Guna.UI2.WinForms.Guna2CirclePictureBox
+    Friend WithEvents trk_play As DataGridViewButtonColumn
+    Friend WithEvents trk_id As DataGridViewTextBoxColumn
+    Friend WithEvents trk_picture As DataGridViewImageColumn
+    Friend WithEvents trk_name As DataGridViewTextBoxColumn
+    Friend WithEvents trk_artist As DataGridViewTextBoxColumn
+    Friend WithEvents trk_genre As DataGridViewTextBoxColumn
+    Friend WithEvents trk_featartist As DataGridViewTextBoxColumn
+    Friend WithEvents trk_date As DataGridViewTextBoxColumn
+    Friend WithEvents trk_created As DataGridViewTextBoxColumn
+    Friend WithEvents trk_print As DataGridViewButtonColumn
+    Friend WithEvents trk_edit As DataGridViewButtonColumn
+    Friend WithEvents trk_delete As DataGridViewButtonColumn
+    Friend WithEvents trk_yourplay As DataGridViewButtonColumn
     Friend WithEvents trk_yourid As DataGridViewTextBoxColumn
     Friend WithEvents trk_yourpicture As DataGridViewImageColumn
     Friend WithEvents trk_yourname As DataGridViewTextBoxColumn
@@ -2114,6 +2118,5 @@ Partial Class frmMain
     Friend WithEvents trk_yourfeatartist As DataGridViewTextBoxColumn
     Friend WithEvents trk_yourdate As DataGridViewTextBoxColumn
     Friend WithEvents trk_yourcreated As DataGridViewTextBoxColumn
-    Friend WithEvents trk_yourplay As DataGridViewButtonColumn
     Friend WithEvents trk_yourdelete As DataGridViewButtonColumn
 End Class

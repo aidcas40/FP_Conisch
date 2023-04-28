@@ -95,4 +95,9 @@ Public Class frmLogin
         frmRegister.Show()
         Me.Hide()
     End Sub
+
+    ' This code handles the Click event of the Close Control Box to exit the application
+    Private Sub ctrlbxClose_Click(sender As Object, e As EventArgs) Handles ctrlbxClose.Click
+        Application.Exit()
+    End Sub
 End Class
