@@ -66,6 +66,7 @@ Partial Class frmSplashScreen
         Me.Controls.Add(Me.lblLoading)
         Me.Controls.Add(Me.picSSLogo)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSplashScreen"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmSplashScreen"

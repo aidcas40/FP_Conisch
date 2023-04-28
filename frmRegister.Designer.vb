@@ -65,7 +65,6 @@ Partial Class frmRegister
         Me.txtRegUsername.IconLeft = CType(resources.GetObject("txtRegUsername.IconLeft"), System.Drawing.Image)
         Me.txtRegUsername.Location = New System.Drawing.Point(63, 170)
         Me.txtRegUsername.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtRegUsername.MaxLength = 25
         Me.txtRegUsername.Name = "txtRegUsername"
         Me.txtRegUsername.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtRegUsername.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
@@ -96,7 +95,6 @@ Partial Class frmRegister
         Me.txtRegEmail.IconLeft = CType(resources.GetObject("txtRegEmail.IconLeft"), System.Drawing.Image)
         Me.txtRegEmail.Location = New System.Drawing.Point(63, 212)
         Me.txtRegEmail.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtRegEmail.MaxLength = 25
         Me.txtRegEmail.Name = "txtRegEmail"
         Me.txtRegEmail.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtRegEmail.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
@@ -127,7 +125,6 @@ Partial Class frmRegister
         Me.txtRegPwd.IconLeft = CType(resources.GetObject("txtRegPwd.IconLeft"), System.Drawing.Image)
         Me.txtRegPwd.Location = New System.Drawing.Point(63, 254)
         Me.txtRegPwd.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtRegPwd.MaxLength = 25
         Me.txtRegPwd.Name = "txtRegPwd"
         Me.txtRegPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtRegPwd.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
@@ -141,7 +138,7 @@ Partial Class frmRegister
         'btnRegister
         '
         Me.btnRegister.AutoRoundedCorners = True
-        Me.btnRegister.BorderRadius = 11
+        Me.btnRegister.BorderRadius = 16
         Me.btnRegister.CheckedState.Parent = Me.btnRegister
         Me.btnRegister.CustomImages.Parent = Me.btnRegister
         Me.btnRegister.FillColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
@@ -177,7 +174,6 @@ Partial Class frmRegister
         Me.txtConfirmPwd.IconLeft = CType(resources.GetObject("txtConfirmPwd.IconLeft"), System.Drawing.Image)
         Me.txtConfirmPwd.Location = New System.Drawing.Point(63, 296)
         Me.txtConfirmPwd.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtConfirmPwd.MaxLength = 25
         Me.txtConfirmPwd.Name = "txtConfirmPwd"
         Me.txtConfirmPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtConfirmPwd.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))

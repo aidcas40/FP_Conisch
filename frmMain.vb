@@ -57,6 +57,10 @@ Public Class frmMain
         bw = New BackgroundWorker()
         AddHandler bw.DoWork, AddressOf LoadHomeQueriesWorker
         bw.RunWorkerAsync()
+
+        ' Start the timer to periodically update the counts
+        Timer1.Interval = 2000 ' for example, update every 2 seconds
+        Timer1.Start()
     End Sub
 
     Private Sub LoadHomeQueriesWorker(sender As Object, e As DoWorkEventArgs)
@@ -425,7 +429,38 @@ Public Class frmMain
 
         End If
 
+        'Setting shortcut key for Menu Buttons
+        Me.KeyPreview = True
+
         LoadGenres()
+    End Sub
+
+    Private Sub frmMain_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        'Execute the code that you want to run when the shortcut is triggered'
+        If e.Control AndAlso e.Alt AndAlso e.KeyCode = Keys.H Then
+            btnHome.PerformClick()
+        End If
+        If e.Control AndAlso e.Alt AndAlso e.KeyCode = Keys.D Then
+            btnDiscover.PerformClick()
+        End If
+        If e.Control AndAlso e.Alt AndAlso e.KeyCode = Keys.Y Then
+            btnYourSongs.PerformClick()
+        End If
+        If e.Control AndAlso e.KeyCode = Keys.U Then
+            btnUpload.PerformClick()
+        End If
+        If e.Control AndAlso e.Alt AndAlso e.KeyCode = Keys.U Then
+            btnUsers.PerformClick()
+        End If
+        If e.Control AndAlso e.Alt AndAlso e.KeyCode = Keys.C Then
+            btnCreateUser.PerformClick()
+        End If
+        If e.Control AndAlso e.Alt AndAlso e.KeyCode = Keys.P Then
+            btnAboutProg.PerformClick()
+        End If
+        If e.Control AndAlso e.Alt AndAlso e.KeyCode = Keys.L Then
+            btnAboutDev.PerformClick()
+        End If
     End Sub
 
     Private Sub pnlHome_Paint(sender As Object, e As PaintEventArgs) Handles pnlHome.Paint
@@ -1015,5 +1050,14 @@ success in their work."
 
         ' Launch the Chrome browser and open the PDF file
         Process.Start("chrome.exe", $"--disable-infobars ""{strUserManual}""")
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        ' Call the methods to update the counts
+        If frmLogin.strCurType = "Admin" Or frmLogin.strCurType = "Manager" Then
+            LoadHomeQueriesWorker(Nothing, Nothing)
+        ElseIf frmLogin.strCurType = "User" Then
+            LoadHomeQueriesUser()
+        End If
     End Sub
 End Class

@@ -31,8 +31,8 @@ Partial Class frmLogin
         Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
         Me.picLoginLogo = New System.Windows.Forms.PictureBox()
         Me.pnlLoginFooter = New System.Windows.Forms.Panel()
-        Me.ctrlbxClose = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.lblMenu = New System.Windows.Forms.Label()
+        Me.ctrlbxClose = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.lblLogin = New System.Windows.Forms.Label()
         Me.pnlHeader = New System.Windows.Forms.Panel()
         Me.ctrlbxLoginMin = New Guna.UI2.WinForms.Guna2ControlBox()
@@ -63,7 +63,6 @@ Partial Class frmLogin
         Me.txtUsername.IconLeft = CType(resources.GetObject("txtUsername.IconLeft"), System.Drawing.Image)
         Me.txtUsername.Location = New System.Drawing.Point(63, 190)
         Me.txtUsername.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtUsername.MaxLength = 25
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtUsername.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
@@ -94,7 +93,6 @@ Partial Class frmLogin
         Me.txtUserPwd.IconLeft = CType(resources.GetObject("txtUserPwd.IconLeft"), System.Drawing.Image)
         Me.txtUserPwd.Location = New System.Drawing.Point(63, 242)
         Me.txtUserPwd.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtUserPwd.MaxLength = 25
         Me.txtUserPwd.Name = "txtUserPwd"
         Me.txtUserPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtUserPwd.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
@@ -108,7 +106,7 @@ Partial Class frmLogin
         'btnLogin
         '
         Me.btnLogin.AutoRoundedCorners = True
-        Me.btnLogin.BorderRadius = 11
+        Me.btnLogin.BorderRadius = 16
         Me.btnLogin.CheckedState.Parent = Me.btnLogin
         Me.btnLogin.CustomImages.Parent = Me.btnLogin
         Me.btnLogin.FillColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
@@ -161,6 +159,17 @@ Partial Class frmLogin
         Me.pnlLoginFooter.Size = New System.Drawing.Size(430, 46)
         Me.pnlLoginFooter.TabIndex = 6
         '
+        'lblMenu
+        '
+        Me.lblMenu.AutoSize = True
+        Me.lblMenu.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMenu.ForeColor = System.Drawing.Color.FromArgb(CType(CType(144, Byte), Integer), CType(CType(145, Byte), Integer), CType(CType(187, Byte), Integer))
+        Me.lblMenu.Location = New System.Drawing.Point(63, 15)
+        Me.lblMenu.Name = "lblMenu"
+        Me.lblMenu.Size = New System.Drawing.Size(164, 17)
+        Me.lblMenu.TabIndex = 5
+        Me.lblMenu.Text = "Don't have an account yet?"
+        '
         'ctrlbxClose
         '
         Me.ctrlbxClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -172,17 +181,6 @@ Partial Class frmLogin
         Me.ctrlbxClose.ShadowDecoration.Parent = Me.ctrlbxClose
         Me.ctrlbxClose.Size = New System.Drawing.Size(45, 29)
         Me.ctrlbxClose.TabIndex = 7
-        '
-        'lblMenu
-        '
-        Me.lblMenu.AutoSize = True
-        Me.lblMenu.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMenu.ForeColor = System.Drawing.Color.FromArgb(CType(CType(144, Byte), Integer), CType(CType(145, Byte), Integer), CType(CType(187, Byte), Integer))
-        Me.lblMenu.Location = New System.Drawing.Point(63, 15)
-        Me.lblMenu.Name = "lblMenu"
-        Me.lblMenu.Size = New System.Drawing.Size(164, 17)
-        Me.lblMenu.TabIndex = 5
-        Me.lblMenu.Text = "Don't have an account yet?"
         '
         'lblLogin
         '

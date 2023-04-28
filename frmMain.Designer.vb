@@ -125,17 +125,8 @@ Partial Class frmMain
         Me.txtYourSearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.lblYourSong = New System.Windows.Forms.Label()
         Me.dgvYourTrack = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.trk_yourid = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_yourpicture = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.trk_yourname = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_yourartist = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_yourgenre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_yourfeatartist = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_yourdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_yourcreated = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trk_yourplay = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.trk_yourdelete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.pnlHome = New Guna.UI2.WinForms.Guna2GradientPanel()
+        Me.lblUserManual = New System.Windows.Forms.LinkLabel()
         Me.lnkChangePwd = New System.Windows.Forms.LinkLabel()
         Me.lblHomeRoleAd = New System.Windows.Forms.Label()
         Me.picCountTracks = New Guna.UI2.WinForms.Guna2PictureBox()
@@ -154,7 +145,19 @@ Partial Class frmMain
         Me.lblAboutDevDesc = New System.Windows.Forms.Label()
         Me.picAboutDev = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.lblAboutDev = New System.Windows.Forms.Label()
-        Me.lblUserManual = New System.Windows.Forms.LinkLabel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.picProgLogo = New Guna.UI2.WinForms.Guna2CirclePictureBox()
+        Me.lblProgConisch = New System.Windows.Forms.Label()
+        Me.trk_yourid = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_yourpicture = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.trk_yourname = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_yourartist = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_yourgenre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_yourfeatartist = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_yourdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_yourcreated = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.trk_yourplay = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.trk_yourdelete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.pnlBar.SuspendLayout()
         Me.pnlMenu.SuspendLayout()
         Me.pnlPlayer.SuspendLayout()
@@ -177,6 +180,7 @@ Partial Class frmMain
         CType(Me.picAboutProgram, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlAboutDev.SuspendLayout()
         CType(Me.picAboutDev, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picProgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2Elipse1
@@ -185,6 +189,8 @@ Partial Class frmMain
         '
         'pnlBar
         '
+        Me.pnlBar.Controls.Add(Me.lblProgConisch)
+        Me.pnlBar.Controls.Add(Me.picProgLogo)
         Me.pnlBar.Controls.Add(Me.ctrlbxMin)
         Me.pnlBar.Controls.Add(Me.ctrlbxMax)
         Me.pnlBar.Controls.Add(Me.ctrlbxClose)
@@ -522,7 +528,7 @@ Partial Class frmMain
         Me.lblSong.AutoSize = True
         Me.lblSong.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSong.ForeColor = System.Drawing.Color.White
-        Me.lblSong.Location = New System.Drawing.Point(140, 34)
+        Me.lblSong.Location = New System.Drawing.Point(130, 34)
         Me.lblSong.Name = "lblSong"
         Me.lblSong.Size = New System.Drawing.Size(0, 17)
         Me.lblSong.TabIndex = 3
@@ -532,7 +538,7 @@ Partial Class frmMain
         Me.lblArtist.AutoSize = True
         Me.lblArtist.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblArtist.ForeColor = System.Drawing.Color.White
-        Me.lblArtist.Location = New System.Drawing.Point(140, 14)
+        Me.lblArtist.Location = New System.Drawing.Point(130, 14)
         Me.lblArtist.Name = "lblArtist"
         Me.lblArtist.Size = New System.Drawing.Size(0, 17)
         Me.lblArtist.TabIndex = 2
@@ -544,7 +550,7 @@ Partial Class frmMain
         Me.picPlayMusic.Name = "picPlayMusic"
         Me.picPlayMusic.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
         Me.picPlayMusic.ShadowDecoration.Parent = Me.picPlayMusic
-        Me.picPlayMusic.Size = New System.Drawing.Size(76, 56)
+        Me.picPlayMusic.Size = New System.Drawing.Size(57, 55)
         Me.picPlayMusic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picPlayMusic.TabIndex = 1
         Me.picPlayMusic.TabStop = False
@@ -1569,66 +1575,6 @@ Partial Class frmMain
         Me.dgvYourTrack.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.dgvYourTrack.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
-        'trk_yourid
-        '
-        Me.trk_yourid.HeaderText = "ID"
-        Me.trk_yourid.Name = "trk_yourid"
-        '
-        'trk_yourpicture
-        '
-        Me.trk_yourpicture.HeaderText = "Image"
-        Me.trk_yourpicture.Name = "trk_yourpicture"
-        Me.trk_yourpicture.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.trk_yourpicture.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'trk_yourname
-        '
-        Me.trk_yourname.HeaderText = "Song"
-        Me.trk_yourname.Name = "trk_yourname"
-        '
-        'trk_yourartist
-        '
-        Me.trk_yourartist.HeaderText = "Artist"
-        Me.trk_yourartist.Name = "trk_yourartist"
-        '
-        'trk_yourgenre
-        '
-        Me.trk_yourgenre.HeaderText = "Genre"
-        Me.trk_yourgenre.Name = "trk_yourgenre"
-        '
-        'trk_yourfeatartist
-        '
-        Me.trk_yourfeatartist.HeaderText = "Featuring Artist"
-        Me.trk_yourfeatartist.Name = "trk_yourfeatartist"
-        '
-        'trk_yourdate
-        '
-        Me.trk_yourdate.HeaderText = "Released"
-        Me.trk_yourdate.Name = "trk_yourdate"
-        '
-        'trk_yourcreated
-        '
-        Me.trk_yourcreated.HeaderText = "Uploaded"
-        Me.trk_yourcreated.Name = "trk_yourcreated"
-        '
-        'trk_yourplay
-        '
-        Me.trk_yourplay.HeaderText = "Play"
-        Me.trk_yourplay.Name = "trk_yourplay"
-        Me.trk_yourplay.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.trk_yourplay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.trk_yourplay.Text = "Play"
-        Me.trk_yourplay.UseColumnTextForButtonValue = True
-        '
-        'trk_yourdelete
-        '
-        Me.trk_yourdelete.HeaderText = "Delete"
-        Me.trk_yourdelete.Name = "trk_yourdelete"
-        Me.trk_yourdelete.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.trk_yourdelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.trk_yourdelete.Text = "Delete"
-        Me.trk_yourdelete.UseColumnTextForButtonValue = True
-        '
         'pnlHome
         '
         Me.pnlHome.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -1651,6 +1597,20 @@ Partial Class frmMain
         Me.pnlHome.ShadowDecoration.Parent = Me.pnlHome
         Me.pnlHome.Size = New System.Drawing.Size(1020, 515)
         Me.pnlHome.TabIndex = 4
+        '
+        'lblUserManual
+        '
+        Me.lblUserManual.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(98, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.lblUserManual.AutoSize = True
+        Me.lblUserManual.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUserManual.LinkColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblUserManual.Location = New System.Drawing.Point(790, 85)
+        Me.lblUserManual.Name = "lblUserManual"
+        Me.lblUserManual.Size = New System.Drawing.Size(140, 21)
+        Me.lblUserManual.TabIndex = 10
+        Me.lblUserManual.TabStop = True
+        Me.lblUserManual.Text = "Open User Manual"
+        Me.lblUserManual.VisitedLinkColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         '
         'lnkChangePwd
         '
@@ -1799,7 +1759,7 @@ Partial Class frmMain
         Me.pnlAboutProgram.Location = New System.Drawing.Point(197, 28)
         Me.pnlAboutProgram.Name = "pnlAboutProgram"
         Me.pnlAboutProgram.ShadowDecoration.Parent = Me.pnlAboutProgram
-        Me.pnlAboutProgram.Size = New System.Drawing.Size(1020, 515)
+        Me.pnlAboutProgram.Size = New System.Drawing.Size(1023, 515)
         Me.pnlAboutProgram.TabIndex = 16
         '
         'lblAboutProgDesc
@@ -1886,19 +1846,94 @@ Partial Class frmMain
         Me.lblAboutDev.TabIndex = 3
         Me.lblAboutDev.Text = "About Developers"
         '
-        'lblUserManual
+        'Timer1
         '
-        Me.lblUserManual.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(98, Byte), Integer), CType(CType(78, Byte), Integer))
-        Me.lblUserManual.AutoSize = True
-        Me.lblUserManual.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserManual.LinkColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblUserManual.Location = New System.Drawing.Point(790, 85)
-        Me.lblUserManual.Name = "lblUserManual"
-        Me.lblUserManual.Size = New System.Drawing.Size(140, 21)
-        Me.lblUserManual.TabIndex = 10
-        Me.lblUserManual.TabStop = True
-        Me.lblUserManual.Text = "Open User Manual"
-        Me.lblUserManual.VisitedLinkColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Timer1.Enabled = True
+        '
+        'picProgLogo
+        '
+        Me.picProgLogo.Image = CType(resources.GetObject("picProgLogo.Image"), System.Drawing.Image)
+        Me.picProgLogo.Location = New System.Drawing.Point(12, 3)
+        Me.picProgLogo.Name = "picProgLogo"
+        Me.picProgLogo.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.picProgLogo.ShadowDecoration.Parent = Me.picProgLogo
+        Me.picProgLogo.Size = New System.Drawing.Size(25, 23)
+        Me.picProgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picProgLogo.TabIndex = 11
+        Me.picProgLogo.TabStop = False
+        '
+        'lblProgConisch
+        '
+        Me.lblProgConisch.AutoSize = True
+        Me.lblProgConisch.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblProgConisch.ForeColor = System.Drawing.Color.White
+        Me.lblProgConisch.Location = New System.Drawing.Point(43, 6)
+        Me.lblProgConisch.Name = "lblProgConisch"
+        Me.lblProgConisch.Size = New System.Drawing.Size(55, 17)
+        Me.lblProgConisch.TabIndex = 11
+        Me.lblProgConisch.Text = "Conisch"
+        '
+        'trk_yourid
+        '
+        Me.trk_yourid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.trk_yourid.HeaderText = "ID"
+        Me.trk_yourid.Name = "trk_yourid"
+        Me.trk_yourid.Width = 50
+        '
+        'trk_yourpicture
+        '
+        Me.trk_yourpicture.HeaderText = "Image"
+        Me.trk_yourpicture.Name = "trk_yourpicture"
+        Me.trk_yourpicture.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.trk_yourpicture.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'trk_yourname
+        '
+        Me.trk_yourname.HeaderText = "Song"
+        Me.trk_yourname.Name = "trk_yourname"
+        '
+        'trk_yourartist
+        '
+        Me.trk_yourartist.HeaderText = "Artist"
+        Me.trk_yourartist.Name = "trk_yourartist"
+        '
+        'trk_yourgenre
+        '
+        Me.trk_yourgenre.HeaderText = "Genre"
+        Me.trk_yourgenre.Name = "trk_yourgenre"
+        '
+        'trk_yourfeatartist
+        '
+        Me.trk_yourfeatartist.HeaderText = "Featuring Artist"
+        Me.trk_yourfeatartist.Name = "trk_yourfeatartist"
+        '
+        'trk_yourdate
+        '
+        Me.trk_yourdate.HeaderText = "Released"
+        Me.trk_yourdate.Name = "trk_yourdate"
+        '
+        'trk_yourcreated
+        '
+        Me.trk_yourcreated.HeaderText = "Uploaded"
+        Me.trk_yourcreated.Name = "trk_yourcreated"
+        '
+        'trk_yourplay
+        '
+        Me.trk_yourplay.HeaderText = "Play"
+        Me.trk_yourplay.Name = "trk_yourplay"
+        Me.trk_yourplay.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.trk_yourplay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.trk_yourplay.Text = "Play"
+        Me.trk_yourplay.UseColumnTextForButtonValue = True
+        '
+        'trk_yourdelete
+        '
+        Me.trk_yourdelete.HeaderText = "Delete"
+        Me.trk_yourdelete.Name = "trk_yourdelete"
+        Me.trk_yourdelete.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.trk_yourdelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.trk_yourdelete.Text = "Delete"
+        Me.trk_yourdelete.UseColumnTextForButtonValue = True
         '
         'frmMain
         '
@@ -1927,6 +1962,7 @@ Partial Class frmMain
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmMain"
         Me.pnlBar.ResumeLayout(False)
+        Me.pnlBar.PerformLayout()
         Me.pnlMenu.ResumeLayout(False)
         Me.pnlMenu.PerformLayout()
         Me.pnlPlayer.ResumeLayout(False)
@@ -1958,6 +1994,7 @@ Partial Class frmMain
         Me.pnlAboutDev.ResumeLayout(False)
         Me.pnlAboutDev.PerformLayout()
         CType(Me.picAboutDev, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picProgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2042,16 +2079,6 @@ Partial Class frmMain
     Friend WithEvents lblAdminHome As Label
     Friend WithEvents tbtnCountUnActUsers As Guna.UI2.WinForms.Guna2TileButton
     Friend WithEvents tbtnCountTotTrk As Guna.UI2.WinForms.Guna2TileButton
-    Friend WithEvents trk_yourid As DataGridViewTextBoxColumn
-    Friend WithEvents trk_yourpicture As DataGridViewImageColumn
-    Friend WithEvents trk_yourname As DataGridViewTextBoxColumn
-    Friend WithEvents trk_yourartist As DataGridViewTextBoxColumn
-    Friend WithEvents trk_yourgenre As DataGridViewTextBoxColumn
-    Friend WithEvents trk_yourfeatartist As DataGridViewTextBoxColumn
-    Friend WithEvents trk_yourdate As DataGridViewTextBoxColumn
-    Friend WithEvents trk_yourcreated As DataGridViewTextBoxColumn
-    Friend WithEvents trk_yourplay As DataGridViewButtonColumn
-    Friend WithEvents trk_yourdelete As DataGridViewButtonColumn
     Friend WithEvents picCountTracks As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents picCountUnUsers As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents picCountAUsers As Guna.UI2.WinForms.Guna2PictureBox
@@ -2076,4 +2103,17 @@ Partial Class frmMain
     Friend WithEvents user_delete As DataGridViewButtonColumn
     Friend WithEvents lnkChangePwd As LinkLabel
     Friend WithEvents lblUserManual As LinkLabel
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents lblProgConisch As Label
+    Friend WithEvents picProgLogo As Guna.UI2.WinForms.Guna2CirclePictureBox
+    Friend WithEvents trk_yourid As DataGridViewTextBoxColumn
+    Friend WithEvents trk_yourpicture As DataGridViewImageColumn
+    Friend WithEvents trk_yourname As DataGridViewTextBoxColumn
+    Friend WithEvents trk_yourartist As DataGridViewTextBoxColumn
+    Friend WithEvents trk_yourgenre As DataGridViewTextBoxColumn
+    Friend WithEvents trk_yourfeatartist As DataGridViewTextBoxColumn
+    Friend WithEvents trk_yourdate As DataGridViewTextBoxColumn
+    Friend WithEvents trk_yourcreated As DataGridViewTextBoxColumn
+    Friend WithEvents trk_yourplay As DataGridViewButtonColumn
+    Friend WithEvents trk_yourdelete As DataGridViewButtonColumn
 End Class
