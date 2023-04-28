@@ -12,13 +12,13 @@
 '----------------------------------------------------------------------------------
 Imports MySql.Data.MySqlClient
 Public Class frmLogin
-    'Declaring public variables to be used accross different forms
+    'Declaring public variables to save data from current login user to be used across various forms
     Public Shared intCurID As Int32
     Public Shared intCurActive As Int32
     Public Shared strCurUsername As String
     Public Shared strCurType As String
 
-    'Defining connection string and mysql commands
+    'Defining connection string and declaring mysql commands to query data from the database 
     Dim conn = New MySqlConnection(My.Settings.connString)
     Dim command As MySqlCommand
 
@@ -30,7 +30,7 @@ Public Class frmLogin
         Dim reader As MySqlDataReader
 
         Try
-            'Connecting to the database to check if the username and password entered in the login forms matches
+            'Connecting to the database to check if the username and password entered in the login form matches
             conn.Open()
             Dim query As String
             query = "SELECT * FROM  users WHERE user_username ='" & txtUsername.Text & "' AND BINARY user_password='" & txtUserPwd.Text & "' "
@@ -44,7 +44,7 @@ Public Class frmLogin
             End While
 
             If count = 1 Then
-                ' use reader function to save specific user data from the database
+                ' use reader function to save specific user data from the database, such as Username, Active and UserType
                 intCurID = reader.GetInt32(0)
                 strCurUsername = reader.GetString(1)
                 If Not reader.IsDBNull(4) Then
@@ -54,9 +54,12 @@ Public Class frmLogin
                     strCurType = reader.GetString(5)
                 End If
 
-                ' if statements to deal with if the user accouunt 
+                ' if statements to deal with various login scenarios
+                ' if statement for unactivated users
                 If intCurActive <> 1 Then
                     MessageBox.Show(Me, "Account hasn't been activated.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+                    ' else if statement for users that haven't been assigned a role/type
                 ElseIf strCurType = Nothing Then
                     MessageBox.Show(Me, "Account hasn't been assigned a role.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
@@ -65,10 +68,12 @@ Public Class frmLogin
                     Me.Hide()
                 End If
 
+                ' else if statement that checks for duplicate users in the database
             ElseIf count > 1 Then
                 MessageBox.Show(Me, "Username and Password Duplicate.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             Else
+                ' if statements that check for invalid or empty user input for the username and password textboxes
                 If txtUsername.Text = "" Then
                     MessageBox.Show(Me, "Please enter a username.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf txtUserPwd.Text = "" Then
@@ -86,6 +91,7 @@ Public Class frmLogin
     End Sub
 
     Private Sub lblRegLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblRegLink.LinkClicked
+        ' opens Register form and hides current form when Sign Up Link is clicked
         frmRegister.Show()
         Me.Hide()
     End Sub

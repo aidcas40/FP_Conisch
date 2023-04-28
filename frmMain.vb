@@ -173,19 +173,6 @@ Public Class frmMain
         dgvSongs.Columns("trk_date").DataPropertyName = "trk_date"
         dgvSongs.Columns("trk_created").DataPropertyName = "trk_created"
 
-        'dgvSongs.Columns("trk_id").Width = 30
-        'dgvSongs.Columns("trk_picture").Width = 50
-        'dgvSongs.Columns("trk_name").Width = 50
-        'dgvSongs.Columns("trk_artist").Width = 50
-        'dgvSongs.Columns("trk_genre").Width = 50
-        'dgvSongs.Columns("trk_featartist").Width = 50
-        'dgvSongs.Columns("trk_date").Width = 50
-        'dgvSongs.Columns("trk_created").Width = 50
-        'dgvSongs.Columns("trk_edit").Width = 50
-        'dgvSongs.Columns("trk_delete").Width = 50
-        'dgvSongs.Columns("trk_play").Width = 50
-        'dgvSongs.Columns("trk_print").Width = 50
-
         dgvSongs.Columns("trk_id").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvSongs.Columns("trk_picture").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         dgvSongs.Columns("trk_name").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
