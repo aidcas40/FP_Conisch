@@ -47,9 +47,9 @@ Public Class frmRegister
                         status = cmd.ExecuteNonQuery()
 
                         If (status > 0) Then
-                            MessageBox.Show(Me, "Record Inserted!", "Information", MessageBoxButtons.OK)
+                            MessageBox.Show(Me, "Sign up was successful.", "Information", MessageBoxButtons.OK)
                         Else
-                            MessageBox.Show(Me, "Record not inserted!", "Information", MessageBoxButtons.OK)
+                            MessageBox.Show(Me, "Sign up was unsuccessful.", "Information", MessageBoxButtons.OK)
                         End If
                     End Using
 

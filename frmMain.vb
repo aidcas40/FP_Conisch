@@ -959,7 +959,8 @@ success in their work."
                     arrimage = ms.GetBuffer()
                     Dim filesize As UInt32
                     filesize = ms.Length
-                    ms.Close()
+                    'ms.Close()
+                    ms.Dispose()
 
                     Using conn
                         conn.Open()
@@ -989,6 +990,8 @@ success in their work."
 
                 Catch ex As Exception
                     MessageBox.Show(ex.Message)
+                Finally
+                    conn.Close()
                 End Try
 
             End If
