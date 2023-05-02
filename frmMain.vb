@@ -956,7 +956,7 @@ success in their work."
 
                     Dim ms As New MemoryStream()
                     picTrkPic.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg)
-                    arrimage = ms.GetBuffer()
+                    arrimage = ms.ToArray()
                     Dim filesize As UInt32
                     filesize = ms.Length
                     'ms.Close()
